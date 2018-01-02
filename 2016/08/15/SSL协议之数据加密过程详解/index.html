@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="/blog">
-  <title>天雷</title>
+  <title>SSL协议之数据加密过程详解 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一步一个脚印,成长举足之间">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天雷">
-<meta property="og:url" content="/blog/index.html">
+  <meta name="description" content="前言HTTPS的流行，SSL协议功不可没，这篇博文将带领各位了解加密、以及SSL微妙的加密原理.">
+<meta name="keywords" content="https,ssl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSL协议之数据加密过程详解">
+<meta property="og:url" content="/blog/2016/08/15/SSL协议之数据加密过程详解/index.html">
 <meta property="og:site_name" content="天雷">
-<meta property="og:description" content="一步一个脚印,成长举足之间">
+<meta property="og:description" content="前言HTTPS的流行，SSL协议功不可没，这篇博文将带领各位了解加密、以及SSL微妙的加密原理.">
+<meta property="og:image" content="/image/https_ssl.jpg">
+<meta property="og:image" content="/image/SSL协议握手.svg">
+<meta property="og:updated_time" content="2018-01-02T15:51:11.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天雷">
-<meta name="twitter:description" content="一步一个脚印,成长举足之间">
+<meta name="twitter:title" content="SSL协议之数据加密过程详解">
+<meta name="twitter:description" content="前言HTTPS的流行，SSL协议功不可没，这篇博文将带领各位了解加密、以及SSL微妙的加密原理.">
+<meta name="twitter:image" content="/image/https_ssl.jpg">
   
     <link rel="alternative" href="/atom.xml" title="天雷" type="application/atom+xml">
   
@@ -136,16 +141,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SSL协议之数据加密过程详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-SSL协议之数据加密过程详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/15/SSL协议之数据加密过程详解/">SSL协议之数据加密过程详解</a>
+    <h1 class="article-title" itemprop="name">
+      SSL协议之数据加密过程详解
     </h1>
   
 
@@ -159,10 +162,108 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="/image/https_ssl.jpg" alt=""></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>HTTPS</strong>的流行，<strong>SSL</strong>协议功不可没，这篇博文将带领各位了解加密、以及<strong>SSL</strong>微妙的加密原理.<br>
-        
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>HTTPS</strong>的流行，<strong>SSL</strong>协议功不可没，这篇博文将带领各位了解加密、以及<strong>SSL</strong>微妙的加密原理.<br><a id="more"></a></p>
+<h2 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h2><p>只要你听过HTTPS，不可能没听过SSL协议吧，SSL协议是一种安全协议。对于互联网协议没有了解的童鞋可以参考博主另一篇博客：<a href="http://blog.damonare.cn/2016/11/26/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8/" target="_blank" rel="noopener">internet协议入门</a></p>
+<blockquote>
+<p>HTTP+SSL = HTTPS</p>
+</blockquote>
+<p>HTTPS之所以安全就是因为加持了SSL这个外挂来对传输的数据进行加密，那么具体的加密方法又是什么呢？</p>
+<p>请听我娓娓道来。先看下面两个概念：</p>
+<ul>
+<li>对称加密</li>
+<li>非对称加密</li>
+</ul>
+<p>你知道上面两个概念是什么意思么？😳</p>
+<p>🤣OK，不管你懂不懂，我先用我的方式来给你解释下：</p>
+<p>亲，你作过弊么？不要告诉我在你漫长的学生生涯里你没作过弊(那你的学生生涯得多枯燥)，作弊我们常用的方法是啥？(说把答案写在胳膊大腿纸条上的同学请你出去，谢谢🙂)当然是加密了！比如我出于人道主义，想要帮助小明同学作弊，首先考试前我们会约定好一个暗号来传递选择题的答案，摸头发——A，摸耳朵——B，咳嗽——C，跺脚——D，于是一个加密方法就诞生了，这个加密方法只有我和小明知道，老师虽然看我抓耳挠腮但他顶多把我当成神经病，并没有直接证据说我作弊。好，这种我和小明知道，别人不知道的加密方法就是一种对称加密算法,对称加密算法也是我们日常最常见的加密算法。这种算法🔑只有一把，加密解密都用同一把钥匙，一旦🔑泄露就全玩完了。</p>
+<p>随时时代的进步，人们发现实际上加密和解密不用同一把🔑也是可以的，只要加密和解密的两把🔑存在某种关系就行了。</p>
+<p>于是，层出不穷的非对称加密算法就被研究了出来，那么它基于什么样的道理呢？请严格记住下面这句话：</p>
+<p>将a和b相乘得出乘积c很容易，但要是想要通过乘积c推导出a和b极难。即对一个大数进行因式分解极难</p>
+<p>听不懂因式分解的童鞋先去面壁5分钟，这么多年数学白学了？甩给你维基百科链接，自行补课🙂：<a href="https://baike.baidu.com/item/%E5%9B%A0%E5%BC%8F%E5%88%86%E8%A7%A3/384402?fr=aladdin" target="_blank" rel="noopener">因式分解</a><br>好的，我们继续，非对称加密算法就多了两个概念——公钥c和私钥b。</p>
+<p>用法如下：公钥加密的密文只能用私钥解密，私钥加密的密文只能用公钥解密。</p>
+<p>公钥我们可以随便公开，因为别人知道了公钥毫无用处，经过公钥加密后的密文只能通过私钥来解密。而想要通过公钥推导出a和b极难。但很明显的是，使用非对称加密效率不如对称加密，因为非对称加密需要有计算两个密钥的过程。</p>
+<p>我们通过密码学中的两个典型的爱丽丝和鲍勃人物来解释这个非对称加密算法的过程：</p>
+<p><strong>客户端叫做爱丽丝，服务器叫做鲍勃。</strong></p>
+<blockquote>
+<p>爱丽丝： 鲍勃我要给你发送一段消息，把你的公钥给我吧；<br>鲍勃： OK，这是我的公钥：234nkjdfdhjbg324<em>*；<br>爱丽丝：收到公钥，我给你发送的消息经过公钥加密之后是这样的：##@#@!$%</em>(@;<br>鲍勃：好的，收到了，亲，我来用我的私钥解密看下你真正要给我发送的内容；</p>
+</blockquote>
+<p>上述过程就是一个<strong>非对称加密</strong>的过程，这个过程安全么？好像是很安全，即使<strong>查理</strong>(通信中的第三位参加者)截取了密文和公钥没有私钥还是没法得到明文。😂</p>
+<p>可如果第三者查理发送给爱丽丝他自己的公钥，然后爱丽丝用查理给的公钥加密密文发送了出去，查理再通过自己的私钥解密，这不就泄露信息了么？我们需要想个办法让爱丽丝判断这个公钥到底是不是鲍勃发来的。</p>
+<p>于是就有了<strong>数字证书</strong>的概念：</p>
+<blockquote>
+<p>数字证书就是互联网通讯中标志通讯各方身份信息的一串数字，提供了一种在Internet上验证通信实体身份的方式，数字证书不是<a href="https://baike.baidu.com/item/%E6%95%B0%E5%AD%97%E8%BA%AB%E4%BB%BD%E8%AF%81" target="_blank" rel="noopener">数字身份证</a>，而是身份认证机构盖在数字身份证上的一个章或印（或者说加在数字身份证上的一个签名）。</p>
+</blockquote>
+<p>😑上面官方的解释看起来就头大。其实它就是一段信息。</p>
+<p>数字证书内容大体如下：</p>
+<ul>
+<li>签发证书的机构</li>
+<li>鲍勃的加密算法</li>
+<li>鲍勃所使用的Hash算法</li>
+<li>鲍勃的公钥</li>
+<li>证书到期时间</li>
+<li>等等</li>
+</ul>
+<p>数字证书是由权威机构——CA机构统一来进行发行，我们绝对信任这个机构，至于CA机构的安全性…反正99.99%之下都是安全的。🕵</p>
+<p>为了防止中间有人对证书内容进行更改，有了一个<strong>数字签名</strong>的概念，所谓的数字签名就是把以上所有的内容做一个Hash操作，得到一个固定长度然后再传给鲍勃。然而如果别人截取了这个证书然后更改内容，同时生成了新的Hash值那怎么办？处于这个考虑，CA机构在颁发这个证书的时候会用自己的私钥将Hash值加密，从而防止了数字证书被篡改。</p>
+<p>好，我们来梳理下整个过程：</p>
+<ul>
+<li><strong>第一步</strong>：首先，当爱丽丝开启一个新的浏览器第一次去访问鲍勃的时候，会先让爱丽丝安装一个<strong>数字证书</strong>，这个数字证书里包含的主要信息就是CA机构的公钥。</li>
+<li><strong>第二步</strong>：鲍勃发送来了CA机构颁发给自己的<strong>数字证书</strong>，爱丽丝通过第一步中已经得到的公钥解密CA用私钥加密的Hash-a(这个过程就是非对称加密)，然后再用传递过来的HASH算法生成一个Hash-b，如果Hash-a === Hash-b就说明认证通过，确实是鲍勃发过来的。</li>
+</ul>
+<p>如上，是整个数字证书的使用过程就是这样的。</p>
+<p>多说一句，非对称加密实际应用的例子除了SSL还有很多，比如<strong>SSH</strong>、<strong>电子签名</strong>等；</p>
+<p>如上提到的，非对称加密计算量很大，效率不如对称加密，我们打开网页最注重的是啥？是速度！是速度！是速度！🏃🏃🏃</p>
+<p><strong>这点SSL就玩的很巧妙了</strong>🤣，通信双方通过对称加密来加密密文，然后使用非对称加密的方式来传递对称加密所使用的密钥。这样效率和安全就都能保证了。</p>
+<h2 id="SSL协议的握手过程"><a href="#SSL协议的握手过程" class="headerlink" title="SSL协议的握手过程"></a>SSL协议的握手过程</h2><p>先用语言来阐述下：</p>
+<blockquote>
+<p>第一步：爱丽丝给出支持SSL协议版本号，一个客户端随机数(Client random，请注意这是第一个随机数)，客户端支持的加密方法等信息；<br>第二步：鲍勃收到信息后，确认双方使用的加密方法，并返回数字证书，一个服务器生成的随机数(Server random，注意这是第二个随机数)等信息；<br>第三步：爱丽丝确认数字证书的有效性，然后生成一个新的随机数(Premaster secret)，然后使用数字证书中的公钥，加密这个随机数，发给鲍勃。<br>第四步：鲍勃使用自己的私钥，获取爱丽丝发来的随机数(即Premaster secret)；(第三、四步就是非对称加密的过程了)<br>第五步：爱丽丝和鲍勃通过约定的加密方法(通常是<a href="https://baike.baidu.com/item/aes/5903?fr=aladdin" target="_blank" rel="noopener">AES算法</a>)，使用前面三个随机数，生成对话密钥，用来加密接下来的通信内容；</p>
+</blockquote>
+<p>俗话说一图胜千言，我画了一个图来说明这个过程：</p>
+<p><img src="/image/SSL协议握手.svg" alt="ssl协议握手"></p>
+<p>OK，整个进行数据加密的过程结束。我们再来回忆下内容：</p>
+<ul>
+<li>CA机构颁发数字证书给鲍勃；</li>
+<li>爱丽丝和鲍勃进行SSL握手，爱丽丝通过数字证书确定鲍勃的身份；</li>
+<li>爱丽丝和鲍勃传递三个随机数，第三个随机数通过非对称加密算法进行传递；</li>
+<li>爱丽丝和鲍勃通过一个对称加密算法生成一个对话密钥，加密接下来的通信内容。</li>
+</ul>
+<h2 id="结"><a href="#结" class="headerlink" title="结"></a>结</h2><p>文中阐述不妥之处还望雅正，不吝感激。</p>
+<p>部分摘自<a href="http://blog.damonare.cn/2017/12/29/SSL%E5%8D%8F%E8%AE%AE%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/#more" target="_blank" rel="noopener">Damonare</a> 感谢。</p>
+<p>以上。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/wechar.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -186,16 +287,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/15/SSL协议之数据加密过程详解/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http:/blog/2016/08/15/SSL协议之数据加密过程详解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/02/Internet协议入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Internet协议入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -216,340 +376,19 @@
 
 
 
+  <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2152155"></script>
+<!-- UY END -->
   
-    <article id="post-Internet协议入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/Internet协议入门/">Internet协议入门</a>
-    </h1>
+  
   
 
-        
-        <a href="/2016/03/02/Internet协议入门/" class="archive-article-date">
-  	<time datetime="2016-03-02T11:07:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/image/Internet协议入门标题.jpg" alt=""></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>此篇博客则用来作为一个大纲式的内容，按照层级划分，逐步介绍各层级的协议以及他们所起的作用。若有错误之处，欢迎批评指正。</p>
-<p>劳于读书，逸于作文。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/02/Internet协议入门/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HashMap原理解析-面试常用划重点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/02/HashMap原理解析-面试常用划重点/">HashMap原理解析-面试常用划重点</a>
-    </h1>
   
 
-        
-        <a href="/2016/01/02/HashMap原理解析-面试常用划重点/" class="archive-article-date">
-  	<time datetime="2016-01-02T07:25:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/image/HashMap详解标题图.jpg" alt=""></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>数据结构</strong>几乎是面试的日常了，其中<code>HashMap</code>更是常客,很多人说到<code>HashMap</code>都能”画虎烂”两句,但是类似：</p>
-<ul>
-<li>高并发中<code>HashMap</code>为何会出现死锁？</li>
-<li><code>Java8</code>中，<code>HashMap</code>的结构有如何优化？</li>
-</ul>
-<p>却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hash</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/02/HashMap原理解析-面试常用划重点/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-详细深入分析-Java-ClassLoader-工作机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/详细深入分析-Java-ClassLoader-工作机制/">详细深入分析 Java ClassLoader 工作机制</a>
-    </h1>
   
 
-        
-        <a href="/2015/12/23/详细深入分析-Java-ClassLoader-工作机制/" class="archive-article-date">
-  	<time datetime="2015-12-23T02:32:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/image/ClassLoader工作机制标题.jpg" alt=""></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 .class 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个 class 文件到内存当中的，从而只有 class 文件被载入到了内存之后，才能被其它 class 所引用。所以 ClassLoader 就是用来动态加载 class 文件到内存当中用的。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">类加载机制</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/23/详细深入分析-Java-ClassLoader-工作机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hello" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/11/Hello/">Hello</a>
-    </h1>
-  
-
-        
-        <a href="/2015/12/11/Hello/" class="archive-article-date">
-  	<time datetime="2015-12-11T08:18:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。"><a href="#今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。" class="headerlink" title="今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。"></a>今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。</h3><p><img src="http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/03/04/ChMkJ1oJW4iIIAZJAAfcOXA1PHcAAiH8gHsUiYAB9xR139.jpg" alt="曙光"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">first time</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/11/Hello/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -572,8 +411,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

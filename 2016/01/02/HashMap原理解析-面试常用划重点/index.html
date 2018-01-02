@@ -6,17 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="/blog">
-  <title>天雷</title>
+  <title>HashMap原理解析-面试常用划重点 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一步一个脚印,成长举足之间">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天雷">
-<meta property="og:url" content="/blog/index.html">
+  <meta name="description" content="前言数据结构几乎是面试的日常了，其中HashMap更是常客,很多人说到HashMap都能”画虎烂”两句,但是类似：  高并发中HashMap为何会出现死锁？ Java8中，HashMap的结构有如何优化？  却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!">
+<meta name="keywords" content="hash,HashMap,数组,链表,数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HashMap原理解析-面试常用划重点">
+<meta property="og:url" content="/blog/2016/01/02/HashMap原理解析-面试常用划重点/index.html">
 <meta property="og:site_name" content="天雷">
-<meta property="og:description" content="一步一个脚印,成长举足之间">
+<meta property="og:description" content="前言数据结构几乎是面试的日常了，其中HashMap更是常客,很多人说到HashMap都能”画虎烂”两句,但是类似：  高并发中HashMap为何会出现死锁？ Java8中，HashMap的结构有如何优化？  却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!">
+<meta property="og:image" content="/image/HashMap详解标题图.jpg">
+<meta property="og:image" content="/image/HashMap基础结构.png">
+<meta property="og:image" content="/image/HashMap基础结构_演示1.png">
+<meta property="og:image" content="/image/HashMap基础结构_演示2.png">
+<meta property="og:image" content="/image/HashMap基础结构_演示3.png">
+<meta property="og:image" content="/image/HashMap基础结构_演示4.png">
+<meta property="og:image" content="/image/HashMap位运算_演示1.png">
+<meta property="og:image" content="/image/HashMap位运算_演示2.png">
+<meta property="og:image" content="/image/HashMap位运算_演示3.png">
+<meta property="og:updated_time" content="2018-01-02T15:51:18.705Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天雷">
-<meta name="twitter:description" content="一步一个脚印,成长举足之间">
+<meta name="twitter:title" content="HashMap原理解析-面试常用划重点">
+<meta name="twitter:description" content="前言数据结构几乎是面试的日常了，其中HashMap更是常客,很多人说到HashMap都能”画虎烂”两句,但是类似：  高并发中HashMap为何会出现死锁？ Java8中，HashMap的结构有如何优化？  却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!">
+<meta name="twitter:image" content="/image/HashMap详解标题图.jpg">
   
     <link rel="alternative" href="/atom.xml" title="天雷" type="application/atom+xml">
   
@@ -136,175 +148,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SSL协议之数据加密过程详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-HashMap原理解析-面试常用划重点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/15/SSL协议之数据加密过程详解/">SSL协议之数据加密过程详解</a>
-    </h1>
-  
-
-        
-        <a href="/2016/08/15/SSL协议之数据加密过程详解/" class="archive-article-date">
-  	<time datetime="2016-08-15T03:20:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/image/https_ssl.jpg" alt=""></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>HTTPS</strong>的流行，<strong>SSL</strong>协议功不可没，这篇博文将带领各位了解加密、以及<strong>SSL</strong>微妙的加密原理.<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">https</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ssl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/15/SSL协议之数据加密过程详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Internet协议入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/02/Internet协议入门/">Internet协议入门</a>
-    </h1>
-  
-
-        
-        <a href="/2016/03/02/Internet协议入门/" class="archive-article-date">
-  	<time datetime="2016-03-02T11:07:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/image/Internet协议入门标题.jpg" alt=""></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>此篇博客则用来作为一个大纲式的内容，按照层级划分，逐步介绍各层级的协议以及他们所起的作用。若有错误之处，欢迎批评指正。</p>
-<p>劳于读书，逸于作文。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">网络协议</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/03/02/Internet协议入门/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HashMap原理解析-面试常用划重点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/02/HashMap原理解析-面试常用划重点/">HashMap原理解析-面试常用划重点</a>
+    <h1 class="article-title" itemprop="name">
+      HashMap原理解析-面试常用划重点
     </h1>
   
 
@@ -323,10 +174,87 @@
 <li>高并发中<code>HashMap</code>为何会出现死锁？</li>
 <li><code>Java8</code>中，<code>HashMap</code>的结构有如何优化？</li>
 </ul>
-<p>却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!<br>
-        
+<p>却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!<br><a id="more"></a></p>
+<h2 id="HashMap简介"><a href="#HashMap简介" class="headerlink" title="HashMap简介"></a>HashMap简介</h2><p>众所周知，<code>HashMap</code>是一个用于存储<code>Key-Value</code>键值对的集合，每一个键值对也叫做<strong>Entry</strong>。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是<code>HashMap</code>的主干。</p>
+<h2 id="HashMap基本结构与原理"><a href="#HashMap基本结构与原理" class="headerlink" title="HashMap基本结构与原理"></a>HashMap基本结构与原理</h2><blockquote>
+<p>HashMap数组每一个元素的初始值都是Null。</p>
+</blockquote>
+<p><img src="/image/HashMap基础结构.png" alt="基础结构"></p>
+<h3 id="对于HashMap，我们最常使用的是两个方法：Get-和-Put。"><a href="#对于HashMap，我们最常使用的是两个方法：Get-和-Put。" class="headerlink" title="对于HashMap，我们最常使用的是两个方法：Get 和 Put。"></a>对于HashMap，我们最常使用的是两个方法：Get 和 Put。</h3><h4 id="1-Put方法的原理"><a href="#1-Put方法的原理" class="headerlink" title="1.Put方法的原理"></a>1.Put方法的原理</h4><p>调用Put方法的时候发生了什么呢？</p>
+<p>比如调用 <code>hashMap.put(&quot;apple&quot;, 0)</code> ，插入一个<code>Key</code>为“<code>apple</code>“的元素。这时候我们需要利用一个哈希函数来确定<strong>Entry</strong>的插入位置（<strong>index</strong>）：</p>
+<blockquote>
+<p>index =  Hash（“apple”）</p>
+</blockquote>
+<p>假定最后计算出的<strong>index</strong>是<strong>2</strong>，那么结果如下：<br><img src="/image/HashMap基础结构_演示1.png" alt="基础结构演示1"><br>但是，因为<code>HashMap</code>的长度是有限的，当插入的<strong>Entry</strong>越来越多时，再完美的Hash函数也难免会出现<strong>index</strong>冲突的情况。比如下面这样：<br><img src="/image/HashMap基础结构_演示2.png" alt="基础结构演示2"><br>这时候该怎么办呢？我们可以利用<strong>链表</strong>来解决。<br><code>HashMap</code>数组的每一个元素不止是一个<strong>Entry</strong>对象，也是一个链表的头节点。每一个<strong>Entry</strong>对象通过Next指针指向它的下一个<strong>Entry</strong>节点。当新来的<strong>Entry</strong>映射到冲突的数组位置时，只需要插入到对应的链表即可：<br><img src="/image/HashMap基础结构_演示3.png" alt="基础结构演示3"><br>需要注意的是，新来的<strong>Entry</strong>节点插入链表时，使用的是“<strong>头插法</strong>”。至于为什么不插入链表尾部，后面会有解释。</p>
+<h4 id="2-Get方法的原理"><a href="#2-Get方法的原理" class="headerlink" title="2.Get方法的原理"></a>2.Get方法的原理</h4><p>使用<strong>Get</strong>方法根据<strong>Key</strong>来查找<strong>Value</strong>的时候，发生了什么呢？</p>
+<p>首先会把输入的<strong>Key</strong>做一次<strong>Hash</strong>映射，得到对应的index：</p>
+<blockquote>
+<p>index =  Hash（“apple”）</p>
+</blockquote>
+<p>由于刚才所说的Hash冲突，同一个位置有可能匹配到多个<strong>Entry</strong>，这时候就需要顺着对应<strong>链表</strong>的<strong>头节点</strong>，一个一个向下来查找。假设我们要查找的<strong>Key</strong>是“<strong>apple</strong>”：<br><img src="/image/HashMap基础结构_演示4.png" alt="基础结构演示4"></p>
+<p>第一步，我们查看的是头节点<strong>Entry6</strong>，<strong>Entry6</strong>的<strong>Key</strong>是<strong>banana</strong>，显然不是我们要找的结果。</p>
+<p>第二步，我们查看的是<strong>Next</strong>节点<strong>Entry1</strong>，<strong>Entry1</strong>的<strong>Key</strong>是<strong>apple</strong>，正是我们要找的结果。</p>
+<p>之所以把<strong>Entry6</strong>放在头节点，是因为<strong>HashMap</strong>的发明者认为，后插入的<strong>Entry</strong>被查找的可能性更大。</p>
+<h2 id="深入HashMap-解析前言中的问题"><a href="#深入HashMap-解析前言中的问题" class="headerlink" title="深入HashMap,解析前言中的问题"></a>深入HashMap,解析<strong>前言</strong>中的问题</h2><p>首先明确一点，<code>HashMap</code>的默认长度是<strong>16</strong>，并且每次自动扩展或是手动初始化时，长度必须是<strong>2</strong>的幂.之所以选择<strong>16</strong>，是为了服务与<strong>Key</strong>映射到<strong>index</strong>的<code>Hash</code>算法</p>
+<p>之前说过，从<strong>Key</strong>映射到<code>HashMap</code>数组的对应位置，会用到一个<code>Hash</code>函数：</p>
+<blockquote>
+<p>index =  Hash（“apple”）</p>
+</blockquote>
+<p>如何实现一个尽量均匀分布的<code>Hash</code>函数呢？我们通过利用<strong>Key</strong>的<strong>HashCode</strong>值来做某种运算。</p>
+<blockquote>
+<p>以前的计算方式: index =  HashCode（Key） % Length<br>现在的计算方式: index =  HashCode（Key） &amp;  （Length - 1） </p>
+</blockquote>
+<p>以前的<strong>取模运算</strong>的方式固然简单，但是<strong>效率</strong>很低。为了实现高效的<code>Hash</code>算法，<code>HashMap</code>的发明者采用了<strong>位运算</strong>的方式。<br>下面我们以值为“book”的Key来演示整个过程：</p>
+<p>1.计算book的hashcode，结果为<strong>十进制</strong>的3029737，<strong>二进制</strong>的101110001110101110 1001。</p>
+<p>2.假定<code>HashMap</code>长度是默认的16，计算Length-1的结果为十进制的15，二进制的1111。</p>
+<p>3.把以上两个结果做<strong>与运算</strong>，101110001110101110 1001 &amp; 1111 = 1001，十进制是9，所以 index=9。</p>
+<p>可以说，<code>Hash</code>算法最终得到的<strong>index</strong>结果，完全取决于<strong>Key</strong>的<strong>Hashcode</strong>值的最后几位。</p>
+<p><strong>这样做不但效果上等同于取模而且还大大提高了性能。至于为什么采用16，我们可以试试长度是10会出现什么问题.</strong></p>
+<p>假设<code>HashMap</code>的长度是10，重复刚才的运算步骤：<br><img src="/image/HashMap位运算_演示1.png" alt="HashMap位运算演示1"><br>单独看这个结果，表面上并没有问题。我们再来尝试一个新的HashCode  101110001110101110 <strong>1011</strong> ：<br><img src="/image/HashMap位运算_演示2.png" alt="HashMap位运算演示2"><br>让我们再换一个HashCode 101110001110101110 <strong>1111</strong> 试试：<br><img src="/image/HashMap位运算_演示3.png" alt="HashMap位运算演示3"><br>是的，虽然<strong>HashCode</strong>的倒数第二第三位从<strong>0</strong>变成了<strong>1</strong>，但是运算的结果都是<strong>1001</strong>。也就是说，当<code>HashMap</code>长度为<strong>10</strong>的时候，有些<strong>index</strong>结果的出现几率会更大，而有些<strong>index</strong>结果永远不会出现（比如<strong>0111</strong>）！</p>
+<p>这样，显然不符合<code>Hash</code>算法均匀分布的原则。</p>
+<p>反观长度<strong>16</strong>或者其他<strong>2</strong>的幂，<strong>Length-1</strong>的值是所有<strong>二进制</strong>位全为<strong>1</strong>，这种情况下，<strong>index</strong>的结果等同于<strong>HashCode</strong>后几位的值。只要输入的<strong>HashCode</strong>本身分布均匀，<code>Hash</code>算法的结果就是<strong>均匀</strong>的。</p>
+<hr>
+<h3 id="来说说死锁产生的原因"><a href="#来说说死锁产生的原因" class="headerlink" title="来说说死锁产生的原因!"></a>来说说死锁产生的原因!</h3><p>通过上文咱们知道<code>HashMap</code>初始容量大小为<strong>16</strong>,一般来说，<code>Hash</code>表这个容器当有数据要插入时，都会检查容量有没有超过设定的<code>thredhold</code>，如果超过，需要增大Hash表的尺寸，但是这样一来，整个<code>Hash</code>表里的元素都需要被重算一遍。这叫<code>rehash</code>，这个成本相当的大。</p>
+<p><code>HashMap</code>是<strong>非线程安全</strong>，死锁一般都是产生于<strong>并发情况</strong>下。我们假设有二个进程T1、T2，<code>HashMap</code>容量为<strong>2</strong>,T1线程放入<strong>key</strong> A、B、C、D、E。在T1线程中A、B、C <code>Hash</code>值相同，于是形成一个链接，假设为<code>A-&gt;C-&gt;B</code>，而D、E <code>Hash</code>值不同，于是容量不足，需要新建一个更大尺寸的<code>Hash</code>表，然后把数据从老的<code>Hash</code>表中<br>迁移到新的<code>Hash</code>表中(<strong>refresh</strong>)。这时<strong>T2</strong>进程闯进来了，<strong>T1</strong>暂时挂起，<strong>T2</strong>进程也准备放入新的<strong>key</strong>，这时也<br>发现容量不足，也<strong>refresh</strong>一把。<strong>refresh</strong>之后原来的链表结构假设为<code>C-&gt;A</code>，之后<strong>T1</strong>进程继续执行，链接结构<br>为<code>A-&gt;C</code>,这时就形成<code>A.next=B</code>,<code>B.next=A</code>的<strong>环形链表</strong>。一旦取值进入这个<strong>环形链表</strong>就会陷入<strong>死循环</strong>。</p>
+<hr>
+<h4 id="那有什么替代的方案呢？"><a href="#那有什么替代的方案呢？" class="headerlink" title="那有什么替代的方案呢？"></a>那有什么替代的方案呢？</h4><p>使用<code>ConcurrentHashMap</code>进行替代，<code>ConcurrentHashMap</code>是一个线程安全的<code>HashTable</code>。可能有人会使用<code>HashTable</code>。当然<code>HashTable</code>也是线程安全,但<code>HashTable</code>锁定的是整个<code>Hash</code>表，效率相对比较低。而<code>ConcurrentHashMap</code>可以做到<strong>读取数据不加锁</strong>，并且其内部的结构可以让其在进行写操作的时候能够将锁的粒度保持地尽量地小。</p>
+<h2 id="结"><a href="#结" class="headerlink" title="结"></a>结</h2><p>文中阐述不妥之处还望雅正，不吝感激。</p>
+<p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
+<p>以上</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/wechar.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -362,16 +290,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/02/HashMap原理解析-面试常用划重点/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http:/blog/2016/01/02/HashMap原理解析-面试常用划重点/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/03/02/Internet协议入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Internet协议入门
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/23/详细深入分析-Java-ClassLoader-工作机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">详细深入分析 Java ClassLoader 工作机制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -392,164 +388,19 @@
 
 
 
+  <!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2152155"></script>
+<!-- UY END -->
   
-    <article id="post-详细深入分析-Java-ClassLoader-工作机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/详细深入分析-Java-ClassLoader-工作机制/">详细深入分析 Java ClassLoader 工作机制</a>
-    </h1>
+  
   
 
-        
-        <a href="/2015/12/23/详细深入分析-Java-ClassLoader-工作机制/" class="archive-article-date">
-  	<time datetime="2015-12-23T02:32:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/image/ClassLoader工作机制标题.jpg" alt=""></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 .class 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（ClassLoader）来动态加载某个 class 文件到内存当中的，从而只有 class 文件被载入到了内存之后，才能被其它 class 所引用。所以 ClassLoader 就是用来动态加载 class 文件到内存当中用的。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">类加载机制</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/23/详细深入分析-Java-ClassLoader-工作机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hello" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/11/Hello/">Hello</a>
-    </h1>
   
 
-        
-        <a href="/2015/12/11/Hello/" class="archive-article-date">
-  	<time datetime="2015-12-11T08:18:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。"><a href="#今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。" class="headerlink" title="今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。"></a>今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。</h3><p><img src="http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/03/04/ChMkJ1oJW4iIIAZJAAfcOXA1PHcAAiH8gHsUiYAB9xR139.jpg" alt="曙光"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">first time</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/11/Hello/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -572,8 +423,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
