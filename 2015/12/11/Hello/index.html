@@ -31,7 +31,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#7CCD7C);
     }
   </style>
   
@@ -45,14 +45,14 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #7CCD7C"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="/blog/" class="profilepic">
+		<a href="/" class="profilepic">
 			<img src="/image/face.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/blog/">skyRay</a></h1>
+		  <h1 class="header-author"><a href="/">skyRay</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">自大的我啊</p>
@@ -94,7 +94,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #7CCD7C"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -301,6 +301,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x4ECA;&#x5929;&#x5F00;&#x901A;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#xFF0C;&#x9057;&#x61BE;&#x7684;&#x662F;&#x4E4B;&#x524D;&#x90FD;&#x6CA1;&#x6709;&#x5F00;&#x901A;&#x535A;&#x5BA2;&#x53BB;&#x5B66;&#x4E60;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x5C06;&#x6210;&#x679C;&#x5171;&#x4EAB;&#x3002;&#x7528;&#x5FC3;&#x66F4;&#x65B0;&#x535A;&#x5BA2;&#xFF0C;&#x4E0E;&#x5404;&#x4F4D;&#x56E0;&#x7279;&#x7F51;&#x5927;&#x4F6C;&#x5171;&#x540C;&#x6210;&#x957F;&#x3002;&#x3002;&#x3002;&#x3002;" class="headerlink" title="&#x4ECA;&#x5929;&#x5F00;&#x901A;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#xFF0C;&#x9057;&#x61BE;&#x7684;&#x662F;&#x4E4B;&#x524D;&#x90FD;&#x6CA1;&#x6709;&#x5F00;&#x901A;&#x535A;&#x5BA2;&#x53BB;&#x5B66;&#x4E60;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x5C06;&#x6210;&#x679C;&#x5171;&#x4EAB;&#x3002;&#x7528;&#x5FC3;&#x66F4;&#x65B0;&#x535A;&#x5BA2;&#xFF0C;&#x4E0E;&#x5404;&#x4F4D;&#x56E0;&#x7279;&#x7F51;&#x5927;&#x4F6C;&#x5171;&#x540C;&#x6210;&#x957F;&#x3002;&#x3002;&#x3002;&#x3002;"></a>&#x4ECA;&#x5929;&#x5F00;&#x901A;&#x8FD9;&#x4E2A;&#x535A;&#x5BA2;&#xFF0C;&#x9057;&#x61BE;&#x7684;&#x662F;&#x4E4B;&#x524D;&#x90FD;&#x6CA1;&#x6709;&#x5F00;&#x901A;&#x535A;&#x5BA2;&#x53BB;&#x5B66;&#x4E60;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x5C06;&#x6210;&#x679C;&#x5171;&#x4EAB;&#x3002;&#x7528;&#x5FC3;&#x66F4;&#x65B0;&#x535A;&#x5BA2;&#xFF0C;&#x4E0E;&#x5404;&#x4F4D;&#x56E0;&#x7279;&#x7F51;&#x5927;&#x4F6C;&#x5171;&#x540C;&#x6210;&#x957F;&#x3002;&#x3002;&#x3002;&#x3002;</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -333,7 +346,7 @@
     		&copy; 2018 skyRay
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      		<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
       	</div>
     </div>
   </div>
@@ -417,18 +430,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
@@ -449,11 +450,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">敏捷开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RPC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,4 +644,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 </div>
   </div>
 </body>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </html>

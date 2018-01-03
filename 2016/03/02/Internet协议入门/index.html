@@ -31,7 +31,7 @@
 <meta property="og:image" content="/image/Internet协议_应用层03.jpg">
 <meta property="og:image" content="/image/Internet协议_应用层04.png">
 <meta property="og:image" content="/image/Internet协议_应用层05.png">
-<meta property="og:updated_time" content="2018-01-02T15:50:48.143Z">
+<meta property="og:updated_time" content="2018-01-03T13:17:23.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Internet协议入门">
 <meta name="twitter:description" content="前言此篇博客则用来作为一个大纲式的内容，按照层级划分，逐步介绍各层级的协议以及他们所起的作用。若有错误之处，欢迎批评指正。 劳于读书，逸于作文。">
@@ -46,7 +46,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: linear-gradient(200deg,#a0cfe4,#7CCD7C);
     }
   </style>
   
@@ -60,14 +60,14 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: #7CCD7C"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="/blog/" class="profilepic">
+		<a href="/" class="profilepic">
 			<img src="/image/face.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/blog/">skyRay</a></h1>
+		  <h1 class="header-author"><a href="/">skyRay</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">自大的我啊</p>
@@ -109,7 +109,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: #7CCD7C"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -184,7 +184,53 @@
 <blockquote>
 <p>OSI和TCP/IP模型是很基础但又非常重要的网络基础知识</p>
 </blockquote>
-<p><strong>OSI七层模型</strong><br>| OSI的层 | 功能 | TCP/IP协议族 |<br>|:—–|:—–|:—–|<br>|应用层 |文件传输，电子邮件，文件服务，虚拟终端 |TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet<br>|表示层 |数据格式化，代码转换，数据加密 |没有协议<br>|会话层 |解除或建立与别的接点的联系 |没有协议<br>|传输层 |提供端对端的接口 |TCP，UDP<br>|网络层 |为数据包选择路由 |IP，ICMP，RIP，OSPF，BGP，IGMP<br>|数据链路层 |传输有地址的帧以及错误检测功能 |SLIP，CSLIP，PPP，ARP，RARP，MTU<br>|物理层 |以二进制数据形式在物理媒体上传输数据 |ISO2110，IEEE802，IEEE802.2</p>
+<p><strong>OSI七层模型</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">OSI的层</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">TCP/IP协议族</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">文件传输，电子邮件，文件服务，虚拟终端</td>
+<td style="text-align:left">TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet</td>
+</tr>
+<tr>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">数据格式化，代码转换，数据加密</td>
+<td style="text-align:left">没有协议</td>
+</tr>
+<tr>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">解除或建立与别的接点的联系</td>
+<td style="text-align:left">没有协议</td>
+</tr>
+<tr>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">提供端对端的接口</td>
+<td style="text-align:left">TCP，UDP</td>
+</tr>
+<tr>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">为数据包选择路由</td>
+<td style="text-align:left">IP，ICMP，RIP，OSPF，BGP，IGMP</td>
+</tr>
+<tr>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">传输有地址的帧以及错误检测功能</td>
+<td style="text-align:left">SLIP，CSLIP，PPP，ARP，RARP，MTU</td>
+</tr>
+<tr>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">以二进制数据形式在物理媒体上传输数据</td>
+<td style="text-align:left">ISO2110，IEEE802，IEEE802.2</td>
+</tr>
+</tbody>
+</table>
 <hr>
 <h3 id="1-2层与协议"><a href="#1-2层与协议" class="headerlink" title="1.2层与协议"></a>1.2层与协议</h3><p>每一层都是为了完成一种功能。为了实现这些功能，就需要大家都遵守共同的规则。</p>
 <p>大家都遵守的规则，就叫做”协议”（protocol）。</p>
@@ -213,8 +259,7 @@
 </tr>
 <tr>
 <td style="text-align:left">数据链路层</td>
-<td style="text-align:left">网桥（现已很少使用）、以太网交换机（二层交换机）、网卡（其实网卡是一半工作在物理层、一半工作在数据链路层</td>
-<td>）</td>
+<td style="text-align:left">网桥（现已很少使用）、以太网交换机（二层交换机）、网卡（其实网卡是一半工作在物理层、一半工作在数据链路层）</td>
 </tr>
 <tr>
 <td style="text-align:left">物理层</td>
@@ -510,6 +555,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-概述"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#1-&#x6982;&#x8FF0;" class="headerlink" title="1.&#x6982;&#x8FF0;"></a>1.&#x6982;&#x8FF0;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1模型划分"><span class="toc-number">2.1.1.</span> <span class="toc-text"><a href="#1-1&#x6A21;&#x578B;&#x5212;&#x5206;" class="headerlink" title="1.1&#x6A21;&#x578B;&#x5212;&#x5206;"></a>1.1&#x6A21;&#x578B;&#x5212;&#x5206;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2层与协议"><span class="toc-number">2.1.2.</span> <span class="toc-text"><a href="#1-2&#x5C42;&#x4E0E;&#x534F;&#x8BAE;" class="headerlink" title="1.2&#x5C42;&#x4E0E;&#x534F;&#x8BAE;"></a>1.2&#x5C42;&#x4E0E;&#x534F;&#x8BAE;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-物理层"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#2-&#x7269;&#x7406;&#x5C42;" class="headerlink" title="2.&#x7269;&#x7406;&#x5C42;"></a>2.&#x7269;&#x7406;&#x5C42;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-数据链路层"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#3-&#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;" class="headerlink" title="3. &#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;"></a>3. &#x6570;&#x636E;&#x94FE;&#x8DEF;&#x5C42;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-定义"><span class="toc-number">2.3.1.</span> <span class="toc-text"><a href="#3-1-&#x5B9A;&#x4E49;" class="headerlink" title="3.1 &#x5B9A;&#x4E49;"></a>3.1 &#x5B9A;&#x4E49;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-以太网协议"><span class="toc-number">2.3.2.</span> <span class="toc-text"><a href="#3-2-&#x4EE5;&#x592A;&#x7F51;&#x534F;&#x8BAE;" class="headerlink" title="3.2 &#x4EE5;&#x592A;&#x7F51;&#x534F;&#x8BAE;"></a>3.2 &#x4EE5;&#x592A;&#x7F51;&#x534F;&#x8BAE;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-MAC地址"><span class="toc-number">2.3.3.</span> <span class="toc-text"><a href="#3-3-MAC&#x5730;&#x5740;" class="headerlink" title="3.3 MAC&#x5730;&#x5740;"></a>3.3 MAC&#x5730;&#x5740;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-广播"><span class="toc-number">2.3.4.</span> <span class="toc-text"><a href="#3-4-&#x5E7F;&#x64AD;" class="headerlink" title="3.4 &#x5E7F;&#x64AD;"></a>3.4 &#x5E7F;&#x64AD;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-网络层"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#4-&#x7F51;&#x7EDC;&#x5C42;" class="headerlink" title="4.&#x7F51;&#x7EDC;&#x5C42;"></a>4.&#x7F51;&#x7EDC;&#x5C42;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-网络层的产生"><span class="toc-number">2.4.1.</span> <span class="toc-text"><a href="#4-1-&#x7F51;&#x7EDC;&#x5C42;&#x7684;&#x4EA7;&#x751F;" class="headerlink" title="4.1 &#x7F51;&#x7EDC;&#x5C42;&#x7684;&#x4EA7;&#x751F;"></a>4.1 &#x7F51;&#x7EDC;&#x5C42;&#x7684;&#x4EA7;&#x751F;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-IP协议"><span class="toc-number">2.4.2.</span> <span class="toc-text"><a href="#4-2-IP&#x534F;&#x8BAE;" class="headerlink" title="4.2 IP&#x534F;&#x8BAE;"></a>4.2 IP&#x534F;&#x8BAE;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-ARP协议"><span class="toc-number">2.4.3.</span> <span class="toc-text"><a href="#4-3-ARP&#x534F;&#x8BAE;" class="headerlink" title="4.3 ARP&#x534F;&#x8BAE;"></a>4.3 ARP&#x534F;&#x8BAE;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4总结"><span class="toc-number">2.4.4.</span> <span class="toc-text"><a href="#4-4&#x603B;&#x7ED3;" class="headerlink" title="4.4&#x603B;&#x7ED3;"></a>4.4&#x603B;&#x7ED3;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-传输层"><span class="toc-number">2.5.</span> <span class="toc-text"><a href="#5-&#x4F20;&#x8F93;&#x5C42;" class="headerlink" title="5. &#x4F20;&#x8F93;&#x5C42;"></a>5. &#x4F20;&#x8F93;&#x5C42;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-传输层的产生"><span class="toc-number">2.5.1.</span> <span class="toc-text"><a href="#5-1-&#x4F20;&#x8F93;&#x5C42;&#x7684;&#x4EA7;&#x751F;" class="headerlink" title="5.1 &#x4F20;&#x8F93;&#x5C42;&#x7684;&#x4EA7;&#x751F;"></a>5.1 &#x4F20;&#x8F93;&#x5C42;&#x7684;&#x4EA7;&#x751F;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-UDP协议"><span class="toc-number">2.5.2.</span> <span class="toc-text"><a href="#5-2-UDP&#x534F;&#x8BAE;" class="headerlink" title="5.2 UDP&#x534F;&#x8BAE;"></a>5.2 UDP&#x534F;&#x8BAE;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-TCP协议"><span class="toc-number">2.5.3.</span> <span class="toc-text"><a href="#5-3-TCP&#x534F;&#x8BAE;" class="headerlink" title="5.3 TCP&#x534F;&#x8BAE;"></a>5.3 TCP&#x534F;&#x8BAE;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-应用层"><span class="toc-number">2.6.</span> <span class="toc-text"><a href="#6-&#x5E94;&#x7528;&#x5C42;" class="headerlink" title="6. &#x5E94;&#x7528;&#x5C42;"></a>6. &#x5E94;&#x7528;&#x5C42;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-应用层介绍"><span class="toc-number">2.6.1.</span> <span class="toc-text"><a href="#6-1-&#x5E94;&#x7528;&#x5C42;&#x4ECB;&#x7ECD;" class="headerlink" title="6.1 &#x5E94;&#x7528;&#x5C42;&#x4ECB;&#x7ECD;"></a>6.1 &#x5E94;&#x7528;&#x5C42;&#x4ECB;&#x7ECD;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-DNS协议"><span class="toc-number">2.6.2.</span> <span class="toc-text"><a href="#6-2-DNS&#x534F;&#x8BAE;" class="headerlink" title="6.2 DNS&#x534F;&#x8BAE;"></a>6.2 DNS&#x534F;&#x8BAE;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-网关"><span class="toc-number">2.6.3.</span> <span class="toc-text"><a href="#6-2-&#x7F51;&#x5173;" class="headerlink" title="6.2 &#x7F51;&#x5173;"></a>6.2 &#x7F51;&#x5173;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-DHCP协议"><span class="toc-number">2.6.4.</span> <span class="toc-text"><a href="#6-3-DHCP&#x534F;&#x8BAE;" class="headerlink" title="6.3 DHCP&#x534F;&#x8BAE;"></a>6.3 DHCP&#x534F;&#x8BAE;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结"><span class="toc-number">2.7.</span> <span class="toc-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文章"><span class="toc-number">2.7.1.</span> <span class="toc-text"><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x7AE0;:"></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;:</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -542,7 +600,7 @@
     		&copy; 2018 skyRay
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      		<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
       	</div>
     </div>
   </div>
@@ -626,18 +684,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
@@ -658,11 +704,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">敏捷开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RPC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -824,4 +898,5 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 </div>
   </div>
 </body>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </html>
