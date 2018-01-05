@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="/blog">
-  <title>Archives: 2017/6 | 天雷</title>
+  <title>Hexo博客yilia使用Gitalk作评论插件 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一步一个脚印,成长举足之间">
-<meta property="og:type" content="website">
-<meta property="og:title" content="天雷">
-<meta property="og:url" content="/blog/archives/2017/06/index.html">
+  <meta name="description" content="前言作为一个技术类博客怎能面得了一个评论插件呢。 本想跟随yilia的主人Litten使用畅言，无奈这厮居然要备案(这种一看就很麻烦的对我这种懒人，pass)。然后我就找了一个国人自制开源的插件:gitalk，挺小众我喜欢。网上没有找到该插件的相关教程，索性写一个，仅希望各位同仁少走弯路。">
+<meta name="keywords" content="yilia,hexo,Gitalk评论插件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客yilia使用Gitalk作评论插件">
+<meta property="og:url" content="/blog/2017/08/05/Hexo博客yilia使用Gitalk作评论插件/index.html">
 <meta property="og:site_name" content="天雷">
-<meta property="og:description" content="一步一个脚印,成长举足之间">
+<meta property="og:description" content="前言作为一个技术类博客怎能面得了一个评论插件呢。 本想跟随yilia的主人Litten使用畅言，无奈这厮居然要备案(这种一看就很麻烦的对我这种懒人，pass)。然后我就找了一个国人自制开源的插件:gitalk，挺小众我喜欢。网上没有找到该插件的相关教程，索性写一个，仅希望各位同仁少走弯路。">
+<meta property="og:image" content="/image/gitalk评论系统标题.jpg">
+<meta property="og:image" content="/image/gitalk评论系统新建application01.png">
+<meta property="og:image" content="/image/gitalk评论系统新建application02.png">
+<meta property="og:image" content="/image/gitalk评论系统修改主题文件01.png">
+<meta property="og:updated_time" content="2018-01-05T08:58:59.104Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天雷">
-<meta name="twitter:description" content="一步一个脚印,成长举足之间">
+<meta name="twitter:title" content="Hexo博客yilia使用Gitalk作评论插件">
+<meta name="twitter:description" content="前言作为一个技术类博客怎能面得了一个评论插件呢。 本想跟随yilia的主人Litten使用畅言，无奈这厮居然要备案(这种一看就很麻烦的对我这种懒人，pass)。然后我就找了一个国人自制开源的插件:gitalk，挺小众我喜欢。网上没有找到该插件的相关教程，索性写一个，仅希望各位同仁少走弯路。">
+<meta name="twitter:image" content="/image/gitalk评论系统标题.jpg">
   
     <link rel="alternative" href="/atom.xml" title="天雷" type="application/atom+xml">
   
@@ -136,60 +143,280 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Hexo博客yilia使用Gitalk作评论插件" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/04/敏捷开发那么普及，你了解它吗/" class="archive-article-date">
-  	<time datetime="2017-06-04T11:47:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/04/敏捷开发那么普及，你了解它吗/">敏捷开发那么普及，你了解它吗?</a>
+    <h1 class="article-title" itemprop="name">
+      Hexo博客yilia使用Gitalk作评论插件
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/08/05/Hexo博客yilia使用Gitalk作评论插件/" class="archive-article-date">
+  	<time datetime="2017-08-05T07:58:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-05</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/image/gitalk评论系统标题.jpg" alt=""></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>作为一个技术类博客怎能面得了一个评论插件呢。 本想跟随<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">yilia</a>的主人<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a>使用畅言，无奈这厮居然要备案(这种一看就很麻烦的对我这种懒人，pass)。<br>然后我就找了一个国人自制开源的插件:<a href="https://github.com/gitalk/gitalk" target="_blank" rel="noopener">gitalk</a>，挺小众我喜欢。<br>网上没有找到该插件的相关教程，索性写一个，仅希望各位同仁少走弯路。<br><a id="more"></a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>本文主要针对使用yilia的同学使用gitalk的一个小教程</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>使用 Github 登录</li>
+<li>支持多语言 [en, zh-CN, zh-TW, es-ES, fr]</li>
+<li>支持个人或组织</li>
+<li>无干扰模式（设置 distractionFreeMode 为 true 开启）</li>
+<li>快捷键提交评论 （cmd|ctrl + enter）</li>
+<li><a href="https://gitalk.github.io/" target="_blank" rel="noopener">在线实例</a></li>
+<li><a href="http://54skyray.cn" target="_blank" rel="noopener">博客实例</a></li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="直接引入"><a href="#直接引入" class="headerlink" title="直接引入"></a>直接引入</h3><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;
+
+  &lt;!-- or --&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;
+&lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h3 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h3><pre><code>npm i --save gitalk
+
+import &apos;gitalk/dist/gitalk.css&apos;
+import Gitalk from &apos;gitalk&apos;
+</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>因为我<strong>懒</strong>所以我选择第一种</p>
+<h3 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h3><ol>
+<li>Github上新建一个仓库，命名随便只要记得住，关于github建仓库，不懂的百度一大堆</li>
+<li>创建<code>OAuth Application</code>，没有的小伙伴<a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">点击这里</a></li>
+</ol>
+<p><img src="/image/gitalk评论系统新建application01.png" alt=""></p>
+<p>完成后会生成相应的<code>clientID</code> and <code>clientSecret</code>。</p>
+<p><img src="/image/gitalk评论系统新建application02.png" alt=""></p>
+<h3 id="修改主题文件"><a href="#修改主题文件" class="headerlink" title="修改主题文件"></a>修改主题文件</h3><p>1.不同的主题目录和模板引擎不同，可以自己修改。修改主题配置文件<code>_config.yml</code>,添加字段</p>
+<pre><code># Gitalk
+gitalk: 
+  enable: true  #是否启用
+  clientID: your clientId #上面生成的id
+  clientSecret: your clientSecret #同上 
+  repo: 你创建的仓库名称
+  owner: github的用户名(master权限)
+  admin: github的用户名(master权限)
+  distractionFreeMode: true
+</code></pre><p>2.在主题目录<code>yilia\layout\_partial\post</code>下创建文件<code>gitalk.ejs</code></p>
+<p><img src="/image/gitalk评论系统修改主题文件01.png" alt=""></p>
+<p>复制以下代码:</p>
+<pre><code>&lt;div id=&quot;gitalk-container&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt; 
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+var gitalk = new Gitalk({
+        clientID:  &apos;&lt;%=theme.gitalk.clientID%&gt;&apos;, 
+        clientSecret: &apos;&lt;%=theme.gitalk.clientSecret&gt;&apos;,
+        id: window.location.pathname,
+        repo: &apos;&lt;%=theme.gitalk.repo%&gt;&apos;, 
+        owner: &apos;&lt;%=theme.gitalk.owner%&gt;&apos;, 
+        admin: &apos;&lt;%=theme.gitalk.admin%&gt;&apos;, 
+        distractionFreeMode: &apos;&lt;%=theme.gitalk.distractionFreeMode%&gt;&apos;,
+     })
+gitalk.render(&apos;gitalk-container&apos;)
+&lt;/script&gt;
+</code></pre><p>3.最后修改<code>yilia\layout\_partial\article.ejs</code>文件,找到代码</p>
+<pre><code>&lt;% if (!index &amp;&amp; post.comments){ %&gt;
+</code></pre><p>并在其后添加以下代码</p>
+<pre><code>&lt;% if (theme.gitalk.enable &amp;&amp; theme.gitalk.distractionFreeMode){ %&gt;
+&lt;%- partial(&apos;post/gitalk&apos;, {
+    key: post.slug,
+    title: post.title,
+    url: config.url+url_for(post.path)
+  }) %&gt;
+&lt;% } %&gt;
+</code></pre><p>插件添加完成。</p>
+<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>需要重点提示的是<code>Gitalk</code>在移动端属于隐形状态。</p>
+<p>文中阐述不妥之处还望雅正，不吝感激。</p>
+<p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
+<p>以上。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/wechar.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">敏捷开发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Gitalk评论插件</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http:/blog/2017/08/05/Hexo博客yilia使用Gitalk作评论插件/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/06/04/敏捷开发那么普及，你了解它吗/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">敏捷开发那么普及，你了解它吗?</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+  
+    
+  <div id="gitalk-container" style="padding: 0px 30px 0px 46px;"></div> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+var gitalk = new Gitalk({
+		clientID:  'f1af9152983d31e73a82', 
+		clientSecret: 'a4046a5b63220d7d2a79c9fcb0aabfb2393bef9d',
+		id: window.location.pathname,
+		repo: 'blog.gitalk', 
+		owner: '54skyray', 
+		admin: '54skyray', 
+		distractionFreeMode: 'true',
+     })
+gitalk.render('gitalk-container')
+</script>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -212,8 +439,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
