@@ -19,7 +19,7 @@
 <meta property="og:image" content="/image/gitalk评论系统新建application01.png">
 <meta property="og:image" content="/image/gitalk评论系统新建application02.png">
 <meta property="og:image" content="/image/gitalk评论系统修改主题文件01.png">
-<meta property="og:updated_time" content="2018-01-05T09:12:33.593Z">
+<meta property="og:updated_time" content="2018-01-05T09:19:16.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客yilia使用Gitalk作评论插件">
 <meta name="twitter:description" content="前言作为一个技术类博客怎能面得了一个评论插件呢。多说挂了，本想跟随yilia的主人Litten使用畅言，无奈这厮居然要备案(这种一看就很麻烦的对我这种懒人，pass)。然后我就找了一个国人自制开源的插件:gitalk，挺小众我喜欢。网上没有找到yilia搭载该插件的相关教程，索性写一个，仅希望各位同仁少走弯路。">
@@ -383,6 +383,19 @@ gitalk.render(&apos;gitalk-container&apos;)
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x6982;&#x8FF0;" class="headerlink" title="&#x6982;&#x8FF0;"></a>&#x6982;&#x8FF0;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特性"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x7279;&#x6027;" class="headerlink" title="&#x7279;&#x6027;"></a>&#x7279;&#x6027;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x5B89;&#x88C5;" class="headerlink" title="&#x5B89;&#x88C5;"></a>&#x5B89;&#x88C5;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接引入"><span class="toc-number">2.3.1.</span> <span class="toc-text"><a href="#&#x76F4;&#x63A5;&#x5F15;&#x5165;" class="headerlink" title="&#x76F4;&#x63A5;&#x5F15;&#x5165;"></a>&#x76F4;&#x63A5;&#x5F15;&#x5165;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm安装"><span class="toc-number">2.3.2.</span> <span class="toc-text"><a href="#npm&#x5B89;&#x88C5;" class="headerlink" title="npm&#x5B89;&#x88C5;"></a>npm&#x5B89;&#x88C5;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x4F7F;&#x7528;" class="headerlink" title="&#x4F7F;&#x7528;"></a>&#x4F7F;&#x7528;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建仓库"><span class="toc-number">2.4.1.</span> <span class="toc-text"><a href="#&#x65B0;&#x5EFA;&#x4ED3;&#x5E93;" class="headerlink" title="&#x65B0;&#x5EFA;&#x4ED3;&#x5E93;"></a>&#x65B0;&#x5EFA;&#x4ED3;&#x5E93;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改主题文件"><span class="toc-number">2.4.2.</span> <span class="toc-text"><a href="#&#x4FEE;&#x6539;&#x4E3B;&#x9898;&#x6587;&#x4EF6;" class="headerlink" title="&#x4FEE;&#x6539;&#x4E3B;&#x9898;&#x6587;&#x4EF6;"></a>&#x4FEE;&#x6539;&#x4E3B;&#x9898;&#x6587;&#x4EF6;</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文章"><span class="toc-number">3.0.1.</span> <span class="toc-text"><a href="#&#x53C2;&#x8003;&#x6587;&#x7AE0;" class="headerlink" title="&#x53C2;&#x8003;&#x6587;&#x7AE0;"></a>&#x53C2;&#x8003;&#x6587;&#x7AE0;</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -530,10 +543,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first time</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
@@ -554,27 +563,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">first time</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">敏捷开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">敏捷开发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,6 +588,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
               </li>
             
             <div class="clearfix"></div>
