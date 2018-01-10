@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="54skyray.cn">
+  <link rel="dns-prefetch" href="www.54skyray.cn">
   <title>HashMap原理解析-面试常用划重点 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言数据结构几乎是面试的日常了，其中HashMap更是常客,很多人说到HashMap都能”画虎烂”两句,但是类似：  高并发中HashMap为何会出现死锁？ Java8中，HashMap的结构有如何优化？  却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!">
 <meta name="keywords" content="hash,HashMap,数组,链表,数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap原理解析-面试常用划重点">
-<meta property="og:url" content="54skyray.cn/2016/01/02/HashMap原理解析-面试常用划重点/index.html">
+<meta property="og:url" content="www.54skyray.cn/2016/01/02/HashMap原理解析-面试常用划重点/index.html">
 <meta property="og:site_name" content="天雷">
 <meta property="og:description" content="前言数据结构几乎是面试的日常了，其中HashMap更是常客,很多人说到HashMap都能”画虎烂”两句,但是类似：  高并发中HashMap为何会出现死锁？ Java8中，HashMap的结构有如何优化？  却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!">
 <meta property="og:image" content="/image/HashMap详解标题图.jpg">
@@ -220,7 +220,7 @@
 <hr>
 <h4 id="那有什么替代的方案呢？"><a href="#那有什么替代的方案呢？" class="headerlink" title="那有什么替代的方案呢？"></a>那有什么替代的方案呢？</h4><p>使用<code>ConcurrentHashMap</code>进行替代，<code>ConcurrentHashMap</code>是一个线程安全的<code>HashTable</code>。可能有人会使用<code>HashTable</code>。当然<code>HashTable</code>也是线程安全,但<code>HashTable</code>锁定的是整个<code>Hash</code>表，效率相对比较低。而<code>ConcurrentHashMap</code>可以做到<strong>读取数据不加锁</strong>，并且其内部的结构可以让其在进行写操作的时候能够将锁的粒度保持地尽量地小。</p>
 <h2 id="结"><a href="#结" class="headerlink" title="结"></a>结</h2><p>文中阐述不妥之处还望雅正，不吝感激。</p>
-<p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
+<p>转载请注明出处:<a href="http://www.54skyray.cn">天雷</a></p>
 <p>以上</p>
 
       
@@ -338,7 +338,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:54skyray.cn/2016/01/02/HashMap原理解析-面试常用划重点/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:www.54skyray.cn/2016/01/02/HashMap原理解析-面试常用划重点/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -527,15 +527,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -583,6 +591,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -595,31 +611,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
               </li>
             
             <div class="clearfix"></div>

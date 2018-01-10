@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="54skyray.cn">
+  <link rel="dns-prefetch" href="www.54skyray.cn">
   <title>深度分析 Java ClassLoader 工作机制 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 .class 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异">
 <meta name="keywords" content="Java,JVM,类加载机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度分析 Java ClassLoader 工作机制">
-<meta property="og:url" content="54skyray.cn/2015/12/23/详细深入分析JavaClassLoader工作机制/index.html">
+<meta property="og:url" content="www.54skyray.cn/2015/12/23/详细深入分析JavaClassLoader工作机制/index.html">
 <meta property="og:site_name" content="天雷">
 <meta property="og:description" content="前言大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 .class 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异">
 <meta property="og:image" content="/image/ClassLoader工作机制标题.jpg">
@@ -334,7 +334,7 @@
 </ul>
 <h2 id="结"><a href="#结" class="headerlink" title="结"></a>结</h2><p>本篇文章详细深入的介绍了 ClassLoader 的工作机制，还写了如何自己实现所需的 ClassLoader 。</p>
 <p>文中阐述不妥之处还望雅正，不吝感激。</p>
-<p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
+<p>转载请注明出处:<a href="http://www.54skyray.cn">天雷</a></p>
 <p>以上。</p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><p>1、<a href="http://blog.jobbole.com/96145/" target="_blank" rel="noopener">深度分析 Java 的 ClassLoader 机制 -源码级别</a></p>
 <p>2、<a href="http://ifeve.com/classloader/" target="_blank" rel="noopener">深入浅出ClassLoader</a></p>
@@ -450,7 +450,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:54skyray.cn/2015/12/23/详细深入分析JavaClassLoader工作机制/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:www.54skyray.cn/2015/12/23/详细深入分析JavaClassLoader工作机制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -639,15 +639,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">链表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -695,6 +703,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -707,31 +723,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hash</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数组</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">链表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
               </li>
             
             <div class="clearfix"></div>
