@@ -5,32 +5,32 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="www.54skyray.cn">
+  <link rel="dns-prefetch" href="http://54skyray.cn">
   <title>RabbitMQ基础概念简要介绍 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言微服务日常业务操作中不乏需要多个服务数据交互、多个服务异同步业务处理。一般都会选择消息服务中间件去解决这些操作。消息服务擅长于解决多系统、异构系统间的数据交换（消息通知/通讯）问题，你也可以把它用于系统间服务的相互调用（RPC）。本文将要介绍的RabbitMQ就是当前最主流的消息中间件之一。">
 <meta name="keywords" content="RabbitMQ,消息队列,RPC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RabbitMQ基础概念简要介绍">
-<meta property="og:url" content="www.54skyray.cn/2017/01/07/RabbitMQ基础概念简要介绍/index.html">
+<meta property="og:url" content="http://54skyray.cn/2017/01/07/RabbitMQ基础概念简要介绍/index.html">
 <meta property="og:site_name" content="天雷">
 <meta property="og:description" content="前言微服务日常业务操作中不乏需要多个服务数据交互、多个服务异同步业务处理。一般都会选择消息服务中间件去解决这些操作。消息服务擅长于解决多系统、异构系统间的数据交换（消息通知/通讯）问题，你也可以把它用于系统间服务的相互调用（RPC）。本文将要介绍的RabbitMQ就是当前最主流的消息中间件之一。">
-<meta property="og:image" content="/image/RabbitMQ基础概念简要介绍标题.jpg">
-<meta property="og:image" content="/image/RabbitMQ基础概念Queue01.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念Queue02.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念Queue03.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念prefetch_count.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念Exchange.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念Binding.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念fanout.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念direct.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念topic.png">
-<meta property="og:image" content="/image/RabbitMQ基础概念RPC.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念简要介绍标题.jpg">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念Queue01.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念Queue02.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念Queue03.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念prefetch_count.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念Exchange.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念Binding.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念fanout.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念direct.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念topic.png">
+<meta property="og:image" content="http://54skyray.cn/image/RabbitMQ基础概念RPC.png">
 <meta property="og:updated_time" content="2018-01-05T07:09:56.427Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ基础概念简要介绍">
 <meta name="twitter:description" content="前言微服务日常业务操作中不乏需要多个服务数据交互、多个服务异同步业务处理。一般都会选择消息服务中间件去解决这些操作。消息服务擅长于解决多系统、异构系统间的数据交换（消息通知/通讯）问题，你也可以把它用于系统间服务的相互调用（RPC）。本文将要介绍的RabbitMQ就是当前最主流的消息中间件之一。">
-<meta name="twitter:image" content="/image/RabbitMQ基础概念简要介绍标题.jpg">
+<meta name="twitter:image" content="http://54skyray.cn/image/RabbitMQ基础概念简要介绍标题.jpg">
   
     <link rel="alternative" href="/atom.xml" title="天雷" type="application/atom+xml">
   
@@ -65,7 +65,7 @@
 		  <h1 class="header-author"><a href="/">skyRay</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">自大的我啊</p>
+		<p class="header-subtitle">一步一个脚印,成长举足之间</p>
 		
 
 		<nav class="header-menu">
@@ -117,7 +117,7 @@
 			  <h1 class="header-author js-header-author">skyRay</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>自大的我啊<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>一步一个脚印,成长举足之间<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -224,7 +224,7 @@
 </ul>
 <h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>本文介绍了<code>RabbitMQ</code>中个人认为最重要的概念，充分利用<code>RabbitMQ</code>提供的这些功能就可以处理我们绝大部分的异步业务了。</p>
 <p>文中阐述不妥之处还望雅正，不吝感激。</p>
-<p>转载请注明出处:<a href="http://www.54skyray.cn">天雷</a></p>
+<p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
 <p>以上</p>
 
       
@@ -334,7 +334,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:www.54skyray.cn/2017/01/07/RabbitMQ基础概念简要介绍/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://54skyray.cn/2017/01/07/RabbitMQ基础概念简要介绍/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -519,7 +519,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first time</a>
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,6 +583,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">敏捷开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
@@ -583,15 +595,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">敏捷开发</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">百度云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">first time</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,18 +616,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
               </li>
             
             <div class="clearfix"></div>
