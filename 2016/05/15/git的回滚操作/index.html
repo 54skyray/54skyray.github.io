@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://54skyray.cn">
-  <title>Archives: 2018/1 | 天雷</title>
+  <title>git的回滚操作 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="天雷">
-<meta property="og:url" content="http://54skyray.cn/archives/2018/01/index.html">
+  <meta name="description" content="前言一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 回滚代码到上一个已通过测试的master版本 -&amp;gt; 修复bug -&amp;gt; 发布 -&amp;gt; 还原master -&amp;gt; 合并修改了bug的分支 -&amp;gt; 重新上预发布,请展开全文开始演练.">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git的回滚操作">
+<meta property="og:url" content="http://54skyray.cn/2016/05/15/git的回滚操作/index.html">
 <meta property="og:site_name" content="天雷">
+<meta property="og:description" content="前言一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 回滚代码到上一个已通过测试的master版本 -&amp;gt; 修复bug -&amp;gt; 发布 -&amp;gt; 还原master -&amp;gt; 合并修改了bug的分支 -&amp;gt; 重新上预发布,请展开全文开始演练.">
+<meta property="og:image" content="http://54skyray.cn/image/git的回滚操作标题.png">
+<meta property="og:updated_time" content="2018-01-15T14:47:08.585Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天雷">
+<meta name="twitter:title" content="git的回滚操作">
+<meta name="twitter:description" content="前言一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 回滚代码到上一个已通过测试的master版本 -&amp;gt; 修复bug -&amp;gt; 发布 -&amp;gt; 还原master -&amp;gt; 合并修改了bug的分支 -&amp;gt; 重新上预发布,请展开全文开始演练.">
+<meta name="twitter:image" content="http://54skyray.cn/image/git的回滚操作标题.png">
   
     <link rel="alternative" href="/atom.xml" title="天雷" type="application/atom+xml">
   
@@ -133,64 +140,257 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-git的回滚操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/08/百度云2018限速破解-简直比超级会员还快/" class="archive-article-date">
-  	<time datetime="2018-01-08T09:46:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/08/百度云2018限速破解-简直比超级会员还快/">百度云2018限速破解,简直比超级会员还快</a>
+    <h1 class="article-title" itemprop="name">
+      git的回滚操作
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2016/05/15/git的回滚操作/" class="archive-article-date">
+  	<time datetime="2016-05-14T17:23:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-15</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/image/git的回滚操作标题.png" alt=""></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 <code>回滚代码到上一个已通过测试的master版本</code> -&gt; <code>修复bug</code> -&gt; <code>发布</code> -&gt; <code>还原master</code> -&gt; <code>合并修改了bug的分支</code> -&gt; <code>重新上预发布</code>,请展开全文开始演练.<br><a id="more"></a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="做准备"><a href="#做准备" class="headerlink" title="做准备"></a>做准备</h2><p>为了简单描述,我们把定义几个分支.<br><code>init-master</code> //最初的<code>master</code><br><code>untest-master</code> //未完全通过测试的<code>master</code>,其是远程仓库上最新的master<br><code>bugfix/fix_some_bug</code> //修改的bug分支</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><blockquote>
+<p>拉取untest-master</p>
+</blockquote>
+<p>首先是切换并更新<code>master</code>,注意此时的<code>master</code>是<code>untest-master</code>,也就是我们要对其进行回滚操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>回滚到init-master</p>
+</blockquote>
+<p>回滚操作首先需要定义到要回滚到的提交记录,然后强制回滚到该记录上,注意这里的操作只是对本地分支的操作并不会影响到远程分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//使用git log查看其提交记录,确定要回滚到的`commit id`</span><br><span class="line">git log </span><br><span class="line">g reset --hard [commit id]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>回滚远程master</p>
+</blockquote>
+<p>回滚操作是把你当前的分支强制提交到<code>master</code>上也就是加-f参数指明强制覆盖,该命令需要你有相应的<code>master</code>权限.这样的话<code>master</code>上就是之前的版本了.那么接下来就是一般的修改<code>bug</code>了.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master -f</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修复bug,并发布</p>
+</blockquote>
+<p>bug的修复是在当前<code>init-master分支</code>的基础上,切出一个新的分支,然后像平常一样修改提交,最后合到<code>init-master</code>上.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b bugfix/fix_some_bug</span><br><span class="line">// 修复bug</span><br><span class="line">// 发布</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>取消回滚</p>
+</blockquote>
+<p>取消回滚则是重新强制恢复到修改过的版本,然后就可以强制回滚到任意版本了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog  查看该分支的变动,可以确定其commit id</span><br><span class="line">git reset --hard [commit id]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>合并修改了bug的分支</p>
+</blockquote>
+<p>这次回滚后你处在<code>untest-master分支</code>上,该分支上是没有<code>bugfix/fix_some_bug</code>修复<code>bug</code>的代码的,那么把他合并过来.然后推送上去,那么<code>master</code>就是当前最新的版本了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge bugfix/fix_some_bug</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上是操作是必须需要有<code>master权限</code>的,否则无法回滚,另外如果担心代码丢失那么在<code>untest-master分支</code>上再次<code>checkout</code>一个分支,这样即使<code>master</code>再怎么变,这个分支仍然是<code>untest-master</code>的副本.<br>最后<code>git</code>是一款强大的版本工具,其可能有更加简单的方法,欢迎分享.</p>
+<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>文中阐述不妥之处还望雅正，不吝感激。</p>
+<p>转载请注明:<a href="54skyray.cn">天雷</a></p>
+<p>以上。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/wechar.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">精品软件推荐</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">百度云</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://54skyray.cn/2016/05/15/git的回滚操作/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/08/15/SSL协议之数据加密过程详解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SSL协议之数据加密过程详解
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/03/02/Internet协议入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Internet协议入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#做准备"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x505A;&#x51C6;&#x5907;" class="headerlink" title="&#x505A;&#x51C6;&#x5907;"></a>&#x505A;&#x51C6;&#x5907;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#&#x64CD;&#x4F5C;" class="headerlink" title="&#x64CD;&#x4F5C;"></a>&#x64CD;&#x4F5C;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+  
+    
+  <div id="gitalk-container" style="padding: 0px 30px 0px 46px;"></div> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+var gitalk = new Gitalk({
+		clientID:  'f1af9152983d31e73a82', 
+		clientSecret: 'a4046a5b63220d7d2a79c9fcb0aabfb2393bef9d',
+		id: window.location.pathname,
+		repo: 'blog.gitalk', 
+		owner: '54skyray', 
+		admin: '54skyray', 
+		distractionFreeMode: 'true',
+     })
+gitalk.render('gitalk-container')
+</script>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -213,8 +413,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
