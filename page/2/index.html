@@ -291,6 +291,86 @@
 
 
   
+    <article id="post-Java使用HTTPClient模拟Http请求" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/19/Java使用HTTPClient模拟Http请求/">Java使用HTTPClient模拟Http请求</a>
+    </h1>
+  
+
+        
+        <a href="/2016/03/19/Java使用HTTPClient模拟Http请求/" class="archive-article-date">
+  	<time datetime="2016-03-19T01:36:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-19</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/image/Java使用HTTPClient模拟Http请求标题.jpg" alt=""></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有一个需求需要对接第三方系统，而我选择使用HTTPClient来拉数据，却走了不少弯路，所以写出来让需要用到的人看到.<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HTTPClient</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Http请求</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/03/19/Java使用HTTPClient模拟Http请求/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Internet协议入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -469,90 +549,6 @@
 
 
   
-    <article id="post-详细深入分析JavaClassLoader工作机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/23/详细深入分析JavaClassLoader工作机制/">深度分析 Java ClassLoader 工作机制</a>
-    </h1>
-  
-
-        
-        <a href="/2015/12/23/详细深入分析JavaClassLoader工作机制/" class="archive-article-date">
-  	<time datetime="2015-12-23T02:32:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-23</time>
-</a>
-        
-      </header>
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/image/ClassLoader工作机制标题.jpg" alt=""></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>大家都知道，当我们写好一个 Java 程序之后，不是管是 C/S 还是 B/S 应用，都是由若干个 <code>.class</code> 文件组织而成的一个完整的 Java 应用程序，当程序在运行时，即会调用该程序的一个入口函数来调用系统的相关功能，而这些功能都被封装在不同的 class 文件当中，所以经常要从这个 class 文件中要调用另外一个 class 文件中的方法，如果另外一个文件不存在的，则会引发系统异常。而程序在启动的时候，并不会一次性加载程序所要用的所有class文件，而是根据程序的需要，通过Java的类加载机制（<code>ClassLoader</code>）来动态加载某个 class 文件到内存当中的，从而只有 class 文件被载入到了内存之后，才能被其它 class 所引用。所以 ClassLoader 就是用来动态加载 class 文件到内存当中用的。<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">类加载机制</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/12/23/详细深入分析JavaClassLoader工作机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -658,19 +654,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first time</a>
+                <a href="javascript:void(0)" class="js-tag color1">HTTPClient</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
+                <a href="javascript:void(0)" class="js-tag color2">Http请求</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -694,23 +682,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">first time</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RPC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,6 +706,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
@@ -734,11 +726,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
+                <a href="javascript:void(0)" class="js-tag color5">消息队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RPC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -747,6 +743,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
               </li>
              
               <li class="article-tag-list-item">

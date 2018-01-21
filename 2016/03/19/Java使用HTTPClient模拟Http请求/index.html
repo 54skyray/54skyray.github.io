@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://54skyray.cn">
-  <title>Archives: 2017/6 | 天雷</title>
+  <title>Java使用HTTPClient模拟Http请求 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="天雷">
-<meta property="og:url" content="http://54skyray.cn/archives/2017/06/index.html">
+  <meta name="description" content="前言有一个需求需要对接第三方系统，而我选择使用HTTPClient来拉数据，却走了不少弯路，所以写出来让需要用到的人看到.">
+<meta name="keywords" content="HTTPClient,Http请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java使用HTTPClient模拟Http请求">
+<meta property="og:url" content="http://54skyray.cn/2016/03/19/Java使用HTTPClient模拟Http请求/index.html">
 <meta property="og:site_name" content="天雷">
+<meta property="og:description" content="前言有一个需求需要对接第三方系统，而我选择使用HTTPClient来拉数据，却走了不少弯路，所以写出来让需要用到的人看到.">
+<meta property="og:image" content="http://54skyray.cn/image/Java使用HTTPClient模拟Http请求标题.jpg">
+<meta property="og:updated_time" content="2018-01-21T05:35:46.734Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天雷">
+<meta name="twitter:title" content="Java使用HTTPClient模拟Http请求">
+<meta name="twitter:description" content="前言有一个需求需要对接第三方系统，而我选择使用HTTPClient来拉数据，却走了不少弯路，所以写出来让需要用到的人看到.">
+<meta name="twitter:image" content="http://54skyray.cn/image/Java使用HTTPClient模拟Http请求标题.jpg">
   
     <link rel="alternative" href="/atom.xml" title="天雷" type="application/atom+xml">
   
@@ -133,60 +140,241 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java使用HTTPClient模拟Http请求" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/04/敏捷开发那么普及，你了解它吗/" class="archive-article-date">
-  	<time datetime="2017-06-04T11:47:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/04/敏捷开发那么普及，你了解它吗/">敏捷开发那么普及，你了解它吗?</a>
+    <h1 class="article-title" itemprop="name">
+      Java使用HTTPClient模拟Http请求
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2016/03/19/Java使用HTTPClient模拟Http请求/" class="archive-article-date">
+  	<time datetime="2016-03-19T01:36:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-03-19</time>
+</a>
+        
+      </header>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/image/Java使用HTTPClient模拟Http请求标题.jpg" alt=""></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有一个需求需要对接第三方系统，而我选择使用HTTPClient来拉数据，却走了不少弯路，所以写出来让需要用到的人看到.<br><a id="more"></a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="简要介绍使用规则"><a href="#简要介绍使用规则" class="headerlink" title="简要介绍使用规则"></a>简要介绍使用规则</h2><blockquote>
+<p>这里的<code>Apache HttpClient</code>模块是<code>HttpClient 4.0（org.apache.http.*）</code></p>
+</blockquote>
+<p><code>HttpClient</code>常用<code>HttpGet</code>和<code>HttpPost</code>这两个类，分别对应Get方式和Post方式。</p>
+<ol>
+<li>创建<code>HttpGet</code>或<code>HttpPost</code>对象，将要请求的URL通过构造方法传入HttpGet或HttpPost对象。</li>
+<li>使用<code>DefaultHttpClient</code>类的<code>execute</code>方法发送<code>HTTP GET</code>或<code>HTTP POST</code>请求，并返回<code>HttpResponse</code>对象。</li>
+<li>通过<code>HttpResponse</code>接口的<code>getEntity</code>方法返回响应信息，并进行相应的处理。</li>
+</ol>
+<p><strong>如果使用<code>HttpPost</code>方法提交<code>HTTP POST</code>请求，则需要使用<code>HttpPost</code>类的<code>setEntity</code>方法设置请求参数。参数则必须用<code>NameValuePair[]</code>数组存储。</strong></p>
+<h2 id="HttpGet模拟实操"><a href="#HttpGet模拟实操" class="headerlink" title="HttpGet模拟实操"></a>HttpGet模拟实操</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> public String doGet()  </span><br><span class="line">    &#123;  </span><br><span class="line">        String uriAPI = &quot;http://XXXXX?str=I+am+get+String&quot;;  </span><br><span class="line">        String result= &quot;&quot;;  </span><br><span class="line">//      HttpGet httpRequst = new HttpGet(URI uri);  </span><br><span class="line">//      HttpGet httpRequst = new HttpGet(String uri);  </span><br><span class="line">//      创建HttpGet或HttpPost对象，将要请求的URL通过构造方法传入HttpGet或HttpPost对象。  </span><br><span class="line">        HttpGet httpRequst = new HttpGet(uriAPI);  </span><br><span class="line">  </span><br><span class="line">//      new DefaultHttpClient().execute(HttpUriRequst requst);  </span><br><span class="line">        try &#123;  </span><br><span class="line">   //使用DefaultHttpClient类的execute方法发送HTTP GET请求，并返回HttpResponse对象。  </span><br><span class="line">            HttpResponse httpResponse = new DefaultHttpClient().execute(httpRequst);//其中HttpGet是HttpUriRequst的子类  </span><br><span class="line">            if(httpResponse.getStatusLine().getStatusCode() == 200)  </span><br><span class="line">            &#123;  </span><br><span class="line">                HttpEntity httpEntity = httpResponse.getEntity();  </span><br><span class="line">                result = EntityUtils.toString(httpEntity);//取出应答字符串  </span><br><span class="line">            // 一般来说都要删除多余的字符   </span><br><span class="line">                result.replaceAll(&quot;\r&quot;, &quot;&quot;);//去掉返回结果中的&quot;\r&quot;字符，否则会在结果字符串后面显示一个小方格    </span><br><span class="line">            &#125;  </span><br><span class="line">                   else   </span><br><span class="line">                        httpRequst.abort();  </span><br><span class="line">           &#125; catch (ClientProtocolException e) &#123;  </span><br><span class="line">            // TODO Auto-generated catch block  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">            result = e.getMessage().toString();  </span><br><span class="line">        &#125; catch (IOException e) &#123;  </span><br><span class="line">            // TODO Auto-generated catch block  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">            result = e.getMessage().toString();  </span><br><span class="line">        &#125;  </span><br><span class="line">        return result;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="HttpPost模拟实操"><a href="#HttpPost模拟实操" class="headerlink" title="HttpPost模拟实操"></a>HttpPost模拟实操</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public String doPost()  </span><br><span class="line">    &#123;  </span><br><span class="line">        String uriAPI = &quot;http://XXXXXX&quot;;//Post方式没有参数在这里  </span><br><span class="line">        String result = &quot;&quot;;  </span><br><span class="line">        HttpPost httpRequst = new HttpPost(uriAPI);//创建HttpPost对象  </span><br><span class="line">          </span><br><span class="line">        List &lt;NameValuePair&gt; params = new ArrayList&lt;NameValuePair&gt;();  </span><br><span class="line">        params.add(new BasicNameValuePair(&quot;str&quot;, &quot;I am Post String&quot;));  </span><br><span class="line">          </span><br><span class="line">        try &#123;  </span><br><span class="line">            httpRequst.setEntity(new UrlEncodedFormEntity(params,HTTP.UTF_8));  </span><br><span class="line">            HttpResponse httpResponse = new DefaultHttpClient().execute(httpRequst);  </span><br><span class="line">            if(httpResponse.getStatusLine().getStatusCode() == 200)  </span><br><span class="line">            &#123;  </span><br><span class="line">                HttpEntity httpEntity = httpResponse.getEntity();  </span><br><span class="line">                result = EntityUtils.toString(httpEntity);//取出应答字符串  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125; catch (UnsupportedEncodingException e) &#123;  </span><br><span class="line">            // TODO Auto-generated catch block  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">            result = e.getMessage().toString();  </span><br><span class="line">        &#125;  </span><br><span class="line">        catch (ClientProtocolException e) &#123;  </span><br><span class="line">            // TODO Auto-generated catch block  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">            result = e.getMessage().toString();  </span><br><span class="line">        &#125;  </span><br><span class="line">        catch (IOException e) &#123;  </span><br><span class="line">            // TODO Auto-generated catch block  </span><br><span class="line">            e.printStackTrace();  </span><br><span class="line">            result = e.getMessage().toString();  </span><br><span class="line">        &#125;  </span><br><span class="line">        return result;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="加料"><a href="#加料" class="headerlink" title="加料"></a>加料</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpParams httpParameters = new BasicHttpParams();  </span><br><span class="line">HttpConnectionParams.setConnectionTimeout(httpParameters, 10*1000);//设置请求超时10秒  </span><br><span class="line">HttpConnectionParams.setSoTimeout(httpParameters, 10*1000); //设置等待数据超时10秒  </span><br><span class="line">HttpConnectionParams.setSocketBufferSize(params, 8192);  </span><br><span class="line">HttpClient httpclient = new DefaultHttpClient(httpParameters); //此时构造DefaultHttpClient时将参数传入  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">由于是联网，在AndroidManifest.xml中添加网络连接的权限  </span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
+<p>以上</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/image/wechar.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">敏捷开发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HTTPClient</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Http请求</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://54skyray.cn/2016/03/19/Java使用HTTPClient模拟Http请求/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/05/15/git的回滚操作/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          git的回滚操作
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2016/03/02/Internet协议入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Internet协议入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简要介绍使用规则"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x7B80;&#x8981;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528;&#x89C4;&#x5219;" class="headerlink" title="&#x7B80;&#x8981;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528;&#x89C4;&#x5219;"></a>&#x7B80;&#x8981;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528;&#x89C4;&#x5219;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpGet模拟实操"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#HttpGet&#x6A21;&#x62DF;&#x5B9E;&#x64CD;" class="headerlink" title="HttpGet&#x6A21;&#x62DF;&#x5B9E;&#x64CD;"></a>HttpGet&#x6A21;&#x62DF;&#x5B9E;&#x64CD;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpPost模拟实操"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#HttpPost&#x6A21;&#x62DF;&#x5B9E;&#x64CD;" class="headerlink" title="HttpPost&#x6A21;&#x62DF;&#x5B9E;&#x64CD;"></a>HttpPost&#x6A21;&#x62DF;&#x5B9E;&#x64CD;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加料"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x52A0;&#x6599;" class="headerlink" title="&#x52A0;&#x6599;"></a>&#x52A0;&#x6599;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+  
+    
+  <div id="gitalk-container" style="padding: 0px 30px 0px 46px;"></div> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+var gitalk = new Gitalk({
+		clientID:  'f1af9152983d31e73a82', 
+		clientSecret: 'a4046a5b63220d7d2a79c9fcb0aabfb2393bef9d',
+		id: window.location.pathname,
+		repo: 'blog.gitalk', 
+		owner: '54skyray', 
+		admin: '54skyray', 
+		distractionFreeMode: 'true',
+     })
+gitalk.render('gitalk-container')
+</script>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -209,8 +397,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
