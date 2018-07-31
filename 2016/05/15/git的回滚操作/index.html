@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="天雷">
 <meta property="og:description" content="前言一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 回滚代码到上一个已通过测试的master版本 -&amp;gt; 修复bug -&amp;gt; 发布 -&amp;gt; 还原master -&amp;gt; 合并修改了bug的分支 -&amp;gt; 重新上预发布,请展开全文开始演练.">
 <meta property="og:image" content="http://54skyray.cn/image/git的回滚操作标题.png">
-<meta property="og:updated_time" content="2018-01-15T14:47:08.586Z">
+<meta property="og:updated_time" content="2018-07-31T08:58:53.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的回滚操作">
 <meta name="twitter:description" content="前言一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 回滚代码到上一个已通过测试的master版本 -&amp;gt; 修复bug -&amp;gt; 发布 -&amp;gt; 还原master -&amp;gt; 合并修改了bug的分支 -&amp;gt; 重新上预发布,请展开全文开始演练.">
@@ -190,7 +190,7 @@
 <p>取消回滚则是重新强制恢复到修改过的版本,然后就可以强制回滚到任意版本了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reflog  查看该分支的变动,可以确定其commit id</span><br><span class="line">git reset --hard [commit id]</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>合并修改了bug的分支</p>
+<p>合并修改了bug的分支 -</p>
 </blockquote>
 <p>这次回滚后你处在<code>untest-master分支</code>上,该分支上是没有<code>bugfix/fix_some_bug</code>修复<code>bug</code>的代码的,那么把他合并过来.然后推送上去,那么<code>master</code>就是当前最新的版本了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge bugfix/fix_some_bug</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
@@ -492,18 +492,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first time</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HTTPClient</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Http请求</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
@@ -521,6 +509,42 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">first time</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HTTPClient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Http请求</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -548,26 +572,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">网络协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Gitalk评论插件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">https</a>
               </li>
              
@@ -580,18 +584,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -601,6 +593,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">类加载机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">精品软件推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">百度云</a>
               </li>
             
             <div class="clearfix"></div>
