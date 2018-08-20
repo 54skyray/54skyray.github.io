@@ -6,26 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://54skyray.cn">
-  <title>百度云2018限速破解,简直比超级会员还快 | 天雷</title>
+  <title>常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异 | 天雷</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言亲身试验感觉很不错。推荐！">
-<meta name="keywords" content="精品软件推荐,百度云">
+  <meta name="description" content="前言在多线程环境下，使用HashMap进行put操作时存在丢失数据的情况，为了避免这种bug的隐患，强烈建议使用ConcurrentHashMap代替HashMap，为了对ConcurrentHashMap有更深入的了解，本文将对ConcurrentHashMap1.7和1.8的不同实现进行分析。">
+<meta name="keywords" content="ConcurrentHashMap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="百度云2018限速破解,简直比超级会员还快">
-<meta property="og:url" content="http://54skyray.cn/2018/01/08/百度云2018限速破解-简直比超级会员还快/index.html">
+<meta property="og:title" content="常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异">
+<meta property="og:url" content="http://54skyray.cn/2018/06/08/常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异/index.html">
 <meta property="og:site_name" content="天雷">
-<meta property="og:description" content="前言亲身试验感觉很不错。推荐！">
-<meta property="og:image" content="http://54skyray.cn/image/百度云2018破解标题.jpg">
-<meta property="og:image" content="http://54skyray.cn/image/百度云2018破解01.png">
-<meta property="og:image" content="http://54skyray.cn/image/百度云2018破解02.png">
-<meta property="og:image" content="http://54skyray.cn/image/百度云2018破解03.png">
-<meta property="og:image" content="http://54skyray.cn/image/百度云2018破解04.png">
-<meta property="og:image" content="http://54skyray.cn/image/百度云2018破解05.png">
-<meta property="og:updated_time" content="2018-08-20T09:43:22.717Z">
+<meta property="og:description" content="前言在多线程环境下，使用HashMap进行put操作时存在丢失数据的情况，为了避免这种bug的隐患，强烈建议使用ConcurrentHashMap代替HashMap，为了对ConcurrentHashMap有更深入的了解，本文将对ConcurrentHashMap1.7和1.8的不同实现进行分析。">
+<meta property="og:image" content="http://54skyray.cn/image/常见面试题之ConcurrentHashMap标题.jpg">
+<meta property="og:image" content="http://54skyray.cn/image/常见面试题之ConcurrentHashMap01.png">
+<meta property="og:image" content="http://54skyray.cn/image/常见面试题之ConcurrentHashMap02.png">
+<meta property="og:updated_time" content="2018-08-20T09:40:12.974Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百度云2018限速破解,简直比超级会员还快">
-<meta name="twitter:description" content="前言亲身试验感觉很不错。推荐！">
-<meta name="twitter:image" content="http://54skyray.cn/image/百度云2018破解标题.jpg">
+<meta name="twitter:title" content="常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异">
+<meta name="twitter:description" content="前言在多线程环境下，使用HashMap进行put操作时存在丢失数据的情况，为了避免这种bug的隐患，强烈建议使用ConcurrentHashMap代替HashMap，为了对ConcurrentHashMap有更深入的了解，本文将对ConcurrentHashMap1.7和1.8的不同实现进行分析。">
+<meta name="twitter:image" content="http://54skyray.cn/image/常见面试题之ConcurrentHashMap标题.jpg">
   
     <link rel="alternative" href="/atom.xml" title="天雷" type="application/atom+xml">
   
@@ -145,20 +142,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-百度云2018限速破解-简直比超级会员还快" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      百度云2018限速破解,简直比超级会员还快
+      常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异
     </h1>
   
 
         
-        <a href="/2018/01/08/百度云2018限速破解-简直比超级会员还快/" class="archive-article-date">
-  	<time datetime="2018-01-08T09:46:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
+        <a href="/2018/06/08/常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异/" class="archive-article-date">
+  	<time datetime="2018-06-08T09:46:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
 </a>
         
       </header>
@@ -166,26 +163,81 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/image/百度云2018破解标题.jpg" alt=""></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>亲身试验感觉很不错。推荐！<br><a id="more"></a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="软件目录"><a href="#软件目录" class="headerlink" title="软件目录"></a>软件目录</h2><p>如图:</p>
-<p><img src="/image/百度云2018破解01.png" alt=""></p>
-<h2 id="mac安装演示"><a href="#mac安装演示" class="headerlink" title="mac安装演示"></a>mac安装演示</h2><p>安装好 mac安装包-1.4.1.dmg后，启动即可</p>
-<p><img src="/image/百度云2018破解02.png" alt=""></p>
-<h2 id="windows安装"><a href="#windows安装" class="headerlink" title="windows安装"></a>windows安装</h2><p>直接打开windows安装包，请无视360等杀毒软件</p>
-<h2 id="谷歌浏览器插件安装谷歌插件-crx"><a href="#谷歌浏览器插件安装谷歌插件-crx" class="headerlink" title="谷歌浏览器插件安装谷歌插件.crx"></a>谷歌浏览器插件安装<code>谷歌插件.crx</code></h2><p>打开浏览器 输入<code>chrome://extensions/</code> ，然后打钩开发者模式，最后把<code>谷歌插件.crx</code>拖进来安装即可，下图就是拖进来安装好的界面。</p>
-<p><img src="/image/百度云2018破解03.png" alt=""></p>
-<h3 id="谷歌浏览器安装完成后效果"><a href="#谷歌浏览器安装完成后效果" class="headerlink" title="谷歌浏览器安装完成后效果"></a>谷歌浏览器安装完成后效果</h3><p>安装好了后，你用浏览器打开百度云盘，就会发现上面会出现高速下载按钮了。</p>
-<p><img src="/image/百度云2018破解04.png" alt=""></p>
-<p>选中你要下载的文件，然后点击高速下载，就会自动跑到刚才安装的downloader那边下载。</p>
-<p><img src="/image/百度云2018破解05.png" alt=""></p>
-<h2 id="软件下载地址"><a href="#软件下载地址" class="headerlink" title="软件下载地址"></a>软件下载地址</h2><p><a href="share.weiyun.com/2d1d66fb70779a7ee6938c102f25798f">点击该微云链接</a> 密码：7vtB9P (更新于08月20号)</p>
-<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>软件是转自嘟嘟，感谢</p>
-<p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
-<p>以上</p>
-<h4 id="软件来自"><a href="#软件来自" class="headerlink" title="软件来自"></a>软件来自</h4><ul>
-<li><a href="http://tengj.top/2018/01/05/bdy2018/" target="_blank" rel="noopener">嘟嘟的博客</a></li>
+        <p><img src="/image/常见面试题之ConcurrentHashMap标题.jpg" alt=""></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在多线程环境下，使用<code>HashMap</code>进行<code>put</code>操作时存在丢失数据的情况，为了避免这种bug的隐患，强烈建议使用<code>ConcurrentHashMap</code>代替<code>HashMap</code>，为了对<code>ConcurrentHashMap</code>有更深入的了解，本文将对<code>ConcurrentHashMap1.7和1.8</code>的不同实现进行分析。<br><a id="more"></a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="1-7实现"><a href="#1-7实现" class="headerlink" title="1.7实现"></a>1.7实现</h2><h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><blockquote>
+<p>jdk1.7中采用<code>Segment + HashEntry</code>的方式进行实现，结构如图</p>
+</blockquote>
+<p><img src="/image/常见面试题之ConcurrentHashMap01.png" alt=""></p>
+<p><code>ConcurrentHashMap</code>初始化时，计算出<code>Segment</code>数组的大小<code>ssize</code>和每个<code>Segment</code>中<code>HashEntry</code>数组的大小<code>cap</code>，并初始化Segment数组的第一个元素；其中<code>ssize</code>大小为2的幂次方，默认为16，cap大小也是2的幂次方，最小值为2，最终结果根据根据初始化容量<code>initialCapacity</code>进行计算，计算过程如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (c * ssize &lt; initialCapacity)</span><br><span class="line"> 	  ++c;</span><br><span class="line">int cap = MIN_SEGMENT_TABLE_CAPACITY;</span><br><span class="line">while (cap &lt; c)</span><br><span class="line">   cap &lt;&lt;= 1;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>其中Segment在实现上继承了ReentrantLock，这样就自带了锁的功能。</p>
+</blockquote>
+<h3 id="put实现"><a href="#put实现" class="headerlink" title="put实现"></a>put实现</h3><p>当执行<code>put</code>方法插入数据时，根据key的hash值，在<code>Segment</code>数组中找到相应的位置，如果相应位置的<code>Segment</code>还未初始化，则通过CAS进行赋值，接着执行<code>Segment</code>对象的put方法通过加锁机制插入数据，实现如下：</p>
+<blockquote>
+<p>场景：线程A和线程B同时执行相同<code>Segment</code>对象的put方法</p>
+</blockquote>
+<ol>
+<li>线程A执行<code>tryLock()</code>方法成功获取锁，则把<code>HashEntry</code>对象插入到相应的位置；</li>
+<li>线程B获取锁失败，则执行<code>scanAndLockForPut()</code>方法，在<code>scanAndLockForPut</code>方法中，会通过重复执行<code>tryLock()</code>方法尝试获取锁，在多处理器环境下，重复次数为64，单处理器重复次数为1，当执行<code>tryLock()</code>方法的次数超过上限时，则执行<code>lock()</code>方法挂起线程B；</li>
+<li>当线程A执行完插入操作时，会通过<code>unlock()</code>方法释放锁，接着唤醒线程B继续执行；</li>
+</ol>
+<h3 id="size实现"><a href="#size实现" class="headerlink" title="size实现"></a>size实现</h3><p>因为<code>ConcurrentHashMap</code>是可以并发插入数据的，所以在准确计算元素时存在一定的难度，一般的思路是统计每个<code>Segment</code>对象中的元素个数，然后进行累加，但是这种方式计算出来的结果并不一样的准确的，因为在计算后面几个<code>Segment</code>的元素个数时，已经计算过的<code>Segment</code>同时可能有数据的插入或则删除，在1.7的实现中，采用了如下方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    for (;;) &#123;</span><br><span class="line">        if (retries++ == RETRIES_BEFORE_LOCK) &#123;</span><br><span class="line">            for (int j = 0; j &lt; segments.length; ++j)</span><br><span class="line">                ensureSegment(j).lock(); // force creation</span><br><span class="line">        &#125;</span><br><span class="line">        sum = 0L;</span><br><span class="line">        size = 0;</span><br><span class="line">        overflow = false;</span><br><span class="line">        for (int j = 0; j &lt; segments.length; ++j) &#123;</span><br><span class="line">            Segment&lt;K,V&gt; seg = segmentAt(segments, j);</span><br><span class="line">            if (seg != null) &#123;</span><br><span class="line">                sum += seg.modCount;</span><br><span class="line">                int c = seg.count;</span><br><span class="line">                if (c &lt; 0 || (size += c) &lt; 0)</span><br><span class="line">                    overflow = true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (sum == last)</span><br><span class="line">            break;</span><br><span class="line">        last = sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    if (retries &gt; RETRIES_BEFORE_LOCK) &#123;</span><br><span class="line">        for (int j = 0; j &lt; segments.length; ++j)</span><br><span class="line">            segmentAt(segments, j).unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>先采用不加锁的方式，连续计算元素的个数，最多计算3次：</p>
+</blockquote>
+<ol>
+<li>如果前后两次计算结果相同，则说明计算出来的元素个数是准确的；</li>
+<li>如果前后两次计算结果都不同，则给每个<code>Segment</code>进行加锁，再计算一次元素的个数；</li>
+</ol>
+<h2 id="1-8实现"><a href="#1-8实现" class="headerlink" title="1.8实现"></a>1.8实现</h2><h3 id="数据结构-1"><a href="#数据结构-1" class="headerlink" title="数据结构"></a>数据结构</h3><blockquote>
+<p>1.8中放弃了<code>Segment</code>臃肿的设计，取而代之的是采用<code>Node + CAS + Synchronized</code>来保证并发安全进行实现，结构如下：</p>
+</blockquote>
+<p><img src="/image/常见面试题之ConcurrentHashMap02.png" alt=""></p>
+<blockquote>
+<p>只有在执行第一次put方法时才会调用<code>initTable()</code>初始化Node数组，实现如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">private final Node&lt;K,V&gt;[] initTable() &#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; int sc;</span><br><span class="line">    while ((tab = table) == null || tab.length == 0) &#123;</span><br><span class="line">        if ((sc = sizeCtl) &lt; 0)</span><br><span class="line">            Thread.yield(); // lost initialization race; just spin</span><br><span class="line">        else if (U.compareAndSwapInt(this, SIZECTL, sc, -1)) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if ((tab = table) == null || tab.length == 0) &#123;</span><br><span class="line">                    int n = (sc &gt; 0) ? sc : DEFAULT_CAPACITY;</span><br><span class="line">                    @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">                    Node&lt;K,V&gt;[] nt = (Node&lt;K,V&gt;[])new Node&lt;?,?&gt;[n];</span><br><span class="line">                    table = tab = nt;</span><br><span class="line">                    sc = n - (n &gt;&gt;&gt; 2);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; finally &#123;</span><br><span class="line">                sizeCtl = sc;</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return tab;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="put实现-1"><a href="#put实现-1" class="headerlink" title="put实现"></a>put实现</h3><blockquote>
+<p>当执行put方法插入数据时，根据key的hash值，在Node数组中找到相应的位置，实现如下：</p>
+</blockquote>
+<ul>
+<li>如果相应位置的Node还未初始化，则通过CAS插入相应的数据；</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">else if ((f = tabAt(tab, i = (n - 1) &amp; hash)) == null) &#123;</span><br><span class="line">    if (casTabAt(tab, i, null, new Node&lt;K,V&gt;(hash, key, value, null)))</span><br><span class="line">        break;                   // no lock when adding to empty bin</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果相应位置的Node不为空，且当前该节点不处于移动状态，则对该节点加<code>synchronized</code>锁，如果该节点的<code>hash</code>不小于0，则遍历链表更新节点或插入新节点；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">if (fh &gt;= 0) &#123;</span><br><span class="line">    binCount = 1;</span><br><span class="line">    for (Node&lt;K,V&gt; e = f;; ++binCount) &#123;</span><br><span class="line">        K ek;</span><br><span class="line">        if (e.hash == hash &amp;&amp;</span><br><span class="line">            ((ek = e.key) == key ||</span><br><span class="line">             (ek != null &amp;&amp; key.equals(ek)))) &#123;</span><br><span class="line">            oldVal = e.val;</span><br><span class="line">            if (!onlyIfAbsent)</span><br><span class="line">                e.val = value;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        Node&lt;K,V&gt; pred = e;</span><br><span class="line">        if ((e = e.next) == null) &#123;</span><br><span class="line">            pred.next = new Node&lt;K,V&gt;(hash, key, value, null);</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果该节点是<code>TreeBin</code>类型的节点，说明是红黑树结构，则通过<code>putTreeVal</code>方法往红黑树中插入节点；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">else if (f instanceof TreeBin) &#123;</span><br><span class="line">    Node&lt;K,V&gt; p;</span><br><span class="line">    binCount = 2;</span><br><span class="line">    if ((p = ((TreeBin&lt;K,V&gt;)f).putTreeVal(hash, key, value)) != null) &#123;</span><br><span class="line">        oldVal = p.val;</span><br><span class="line">        if (!onlyIfAbsent)</span><br><span class="line">            p.val = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果<code>binCount</code>不为0，说明put操作对数据产生了影响，如果当前链表的个数达到8个，则通过<code>treeifyBin</code>方法转化为红黑树，如果<code>oldVal</code>不为空，说明是一次更新操作，没有对元素个数产生影响，则直接返回旧值；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (binCount != 0) &#123;</span><br><span class="line">    if (binCount &gt;= TREEIFY_THRESHOLD)</span><br><span class="line">        treeifyBin(tab, i);</span><br><span class="line">    if (oldVal != null)</span><br><span class="line">        return oldVal;</span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果插入的是一个新节点，则执行<code>addCount()</code>方法尝试更新元素个数<code>baseCount</code>；</li>
+</ul>
+<h3 id="size实现-1"><a href="#size实现-1" class="headerlink" title="size实现"></a>size实现</h3><blockquote>
+<p>1.8中使用一个<code>volatile类型</code>的变量<code>baseCount</code>记录元素的个数，当插入新数据或则删除数据时，会通过<code>addCount()</code>方法更新<code>baseCount</code>，实现如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">if ((as = counterCells) != null ||</span><br><span class="line">    !U.compareAndSwapLong(this, BASECOUNT, b = baseCount, s = b + x)) &#123;</span><br><span class="line">    CounterCell a; long v; int m;</span><br><span class="line">    boolean uncontended = true;</span><br><span class="line">    if (as == null || (m = as.length - 1) &lt; 0 ||</span><br><span class="line">        (a = as[ThreadLocalRandom.getProbe() &amp; m]) == null ||</span><br><span class="line">        !(uncontended =</span><br><span class="line">          U.compareAndSwapLong(a, CELLVALUE, v = a.value, v + x))) &#123;</span><br><span class="line">        fullAddCount(x, uncontended);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    if (check &lt;= 1)</span><br><span class="line">        return;</span><br><span class="line">    s = sumCount();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>初始化时<code>counterCells</code>为空，在并发量很高时，如果存在两个线程同时执行<code>CAS</code>修改<code>baseCount值</code>，则失败的线程会继续执行方法体中的逻辑，使用<code>CounterCell</code>记录元素个数的变化；</li>
+<li>如<code>果CounterCell数组counterCells为空</code>，调用<code>fullAddCount()</code>方法进行初始化，并插入对应的记录数，通过<code>CAS设置cellsBusy字段</code>，只有设置成功的线程才能初始化<code>CounterCell数组</code>，实现如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">else if (cellsBusy == 0 &amp;&amp; counterCells == as &amp;&amp;</span><br><span class="line">         U.compareAndSwapInt(this, CELLSBUSY, 0, 1)) &#123;</span><br><span class="line">    boolean init = false;</span><br><span class="line">    try &#123;                           // Initialize table</span><br><span class="line">        if (counterCells == as) &#123;</span><br><span class="line">            CounterCell[] rs = new CounterCell[2];</span><br><span class="line">            rs[h &amp; 1] = new CounterCell(x);</span><br><span class="line">            counterCells = rs;</span><br><span class="line">            init = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        cellsBusy = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    if (init)</span><br><span class="line">        break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果通过CAS设置cellsBusy字段失败的话，则继续尝试通过CAS修改baseCount字段，如果修改baseCount字段成功的话，就退出循环，否则继续循环插入CounterCell对象；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">else if (U.compareAndSwapLong(this, BASECOUNT, v = baseCount, v + x))</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
+<p>所以在<code>1.8中的size</code>实现比1.7简单多，因为元素个数保存<code>baseCount</code>中，部分元素的变化个数保存在<code>CounterCell数组</code>中，实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int size() &#123;</span><br><span class="line">    long n = sumCount();</span><br><span class="line">    return ((n &lt; 0L) ? 0 :</span><br><span class="line">            (n &gt; (long)Integer.MAX_VALUE) ? Integer.MAX_VALUE :</span><br><span class="line">            (int)n);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">final long sumCount() &#123;</span><br><span class="line">    CounterCell[] as = counterCells; CounterCell a;</span><br><span class="line">    long sum = baseCount;</span><br><span class="line">    if (as != null) &#123;</span><br><span class="line">        for (int i = 0; i &lt; as.length; ++i) &#123;</span><br><span class="line">            if ((a = as[i]) != null)</span><br><span class="line">                sum += a.value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过累加<code>baseCount</code>和<code>CounterCell数组</code>中的数量，即可得到元素的总个数</p>
+<h2 id="结"><a href="#结" class="headerlink" title="结"></a>结</h2><p>文中阐述不妥之处还望雅正，不吝感激。</p>
+<p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
+<p>以上。</p>
 
       
 
@@ -230,11 +282,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">精品软件推荐</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">百度云</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ConcurrentHashMap</a>
         		</li>
       		
 		</ul>
@@ -290,7 +338,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://54skyray.cn/2018/01/08/百度云2018限速破解-简直比超级会员还快/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://54skyray.cn/2018/06/08/常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,18 +352,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/08/常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/05/Hexo博客yilia使用Gitalk作评论插件/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hexo博客yilia使用Gitalk作评论插件</div>
+    <a href="/2018/01/08/百度云2018限速破解-简直比超级会员还快/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">百度云2018限速破解,简直比超级会员还快</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -342,7 +381,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#软件目录"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#&#x8F6F;&#x4EF6;&#x76EE;&#x5F55;" class="headerlink" title="&#x8F6F;&#x4EF6;&#x76EE;&#x5F55;"></a>&#x8F6F;&#x4EF6;&#x76EE;&#x5F55;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mac安装演示"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#mac&#x5B89;&#x88C5;&#x6F14;&#x793A;" class="headerlink" title="mac&#x5B89;&#x88C5;&#x6F14;&#x793A;"></a>mac&#x5B89;&#x88C5;&#x6F14;&#x793A;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#windows安装"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#windows&#x5B89;&#x88C5;" class="headerlink" title="windows&#x5B89;&#x88C5;"></a>windows&#x5B89;&#x88C5;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谷歌浏览器插件安装谷歌插件-crx"><span class="toc-number">2.4.</span> <span class="toc-text"><a href="#&#x8C37;&#x6B4C;&#x6D4F;&#x89C8;&#x5668;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;&#x8C37;&#x6B4C;&#x63D2;&#x4EF6;-crx" class="headerlink" title="&#x8C37;&#x6B4C;&#x6D4F;&#x89C8;&#x5668;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;&#x8C37;&#x6B4C;&#x63D2;&#x4EF6;.crx"></a>&#x8C37;&#x6B4C;&#x6D4F;&#x89C8;&#x5668;&#x63D2;&#x4EF6;&#x5B89;&#x88C5;<code>&#x8C37;&#x6B4C;&#x63D2;&#x4EF6;.crx</code></span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#谷歌浏览器安装完成后效果"><span class="toc-number">2.4.1.</span> <span class="toc-text"><a href="#&#x8C37;&#x6B4C;&#x6D4F;&#x89C8;&#x5668;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x6548;&#x679C;" class="headerlink" title="&#x8C37;&#x6B4C;&#x6D4F;&#x89C8;&#x5668;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x6548;&#x679C;"></a>&#x8C37;&#x6B4C;&#x6D4F;&#x89C8;&#x5668;&#x5B89;&#x88C5;&#x5B8C;&#x6210;&#x540E;&#x6548;&#x679C;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#软件下载地址"><span class="toc-number">2.5.</span> <span class="toc-text"><a href="#&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;&#x5730;&#x5740;" class="headerlink" title="&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;&#x5730;&#x5740;"></a>&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;&#x5730;&#x5740;</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#结"><span class="toc-number">3.</span> <span class="toc-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#软件来自"><span class="toc-number">3.0.0.1.</span> <span class="toc-text"><a href="#&#x8F6F;&#x4EF6;&#x6765;&#x81EA;" class="headerlink" title="&#x8F6F;&#x4EF6;&#x6765;&#x81EA;"></a>&#x8F6F;&#x4EF6;&#x6765;&#x81EA;</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正文"><span class="toc-number">2.</span> <span class="toc-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7实现"><span class="toc-number">2.1.</span> <span class="toc-text"><a href="#1-7&#x5B9E;&#x73B0;" class="headerlink" title="1.7&#x5B9E;&#x73B0;"></a>1.7&#x5B9E;&#x73B0;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据结构"><span class="toc-number">2.1.1.</span> <span class="toc-text"><a href="#&#x6570;&#x636E;&#x7ED3;&#x6784;" class="headerlink" title="&#x6570;&#x636E;&#x7ED3;&#x6784;"></a>&#x6570;&#x636E;&#x7ED3;&#x6784;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put实现"><span class="toc-number">2.1.2.</span> <span class="toc-text"><a href="#put&#x5B9E;&#x73B0;" class="headerlink" title="put&#x5B9E;&#x73B0;"></a>put&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#size实现"><span class="toc-number">2.1.3.</span> <span class="toc-text"><a href="#size&#x5B9E;&#x73B0;" class="headerlink" title="size&#x5B9E;&#x73B0;"></a>size&#x5B9E;&#x73B0;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8实现"><span class="toc-number">2.2.</span> <span class="toc-text"><a href="#1-8&#x5B9E;&#x73B0;" class="headerlink" title="1.8&#x5B9E;&#x73B0;"></a>1.8&#x5B9E;&#x73B0;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据结构-1"><span class="toc-number">2.2.1.</span> <span class="toc-text"><a href="#&#x6570;&#x636E;&#x7ED3;&#x6784;-1" class="headerlink" title="&#x6570;&#x636E;&#x7ED3;&#x6784;"></a>&#x6570;&#x636E;&#x7ED3;&#x6784;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put实现-1"><span class="toc-number">2.2.2.</span> <span class="toc-text"><a href="#put&#x5B9E;&#x73B0;-1" class="headerlink" title="put&#x5B9E;&#x73B0;"></a>put&#x5B9E;&#x73B0;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#size实现-1"><span class="toc-number">2.2.3.</span> <span class="toc-text"><a href="#size&#x5B9E;&#x73B0;-1" class="headerlink" title="size&#x5B9E;&#x73B0;"></a>size&#x5B9E;&#x73B0;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结"><span class="toc-number">2.3.</span> <span class="toc-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
