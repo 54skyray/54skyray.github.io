@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -95,6 +95,7 @@
 <meta property="og:url" content="http://54skyray.cn/2016/01/02/HashMap原理解析-面试常用划重点/index.html">
 <meta property="og:site_name" content="天雷">
 <meta property="og:description" content="前言数据结构几乎是面试的日常了，其中HashMap更是常客,很多人说到HashMap都能”画虎烂”两句,但是类似：  高并发中HashMap为何会出现死锁？ Java8中，HashMap的结构有如何优化？  却有很多人吃了哑巴亏，这篇博文就在这个两个问题上展开，看看它背后的故事~!">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://54skyray.cn/image/HashMap详解标题图.jpg">
 <meta property="og:image" content="http://54skyray.cn/image/HashMap基础结构.png">
 <meta property="og:image" content="http://54skyray.cn/image/HashMap基础结构_演示1.png">
@@ -116,7 +117,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -124,7 +125,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -156,7 +157,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -288,9 +289,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-02T15:25:52+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-02T15:25:52+08:00">
                 2016-01-02
               </time>
             
@@ -395,21 +396,21 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖果</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>打赏</span>
   </button>
   <div id="QR" style="display: none;">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay WeChat Pay"/>
-        <p>WeChat Pay</p>
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付"/>
+        <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay Alipay"/>
-        <p>Alipay</p>
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝"/>
+        <p>支付宝</p>
       </div>
     
 
@@ -514,10 +515,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            站点概览
           </li>
         </ul>
       
@@ -542,7 +543,7 @@
                 <a href="/archives">
               
                   <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">Artikel</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -555,7 +556,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">31</span>
-                  <span class="site-state-item-name">Tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -647,7 +648,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -655,7 +656,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -762,6 +763,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -813,7 +821,7 @@
    <script type="text/javascript">
         var gitalk = new Gitalk({
           clientID: 'f1af9152983d31e73a82',
-          clientSecret: 'a4046a5b63220d7d2a79c9fcb0aabfb2393bef9d',
+          clientSecret: 'c3f0e79df1b83a1a87d3ec4301ae8a55a6529553',
           repo: 'blog.gitalk',
           owner: '54skyray',
           admin: ['54skyray'], 
