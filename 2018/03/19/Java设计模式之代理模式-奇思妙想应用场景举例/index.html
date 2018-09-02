@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://54skyray.cn/image/Java设计模式之代理模式标题.jpg">
 <meta property="og:image" content="http://54skyray.cn/image/Java设计模式之代理模式01.png">
-<meta property="og:updated_time" content="2018-08-23T08:46:10.992Z">
+<meta property="og:updated_time" content="2018-09-02T09:09:48.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java设计模式之代理模式-奇思妙想应用场景举例">
 <meta name="twitter:description" content="前言本文将用西门庆、潘金莲、王婆等人来解释静态代理模式。再继续延伸动态代理模式。">
@@ -410,11 +410,11 @@
 <p>运行结果：<br><img src="/image/Java设计模式之代理模式01.png" alt=""></p>
 <p>上面说到，动态代理的优势在于可以很方便的对代理类的函数进行统一的处理，而不用修改每个代理类中的方法。是因为所有被代理执行的方法，都是通过在<code>InvocationHandler</code>中的<code>invoke方法</code>调用的，所以我们只要在<code>invoke方法</code>中统一处理，就可以对所有被代理的方法进行相同的操作了。例如，这里的方法计时，所有的被代理对象执行的方法都会被计时，然而我只做了很少的代码量。</p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>动态代理的过程，代理对象和被代理对象的关系不像静态代理那样一目了然，清晰明了。因为动态代理的过程中，我们并没有实际看到代理类，也没有很清晰地的看到代理类的具体样子，而且动态代理中被代理对象和代理对象是通过<code>InvocationHandler</code>来完成的代理过程的</p>
-<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>如有诠释不清或说错的地方请不吝指正，与大家一起成长</p>
+<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>就这三招，搞得的周郎是“赔了夫人又折兵”呀！这就是策略模式，高内聚低耦合的特点也表现出来了，还有一个就是扩展性，也就是OCP原则，策略类可以继续添加下去气，只是修改<code>Context.java</code>就可以了，这个不多说了，自己领会吧。<br>如有诠释不清或说错的地方请不吝指正，与大家一起成长</p>
 <p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
 <p>以上</p>
 <h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ol>
-<li><a href="http://yangguangfu.iteye.com/blog/815787?page=2#comments" target="_blank" rel="noopener">阿福</a></li>
+<li><a href="http://yangguangfu.iteye.com/blog/815107" target="_blank" rel="noopener">阿福</a></li>
 </ol>
 
       
@@ -485,8 +485,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/08/常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异/" rel="prev" title="常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异">
-                常见面试题之ConcurrentHashMap，聊聊1.7、1.8在实现上的差异 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/01/Java设计模式之策略模式-奇思妙想应用场景举例/" rel="prev" title="Java设计模式之策略模式-奇思妙想应用场景举例">
+                Java设计模式之策略模式-奇思妙想应用场景举例 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -568,7 +568,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
