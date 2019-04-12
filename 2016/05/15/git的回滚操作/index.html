@@ -97,7 +97,7 @@
 <meta property="og:description" content="前言一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 回滚代码到上一个已通过测试的master版本 -&amp;gt; 修复bug -&amp;gt; 发布 -&amp;gt; 还原master -&amp;gt; 合并修改了bug的分支 -&amp;gt; 重新上预发布,请展开全文开始演练.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://54skyray.cn/image/git的回滚操作标题.png">
-<meta property="og:updated_time" content="2018-07-31T08:58:53.383Z">
+<meta property="og:updated_time" content="2019-04-12T08:19:25.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的回滚操作">
 <meta name="twitter:description" content="前言一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 回滚代码到上一个已通过测试的master版本 -&amp;gt; 修复bug -&amp;gt; 发布 -&amp;gt; 还原master -&amp;gt; 合并修改了bug的分支 -&amp;gt; 重新上预发布,请展开全文开始演练.">
@@ -321,7 +321,7 @@
       
 
       
-        <p><img src="/image/git的回滚操作标题.png" alt=""></p>
+        <p><img src="/image/git的回滚操作标题.png" class="full-image"></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一直在使用git作为版本管理器,但是有一次线上出问题,但是又有未通过完整测试的代码在mater分支上,那么所需要的操作就是 <code>回滚代码到上一个已通过测试的master版本</code> -&gt; <code>修复bug</code> -&gt; <code>发布</code> -&gt; <code>还原master</code> -&gt; <code>合并修改了bug的分支</code> -&gt; <code>重新上预发布</code>,请展开全文开始演练.<br><a id="more"></a></p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="做准备"><a href="#做准备" class="headerlink" title="做准备"></a>做准备</h2><p>为了简单描述,我们把定义几个分支.<br><code>init-master</code> //最初的<code>master</code><br><code>untest-master</code> //未完全通过测试的<code>master</code>,其是远程仓库上最新的master<br><code>bugfix/fix_some_bug</code> //修改的bug分支</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><blockquote>
@@ -510,7 +510,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -606,7 +606,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
