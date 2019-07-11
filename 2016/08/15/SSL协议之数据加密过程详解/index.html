@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -49,7 +49,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -57,9 +57,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="https,ssl," />
+  <meta name="keywords" content="https,ssl,">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://54skyray.cn/2016/08/15/SSL协议之数据加密过程详解/"/>
+  <link rel="canonical" href="http://54skyray.cn/2016/08/15/SSL协议之数据加密过程详解/">
 
 
 
@@ -166,7 +166,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">天雷</span>
         <span class="logo-line-after"><i></i></span>
@@ -196,7 +196,7 @@
         <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -206,7 +206,7 @@
         <li class="menu-item menu-item-标签">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -216,7 +216,7 @@
         <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -259,7 +259,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="skyRay">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/image/face.png">
     </span>
 
@@ -346,7 +346,7 @@
 <p>我们通过密码学中的两个典型的爱丽丝和鲍勃人物来解释这个非对称加密算法的过程：</p>
 <p><strong>客户端叫做爱丽丝，服务器叫做鲍勃。</strong></p>
 <blockquote>
-<p>爱丽丝： 鲍勃我要给你发送一段消息，把你的公钥给我吧；<br>鲍勃： OK，这是我的公钥：234nkjdfdhjbg324<em>*；<br>爱丽丝：收到公钥，我给你发送的消息经过公钥加密之后是这样的：##@#@!$%</em>(@;<br>鲍勃：好的，收到了，亲，我来用我的私钥解密看下你真正要给我发送的内容；</p>
+<p>爱丽丝： 鲍勃我要给你发送一段消息，把你的公钥给我吧；<br>鲍勃： OK，这是我的公钥：234nkjdfdhjbg324*<em>；<br>爱丽丝：收到公钥，我给你发送的消息经过公钥加密之后是这样的：##@#@!$%</em>(@;<br>鲍勃：好的，收到了，亲，我来用我的私钥解密看下你真正要给我发送的内容；</p>
 </blockquote>
 <p>上述过程就是一个<strong>非对称加密</strong>的过程，这个过程安全么？好像是很安全，即使<strong>查理</strong>(通信中的第三位参加者)截取了密文和公钥没有私钥还是没法得到明文。😂</p>
 <p>可如果第三者查理发送给爱丽丝他自己的公钥，然后爱丽丝用查理给的公钥加密密文发送了出去，查理再通过自己的私钥解密，这不就泄露信息了么？我们需要想个办法让爱丽丝判断这个公钥到底是不是鲍勃发来的。</p>
@@ -411,14 +411,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付"/>
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝"/>
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -530,9 +530,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/image/face.png"
-                alt="skyRay" />
+              <img class="site-author-image" itemprop="image" src="/image/face.png" alt="skyRay">
             
               <p class="site-author-name" itemprop="name">skyRay</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -602,6 +600,10 @@
                     <a href="http://blog.csdn.net/zffenger" title="冯兆峯" target="_blank">冯兆峯</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greatdk.com/" title="王登科-DK博客" target="_blank">王登科-DK博客</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -621,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL"><span class="nav-number">2.</span> <span class="nav-text"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL协议的握手过程"><span class="nav-number">3.</span> <span class="nav-text"><a href="#SSL&#x534F;&#x8BAE;&#x7684;&#x63E1;&#x624B;&#x8FC7;&#x7A0B;" class="headerlink" title="SSL&#x534F;&#x8BAE;&#x7684;&#x63E1;&#x624B;&#x8FC7;&#x7A0B;"></a>SSL&#x534F;&#x8BAE;&#x7684;&#x63E1;&#x624B;&#x8FC7;&#x7A0B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL"><span class="nav-number">2.</span> <span class="nav-text">SSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL协议的握手过程"><span class="nav-number">3.</span> <span class="nav-text">SSL协议的握手过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结"><span class="nav-number">4.</span> <span class="nav-text">结</span></a></li></ol></div>
             
 
           </div>

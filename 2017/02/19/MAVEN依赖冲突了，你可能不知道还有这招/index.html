@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -49,7 +49,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -57,9 +57,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Maven,Maven Dependecies,IntelliJ IDEA," />
+  <meta name="keywords" content="Maven,Maven Dependecies,IntelliJ IDEA,">
 
 
 
@@ -140,7 +140,7 @@
 
 
 
-  <link rel="canonical" href="http://54skyray.cn/2017/02/19/MAVEN依赖冲突了，你可能不知道还有这招/"/>
+  <link rel="canonical" href="http://54skyray.cn/2017/02/19/MAVEN依赖冲突了，你可能不知道还有这招/">
 
 
 
@@ -174,7 +174,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">天雷</span>
         <span class="logo-line-after"><i></i></span>
@@ -204,7 +204,7 @@
         <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -214,7 +214,7 @@
         <li class="menu-item menu-item-标签">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -224,7 +224,7 @@
         <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -267,7 +267,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="skyRay">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/image/face.png">
     </span>
 
@@ -333,34 +333,34 @@
         <p><img src="/image/Maven冲突idea快捷处理标题.jpg" class="full-image"></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>做过大型Maven项目的任何人都很清楚，模块与库之间的所有依赖关系有多么错综复杂，遇到冲突甚至能让你生无可恋。<br>但是如果你使用的IDE工具是<code>IntelliJ IDEA 10.</code>以上的版本。有一种方便快捷的处理冲突的方法，容我细细道来.!<br><a id="more"></a></p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h2><p>在idea中会对Maven依赖创建一个特殊的布局（按照Pom.xml文件中定义的顺序显示依赖关系）,其实在<code>Eclipse</code>中也有类似的功能(Maven依赖关系图)，像这样:</p>
-<p><img src="/image/Maven冲突idea快捷处理Eclipse.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理Eclipse.png" alt></p>
 <p>看上图我们很难理解一个节点与另一个节点的联系，所有具有不同版本的节点都被合并，没有可见的冲突。</p>
 <p><code>IntelliJ IDEA</code>按照<code>pom.xml</code>定义的顺序显示依赖关系布局,在图表上很容易找到你的模块-它们是蓝色的，而测试依赖是绿色的。冲突的依赖关系被标记为红色，你可以选择其中一个来找到与之冲突的内容:</p>
-<p><img src="/image/Maven冲突idea快捷处理示例01.jpg" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理示例01.jpg" alt></p>
 <p>你可以通过排除依赖来修复冲突，<code>IntelliJ IDEA</code>提供所有可以添加排除定义的地方：</p>
-<p><img src="/image/Maven冲突idea快捷处理示例02.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理示例02.png" alt></p>
 <p>从节点到<code>POM</code>文件的导航也很方便,每个依赖关系直接链接到它所在的地方:</p>
-<p><img src="/image/Maven冲突idea快捷处理示例03.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理示例03.png" alt></p>
 <p>庞大的系统依赖关系错综复杂，咱们可以使用范围过滤器来减少节点数量:</p>
-<p><img src="/image/Maven冲突idea快捷处理示例04.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理示例04.png" alt></p>
 <h2 id="功能要求"><a href="#功能要求" class="headerlink" title="功能要求"></a>功能要求</h2><p><code>Maven Dependencies Diagram</code>将在<code>IntelliJ IDEA 10</code>以上版本搭载</p>
 <h2 id="操作演示"><a href="#操作演示" class="headerlink" title="操作演示"></a>操作演示</h2><p>这里以<code>Idea 2017.1.1</code>给各位操作演示一下</p>
 <blockquote>
 <p>1.导入Maven项目到idea之后,并且运行<code>Maven--Reimport</code>就能在idea窗口右侧看到如下图标签</p>
 </blockquote>
-<p><img src="/image/Maven冲突idea快捷处理01.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理01.png" alt></p>
 <blockquote>
 <p>2.点开后对想要操作的项目点击右键能看到<code>show Dependencies..</code>如下图</p>
 </blockquote>
-<p><img src="/image/Maven冲突idea快捷处理02.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理02.png" alt></p>
 <blockquote>
 <p>3.弹出图表可以看到冲突的依赖有红线，冲突的可能性多种多样</p>
 </blockquote>
-<p><img src="/image/Maven冲突idea快捷处理03.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理03.png" alt></p>
 <blockquote>
 <p>4.对被标记红线的依赖右键看到<code>Exclude</code>,如重复依赖的话该依赖会被删除</p>
 </blockquote>
-<p><img src="/image/Maven冲突idea快捷处理04.png" alt=""></p>
+<p><img src="/image/Maven冲突idea快捷处理04.png" alt></p>
 <p>基本操作完毕。。。简直就是手把手了</p>
 <h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
 <p>以上</p>
@@ -387,14 +387,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付"/>
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝"/>
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -508,9 +508,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/image/face.png"
-                alt="skyRay" />
+              <img class="site-author-image" itemprop="image" src="/image/face.png" alt="skyRay">
             
               <p class="site-author-name" itemprop="name">skyRay</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -580,6 +578,10 @@
                     <a href="http://blog.csdn.net/zffenger" title="冯兆峯" target="_blank">冯兆峯</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greatdk.com/" title="王登科-DK博客" target="_blank">王登科-DK博客</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -599,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能介绍"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x529F;&#x80FD;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x529F;&#x80FD;&#x4ECB;&#x7ECD;"></a>&#x529F;&#x80FD;&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能要求"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x529F;&#x80FD;&#x8981;&#x6C42;" class="headerlink" title="&#x529F;&#x80FD;&#x8981;&#x6C42;"></a>&#x529F;&#x80FD;&#x8981;&#x6C42;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作演示"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#&#x64CD;&#x4F5C;&#x6F14;&#x793A;" class="headerlink" title="&#x64CD;&#x4F5C;&#x6F14;&#x793A;"></a>&#x64CD;&#x4F5C;&#x6F14;&#x793A;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">3.0.0.1.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能介绍"><span class="nav-number">2.1.</span> <span class="nav-text">功能介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能要求"><span class="nav-number">2.2.</span> <span class="nav-text">功能要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作演示"><span class="nav-number">2.3.</span> <span class="nav-text">操作演示</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text">结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>

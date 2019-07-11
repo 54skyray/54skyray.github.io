@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -49,7 +49,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -57,9 +57,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Java设计模式," />
+  <meta name="keywords" content="Java设计模式,">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://54skyray.cn/2018/03/19/Java设计模式之代理模式-奇思妙想应用场景举例/"/>
+  <link rel="canonical" href="http://54skyray.cn/2018/03/19/Java设计模式之代理模式-奇思妙想应用场景举例/">
 
 
 
@@ -166,7 +166,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">天雷</span>
         <span class="logo-line-after"><i></i></span>
@@ -196,7 +196,7 @@
         <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -206,7 +206,7 @@
         <li class="menu-item menu-item-标签">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -216,7 +216,7 @@
         <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -259,7 +259,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="skyRay">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/image/face.png">
     </span>
 
@@ -407,7 +407,7 @@
 <blockquote>
 <p>我们执行这个<code>ProxyTest类</code>，先想一下，我们创建了一个需要被代理的学生张三，将zhangsan对象传给了stuHandler中，我们在创建<code>代理对象stuProxy</code>时，将<code>stuHandler</code>作为参数了的，上面也有说到所有执行代理对象的方法都会被替换成执行<code>invoke方法</code>，也就是说，最后执行的是<code>StuInvocationHandler</code>中的<code>invoke方法</code>。所以在看到下面的运行结果也就理所当然了。</p>
 </blockquote>
-<p>运行结果：<br><img src="/image/Java设计模式之代理模式01.png" alt=""></p>
+<p>运行结果：<br><img src="/image/Java设计模式之代理模式01.png" alt></p>
 <p>上面说到，动态代理的优势在于可以很方便的对代理类的函数进行统一的处理，而不用修改每个代理类中的方法。是因为所有被代理执行的方法，都是通过在<code>InvocationHandler</code>中的<code>invoke方法</code>调用的，所以我们只要在<code>invoke方法</code>中统一处理，就可以对所有被代理的方法进行相同的操作了。例如，这里的方法计时，所有的被代理对象执行的方法都会被计时，然而我只做了很少的代码量。</p>
 <h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>动态代理的过程，代理对象和被代理对象的关系不像静态代理那样一目了然，清晰明了。因为动态代理的过程中，我们并没有实际看到代理类，也没有很清晰地的看到代理类的具体样子，而且动态代理中被代理对象和代理对象是通过<code>InvocationHandler</code>来完成的代理过程的</p>
 <h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>就这三招，搞得的周郎是“赔了夫人又折兵”呀！这就是策略模式，高内聚低耦合的特点也表现出来了，还有一个就是扩展性，也就是OCP原则，策略类可以继续添加下去气，只是修改<code>Context.java</code>就可以了，这个不多说了，自己领会吧。<br>如有诠释不清或说错的地方请不吝指正，与大家一起成长</p>
@@ -436,14 +436,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付"/>
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝"/>
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -553,9 +553,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/image/face.png"
-                alt="skyRay" />
+              <img class="site-author-image" itemprop="image" src="/image/face.png" alt="skyRay">
             
               <p class="site-author-name" itemprop="name">skyRay</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -625,6 +623,10 @@
                     <a href="http://blog.csdn.net/zffenger" title="冯兆峯" target="_blank">冯兆峯</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greatdk.com/" title="王登科-DK博客" target="_blank">王登科-DK博客</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -644,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态代理模式"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x9759;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;" class="headerlink" title="&#x9759;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;"></a>&#x9759;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是代理模式？"><span class="nav-number">2.1.1.</span> <span class="nav-text"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF1F;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF1F;"></a>&#x4EC0;&#x4E48;&#x662F;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#xFF1F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理模式有什么好处？"><span class="nav-number">2.1.2.</span> <span class="nav-text"><a href="#&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;" class="headerlink" title="&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;"></a>&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x6709;&#x4EC0;&#x4E48;&#x597D;&#x5904;&#xFF1F;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理模式一般涉及到的角色有："><span class="nav-number">2.1.3.</span> <span class="nav-text"><a href="#&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x4E00;&#x822C;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x89D2;&#x8272;&#x6709;&#xFF1A;" class="headerlink" title="&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x4E00;&#x822C;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x89D2;&#x8272;&#x6709;&#xFF1A;"></a>&#x4EE3;&#x7406;&#x6A21;&#x5F0F;&#x4E00;&#x822C;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x89D2;&#x8272;&#x6709;&#xFF1A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景举例："><span class="nav-number">2.1.4.</span> <span class="nav-text"><a href="#&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E3E;&#x4F8B;&#xFF1A;" class="headerlink" title="&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E3E;&#x4F8B;&#xFF1A;"></a>&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E3E;&#x4F8B;&#xFF1A;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.1.5.</span> <span class="nav-text"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态代理模式"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;" class="headerlink" title="&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;"></a>&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x6A21;&#x5F0F;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要说明"><span class="nav-number">2.2.1.</span> <span class="nav-text"><a href="#&#x7B80;&#x8981;&#x8BF4;&#x660E;" class="headerlink" title="&#x7B80;&#x8981;&#x8BF4;&#x660E;"></a>&#x7B80;&#x8981;&#x8BF4;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态的简单实现"><span class="nav-number">2.2.2.</span> <span class="nav-text"><a href="#&#x52A8;&#x6001;&#x7684;&#x7B80;&#x5355;&#x5B9E;&#x73B0;" class="headerlink" title="&#x52A8;&#x6001;&#x7684;&#x7B80;&#x5355;&#x5B9E;&#x73B0;"></a>&#x52A8;&#x6001;&#x7684;&#x7B80;&#x5355;&#x5B9E;&#x73B0;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-1"><span class="nav-number">2.2.3.</span> <span class="nav-text"><a href="#&#x603B;&#x7ED3;-1" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">3.0.0.1.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态代理模式"><span class="nav-number">2.1.</span> <span class="nav-text">静态代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是代理模式？"><span class="nav-number">2.1.1.</span> <span class="nav-text">什么是代理模式？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理模式有什么好处？"><span class="nav-number">2.1.2.</span> <span class="nav-text">代理模式有什么好处？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代理模式一般涉及到的角色有："><span class="nav-number">2.1.3.</span> <span class="nav-text">代理模式一般涉及到的角色有：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景举例："><span class="nav-number">2.1.4.</span> <span class="nav-text">应用场景举例：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">2.1.5.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态代理模式"><span class="nav-number">2.2.</span> <span class="nav-text">动态代理模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要说明"><span class="nav-number">2.2.1.</span> <span class="nav-text">简要说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态的简单实现"><span class="nav-number">2.2.2.</span> <span class="nav-text">动态的简单实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text">结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>

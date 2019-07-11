@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -49,7 +49,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -57,9 +57,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Java,JVM," />
+  <meta name="keywords" content="Java,JVM,">
 
 
 
@@ -179,7 +179,7 @@
 
 
 
-  <link rel="canonical" href="http://54skyray.cn/2018/01/08/JVM、GC和常用命令/"/>
+  <link rel="canonical" href="http://54skyray.cn/2018/01/08/JVM、GC和常用命令/">
 
 
 
@@ -213,7 +213,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">天雷</span>
         <span class="logo-line-after"><i></i></span>
@@ -243,7 +243,7 @@
         <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -253,7 +253,7 @@
         <li class="menu-item menu-item-标签">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -263,7 +263,7 @@
         <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -306,7 +306,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="skyRay">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/image/face.png">
     </span>
 
@@ -371,7 +371,7 @@
       
         <p><img src="/image/JVM、GC和常用命令-标题.png" class="full-image"></p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>重新梳理了一遍JVM的一些基本概念和学习资料。在这个PPT中，关于G1的部分比较粗略<br><a id="more"></a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><img src="/image/JVM、GC和常用命令-01.png" alt=""><br><img src="/image/JVM、GC和常用命令-02.png" alt=""><br><img src="/image/JVM、GC和常用命令-03.png" alt=""><br><img src="/image/JVM、GC和常用命令-04.png" alt=""><br><img src="/image/JVM、GC和常用命令-05.png" alt=""><br><img src="/image/JVM、GC和常用命令-06.png" alt=""><br><img src="/image/JVM、GC和常用命令-07.png" alt=""><br><img src="/image/JVM、GC和常用命令-08.png" alt=""><br><img src="/image/JVM、GC和常用命令-09.png" alt=""><br><img src="/image/JVM、GC和常用命令-10.png" alt=""><br><img src="/image/JVM、GC和常用命令-11.png" alt=""><br><img src="/image/JVM、GC和常用命令-12.png" alt=""><br><img src="/image/JVM、GC和常用命令-13.png" alt=""><br><img src="/image/JVM、GC和常用命令-14.png" alt=""><br><img src="/image/JVM、GC和常用命令-15.png" alt=""><br><img src="/image/JVM、GC和常用命令-16.png" alt=""><br><img src="/image/JVM、GC和常用命令-17.png" alt=""><br><img src="/image/JVM、GC和常用命令-18.png" alt=""><br><img src="/image/JVM、GC和常用命令-19.png" alt=""><br><img src="/image/JVM、GC和常用命令-20.png" alt=""><br><img src="/image/JVM、GC和常用命令-21.png" alt=""><br><img src="/image/JVM、GC和常用命令-22.png" alt=""><br><img src="/image/JVM、GC和常用命令-23.png" alt=""><br><img src="/image/JVM、GC和常用命令-24.png" alt=""><br><img src="/image/JVM、GC和常用命令-25.png" alt=""><br><img src="/image/JVM、GC和常用命令-26.png" alt=""><br><img src="/image/JVM、GC和常用命令-27.png" alt=""><br><img src="/image/JVM、GC和常用命令-28.png" alt=""><br><img src="/image/JVM、GC和常用命令-29.png" alt=""><br><img src="/image/JVM、GC和常用命令-30.png" alt=""><br><img src="/image/JVM、GC和常用命令-31.png" alt=""><br><img src="/image/JVM、GC和常用命令-32.png" alt=""><br><img src="/image/JVM、GC和常用命令-33.png" alt=""><br><img src="/image/JVM、GC和常用命令-34.png" alt=""><br><img src="/image/JVM、GC和常用命令-35.png" alt=""><br><img src="/image/JVM、GC和常用命令-36.png" alt=""><br><img src="/image/JVM、GC和常用命令-37.png" alt=""><br><img src="/image/JVM、GC和常用命令-38.png" alt=""><br><img src="/image/JVM、GC和常用命令-39.png" alt=""><br><img src="/image/JVM、GC和常用命令-40.png" alt=""><br><img src="/image/JVM、GC和常用命令-41.png" alt=""><br><img src="/image/JVM、GC和常用命令-42.png" alt=""><br><img src="/image/JVM、GC和常用命令-43.png" alt=""><br><img src="/image/JVM、GC和常用命令-44.png" alt=""><br><img src="/image/JVM、GC和常用命令-45.png" alt=""><br><img src="/image/JVM、GC和常用命令-46.png" alt=""><br><img src="/image/JVM、GC和常用命令-47.png" alt=""><br><img src="/image/JVM、GC和常用命令-48.png" alt=""></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p><img src="/image/JVM、GC和常用命令-01.png" alt><br><img src="/image/JVM、GC和常用命令-02.png" alt><br><img src="/image/JVM、GC和常用命令-03.png" alt><br><img src="/image/JVM、GC和常用命令-04.png" alt><br><img src="/image/JVM、GC和常用命令-05.png" alt><br><img src="/image/JVM、GC和常用命令-06.png" alt><br><img src="/image/JVM、GC和常用命令-07.png" alt><br><img src="/image/JVM、GC和常用命令-08.png" alt><br><img src="/image/JVM、GC和常用命令-09.png" alt><br><img src="/image/JVM、GC和常用命令-10.png" alt><br><img src="/image/JVM、GC和常用命令-11.png" alt><br><img src="/image/JVM、GC和常用命令-12.png" alt><br><img src="/image/JVM、GC和常用命令-13.png" alt><br><img src="/image/JVM、GC和常用命令-14.png" alt><br><img src="/image/JVM、GC和常用命令-15.png" alt><br><img src="/image/JVM、GC和常用命令-16.png" alt><br><img src="/image/JVM、GC和常用命令-17.png" alt><br><img src="/image/JVM、GC和常用命令-18.png" alt><br><img src="/image/JVM、GC和常用命令-19.png" alt><br><img src="/image/JVM、GC和常用命令-20.png" alt><br><img src="/image/JVM、GC和常用命令-21.png" alt><br><img src="/image/JVM、GC和常用命令-22.png" alt><br><img src="/image/JVM、GC和常用命令-23.png" alt><br><img src="/image/JVM、GC和常用命令-24.png" alt><br><img src="/image/JVM、GC和常用命令-25.png" alt><br><img src="/image/JVM、GC和常用命令-26.png" alt><br><img src="/image/JVM、GC和常用命令-27.png" alt><br><img src="/image/JVM、GC和常用命令-28.png" alt><br><img src="/image/JVM、GC和常用命令-29.png" alt><br><img src="/image/JVM、GC和常用命令-30.png" alt><br><img src="/image/JVM、GC和常用命令-31.png" alt><br><img src="/image/JVM、GC和常用命令-32.png" alt><br><img src="/image/JVM、GC和常用命令-33.png" alt><br><img src="/image/JVM、GC和常用命令-34.png" alt><br><img src="/image/JVM、GC和常用命令-35.png" alt><br><img src="/image/JVM、GC和常用命令-36.png" alt><br><img src="/image/JVM、GC和常用命令-37.png" alt><br><img src="/image/JVM、GC和常用命令-38.png" alt><br><img src="/image/JVM、GC和常用命令-39.png" alt><br><img src="/image/JVM、GC和常用命令-40.png" alt><br><img src="/image/JVM、GC和常用命令-41.png" alt><br><img src="/image/JVM、GC和常用命令-42.png" alt><br><img src="/image/JVM、GC和常用命令-43.png" alt><br><img src="/image/JVM、GC和常用命令-44.png" alt><br><img src="/image/JVM、GC和常用命令-45.png" alt><br><img src="/image/JVM、GC和常用命令-46.png" alt><br><img src="/image/JVM、GC和常用命令-47.png" alt><br><img src="/image/JVM、GC和常用命令-48.png" alt></p>
 <h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>该文转自<a href="https://www.jianshu.com/p/5121f917c3ce" title="javaadu" target="_blank" rel="noopener">https://www.jianshu.com/p/5121f917c3ce</a></p>
 <p>以上。</p>
 
@@ -394,14 +394,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付"/>
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝"/>
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -513,9 +513,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/image/face.png"
-                alt="skyRay" />
+              <img class="site-author-image" itemprop="image" src="/image/face.png" alt="skyRay">
             
               <p class="site-author-name" itemprop="name">skyRay</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -585,6 +583,10 @@
                     <a href="http://blog.csdn.net/zffenger" title="冯兆峯" target="_blank">冯兆峯</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greatdk.com/" title="王登科-DK博客" target="_blank">王登科-DK博客</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -604,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text">结</span></a></li></ol></div>
             
 
           </div>

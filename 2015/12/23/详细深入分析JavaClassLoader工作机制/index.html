@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -49,7 +49,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -57,9 +57,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Java,JVM,类加载机制," />
+  <meta name="keywords" content="Java,JVM,类加载机制,">
 
 
 
@@ -145,7 +145,7 @@
 
 
 
-  <link rel="canonical" href="http://54skyray.cn/2015/12/23/详细深入分析JavaClassLoader工作机制/"/>
+  <link rel="canonical" href="http://54skyray.cn/2015/12/23/详细深入分析JavaClassLoader工作机制/">
 
 
 
@@ -179,7 +179,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">天雷</span>
         <span class="logo-line-after"><i></i></span>
@@ -209,7 +209,7 @@
         <li class="menu-item menu-item-首页">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -219,7 +219,7 @@
         <li class="menu-item menu-item-标签">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -229,7 +229,7 @@
         <li class="menu-item menu-item-归档">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -272,7 +272,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="skyRay">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/image/face.png">
     </span>
 
@@ -367,10 +367,10 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class BootStrapTest</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args)</span><br><span class="line">    &#123;</span><br><span class="line">      URL[] urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();</span><br><span class="line">      for (int i = 0; i &lt; urls.length; i++) &#123;</span><br><span class="line">          System.out.println(urls[i].toExternalForm());</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>以下内容是上述程序从本机JDK环境所获得的结果：</p>
-<p><img src="/image/ClassLoader工作机制01.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制01.jpg" alt></p>
 <p>其实上述结果也是通过查找<code>sun.boot.class.path</code>这个系统属性所得知的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(System.getProperty(&quot;sun.boot.class.path&quot;));</span><br></pre></td></tr></table></figure>
-<p><img src="/image/ClassLoader工作机制02.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制02.jpg" alt></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">打印结果：C:\Java\jdk1.8.0_60\jre\lib\resources.jar;C:\Java\jdk1.8.0_60\jre\lib\rt.jar;C:\Java\jdk1.8.0_60\jre\lib\sunrsasign.jar;C:\Java\jdk1.8.0_60\jre\lib\jsse.jar;C:\Java\jdk1.8.0_60\jre\lib\jce.jar;C:\Java\jdk1.8.0_60\jre\lib\charsets.jar;C:\Java\jdk1.8.0_60\jre\lib\jfr.jar;C:\Java\jdk1.8.0_60\jre\classes</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>Extension ClassLoader：称为扩展类加载器，负责加载Java的扩展类库，Java 虚拟机的实现会提供一个扩展库目录。该类加载器在此目录里面查找并加载 Java 类。默认加载<code>JAVA_HOME/jre/lib/ext/</code>目下的所有jar。</p>
@@ -389,23 +389,23 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package classloader;</span><br><span class="line">public class NewworkClassLoaderTest &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //测试加载网络中的class文件</span><br><span class="line">            String rootUrl = &quot;http://localhost:8080/httpweb/classes&quot;;</span><br><span class="line">            String className = &quot;org.classloader.simple.NetClassLoaderSimple&quot;;</span><br><span class="line">            NetworkClassLoader ncl1 = new NetworkClassLoader(rootUrl);</span><br><span class="line">            NetworkClassLoader ncl2 = new NetworkClassLoader(rootUrl);</span><br><span class="line">            Class&lt;?&gt; clazz1 = ncl1.loadClass(className);</span><br><span class="line">            Class&lt;?&gt; clazz2 = ncl2.loadClass(className);</span><br><span class="line">            Object obj1 = clazz1.newInstance();</span><br><span class="line">            Object obj2 = clazz2.newInstance();</span><br><span class="line">            clazz1.getMethod(&quot;setNetClassLoaderSimple&quot;, Object.class).invoke(obj1, obj2);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>首先获得网络上一个class文件的二进制名称，然后通过自定义的类加载器<code>NetworkClassLoader</code>创建两个实例，并根据网络地址分别加载这份class，并得到这两个ClassLoader实例加载后生成的Class实例clazz1和clazz2，最后将这两个Class实例分别生成具体的实例对象obj1和obj2，再通过反射调用clazz1中的<code>setNetClassLoaderSimple</code>方法。</p>
 <p>3）、查看测试结果</p>
-<p><img src="/image/ClassLoader工作机制03.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制03.jpg" alt></p>
 <p>结论：从结果中可以看出，运行时抛出了<code>java.lang.ClassCastException</code>异常。虽然两个对象obj1和 obj2的类的名字相同，但是这两个类是由不同的类加载器实例来加载的，所以JVM认为它们就是两个不同的类。</p>
 <p>了解了这一点之后，就可以理解代理模式的设计动机了。代理模式是为了保证 Java 核心库的类型安全。所有 Java 应用都至少需要引用 <code>java.lang.Object</code>类，也就是说在运行的时候，<code>java.lang.Object</code>这个类需要被加载到 Java 虚拟机中。如果这个加载过程由 Java 应用自己的类加载器来完成的话，很可能就存在多个版本的<code>java.lang.Object</code>类，而且这些类之间是不兼容的。通过代理模式，对于 Java 核心库的类的加载工作由引导类加载器来统一完成，保证了Java 应用所使用的都是同一个版本的 Java 核心库的类，是互相兼容的。</p>
 <p>不同的类加载器为相同名称的类创建了额外的名称空间。相同名称的类可以并存在 Java 虚拟机中，只需要用不同的类加载器来加载它们即可。不同类加载器加载的类之间是不兼容的，这就相当于在 Java 虚拟机内部创建了一个个相互隔离的 Java 类空间。</p>
-<h3 id="ClassLoader的体系架构"><a href="#ClassLoader的体系架构" class="headerlink" title="ClassLoader的体系架构"></a>ClassLoader的体系架构</h3><p><img src="/image/ClassLoader工作机制04.png" alt=""></p>
+<h3 id="ClassLoader的体系架构"><a href="#ClassLoader的体系架构" class="headerlink" title="ClassLoader的体系架构"></a>ClassLoader的体系架构</h3><p><img src="/image/ClassLoader工作机制04.png" alt></p>
 <h3 id="类加载器的树状组织结构"><a href="#类加载器的树状组织结构" class="headerlink" title="类加载器的树状组织结构"></a>类加载器的树状组织结构</h3><p><strong>测试一:</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class ClassLoaderTree</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ClassLoader loader = ClassLoaderTree.class.getClassLoader();</span><br><span class="line">        while (loader!=null)&#123;</span><br><span class="line">            System.out.println(loader.toString());</span><br><span class="line">            loader = loader.getParent();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(loader);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>每个 Java 类都维护着一个指向定义它的类加载器的引用，通过 <code>getClassLoader()</code>方法就可以获取到此引用。代码中通过递归调用 <code>getParent()</code>方法来输出全部的父类加载器。</p>
 <p>结果是：</p>
-<p><img src="/image/ClassLoader工作机制05.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制05.jpg" alt></p>
 <p>第一个输出的是<code>ClassLoaderTree</code>类的类加载器，即系统类加载器。它是<code>sun.misc.Launcher$AppClassLoader</code>类的实例；第二个输出的是扩展类加载器，是<code>sun.misc.Launcher$ExtClassLoader</code>类的实例。需要注意的是这里并没有输出引导类加载器，这是由于有些 JDK 的实现对于父类加载器是引导类加载器的情况,<code>getParent()</code>方法返回 null。第三行结果说明：<code>ExtClassLoader</code>的类加器是<code>Bootstrap ClassLoader</code>，因为<code>Bootstrap ClassLoader</code>不是一个普通的Java类，所以<code>ExtClassLoader</code>的<code>parent=null</code>，所以第三行的打印结果为null就是这个原因。</p>
 <p><strong>测试二:</strong><br>将<code>ClassLoaderTree.class</code>打包成<code>ClassLoaderTree.jar</code>，放到Extension ClassLoader的加载目录下（·JAVA_HOME/jre/lib/ext`），然后重新运行这个程序，得到的结果会是什么样呢？</p>
-<p><img src="/image/ClassLoader工作机制06.jpg" alt=""></p>
-<p><img src="/image/ClassLoader工作机制07.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制06.jpg" alt></p>
+<p><img src="/image/ClassLoader工作机制07.jpg" alt></p>
 <p>此处我在 IDEA 中的运行结果还和上面的一样，与文章 <a href="blog.csdn.net/xyang81/article/details/7292380">深入分析Java ClassLoader原理</a> 中的有差距，具体原因未弄清楚，还希望读者能够亲自测试。</p>
 <p>那文章中的结果是：</p>
-<p><img src="/image/ClassLoader工作机制08.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制08.jpg" alt></p>
 <p>打印结果分析：<br>为什么第一行的结果是<code>ExtClassLoader</code>呢？</p>
 <blockquote>
 <p>因为 ClassLoader 的委托模型机制，当我们要用 <code>ClassLoaderTest.class</code> 这个类的时候，AppClassLoader 在试图加载之前，先委托给 Bootstrcp ClassLoader，Bootstracp ClassLoader 发现自己没找到，它就告诉 ExtClassLoader，兄弟，我这里没有这个类，你去加载看看，然后 Extension ClassLoader 拿着这个类去它指定的类路径<code>（JAVA_HOME/jre/lib/ext）</code>试图加载，唉，它发现在<code>ClassLoaderTest.jar</code>这样一个文件中包含 <code>ClassLoaderTest.class</code> 这样的一个文件，然后它把找到的这个类加载到内存当中，并生成这个类的 Class 实例对象，最后把这个实例返回。所以 <code>ClassLoaderTest.class</code> 的类加载器是 ExtClassLoader。</p>
@@ -422,7 +422,7 @@
 <p><code>Class.forName</code>是一个静态方法，同样可以用来加载类。该方法有两种形式：<code>Class.forName(String name,boolean initialize</code>, <code>ClassLoader loader)</code>和<code>Class.forName(String className)</code>。第一种形式的参数 name表示的是类的全名；<code>initialize</code>表示是否初始化类；loader表示加载时使用的类加载器。第二种形式则相当于设置了参数 <code>initialize</code>的值为 true，loader的值为当前类的类加载器。<code>Class.forName</code>的一个很常见的用法是在加载数据库驱动的时候。如<br><code>Class.forName(&quot;org.apache.derby.jdbc.EmbeddedDriver&quot;)</code>用来加载 <code>Apache Derby</code> 数据库的驱动。</p>
 </blockquote>
 <h3 id="类加载的动态性体现"><a href="#类加载的动态性体现" class="headerlink" title="类加载的动态性体现"></a>类加载的动态性体现</h3><p>一个应用程序总是由n多个类组成，Java程序启动时，并不是一次把所有的类全部加载后再运行，它总是先把保证程序运行的基础类一次性加载到jvm中，其它类等到jvm用到的时候再加载，这样的好处是节省了内存的开销，因为java最早就是为嵌入式系统而设计的，内存宝贵，这是一种可以理解的机制，而用到时再加载这也是java动态性的一种体现。</p>
-<h2 id="如何加载-class-文件"><a href="#如何加载-class-文件" class="headerlink" title="如何加载 class 文件"></a>如何加载 class 文件</h2><p><img src="/image/ClassLoader工作机制09.jpg" alt=""></p>
+<h2 id="如何加载-class-文件"><a href="#如何加载-class-文件" class="headerlink" title="如何加载 class 文件"></a>如何加载 class 文件</h2><p><img src="/image/ClassLoader工作机制09.jpg" alt></p>
 <ul>
 <li>第一阶段找到 <code>.class</code> 文件并把这个文件包含的字节码加载到内存中。</li>
 <li>第二阶段中分三步，字节码验证；class 类数据结构分析及相应的内存分配；最后的符号表的链接。</li>
@@ -435,7 +435,7 @@
 </ul>
 <h2 id="常见加载类错误分析"><a href="#常见加载类错误分析" class="headerlink" title="常见加载类错误分析"></a>常见加载类错误分析</h2><h3 id="ClassNotFoundExecption"><a href="#ClassNotFoundExecption" class="headerlink" title="ClassNotFoundExecption"></a>ClassNotFoundExecption</h3><p><code>ClassNotFoundExecption</code> 异常是平常碰到的最多的。这个异常通常发生在显示加载类的时候。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ClassNotFoundExceptionTest</span><br><span class="line">&#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Class.forName(&quot;NotFoundClass&quot;);</span><br><span class="line">        &#125;catch (ClassNotFoundException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/image/ClassLoader工作机制10.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制10.jpg" alt></p>
 <p>显示加载一个类通常有：</p>
 <ul>
 <li>通过类 Class 中的 <code>forName()</code> 方法</li>
@@ -447,10 +447,10 @@
 <p>解决这个错误的方法就是确保每个类引用的类都在当前的<strong>classpath</strong>下面。</p>
 <h3 id="UnsatisfiedLinkError"><a href="#UnsatisfiedLinkError" class="headerlink" title="UnsatisfiedLinkError"></a>UnsatisfiedLinkError</h3><p>该错误通常是在 JVM 启动的时候，如果 JVM 中的某个 lib 删除了，就有可能报这个错误。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class UnsatisfiedLinkErrorTest</span><br><span class="line">&#123;</span><br><span class="line">    public native void nativeMethod();</span><br><span class="line">    static &#123;</span><br><span class="line">        System.loadLibrary(&quot;NoLib&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new UnsatisfiedLinkErrorTest().nativeMethod();  //解析native标识的方法时JVM找不到对应的库文件</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/image/ClassLoader工作机制11.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制11.jpg" alt></p>
 <h3 id="ClassCastException"><a href="#ClassCastException" class="headerlink" title="ClassCastException"></a>ClassCastException</h3><p>该错误通常出现强制类型转换时出现这个错误。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class ClassCastExceptionTest</span><br><span class="line">&#123;</span><br><span class="line">    public static Map m = new HashMap()&#123;</span><br><span class="line">        &#123;</span><br><span class="line">            put(&quot;a&quot;, &quot;2&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer integer = (Integer) m.get(&quot;a&quot;); //将m强制转换成Integer类型</span><br><span class="line">        System.out.println(integer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/image/ClassLoader工作机制12.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制12.jpg" alt></p>
 <p>注意：JVM 在做类型转换时的规则：</p>
 <ul>
 <li>对于普通对象，对象必须是目标类的实例或目标类的子类的实例。如果目标类是接口，那么会把它当作实现了该接口的一个子类。</li>
@@ -462,9 +462,9 @@
 <li>先通过 instanceof 检查是不是目标类型，然后再进行强制类型的转换。</li>
 </ul>
 <p>上面代码中改成如下就可以避免错误了：</p>
-<p><img src="/image/ClassLoader工作机制13.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制13.jpg" alt></p>
 <h3 id="ExceptionInInitializerError"><a href="#ExceptionInInitializerError" class="headerlink" title="ExceptionInInitializerError"></a>ExceptionInInitializerError</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class ExceptionInInitializerErrorTest</span><br><span class="line">&#123;</span><br><span class="line">    public static Map m = new HashMap()&#123;&#123;</span><br><span class="line">        m.put(&quot;a&quot;, &quot;2&quot;);</span><br><span class="line">    &#125;&#125;;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer integer = (Integer) m.get(&quot;a&quot;);</span><br><span class="line">        System.out.println(integer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/image/ClassLoader工作机制14.jpg" alt=""></p>
+<p><img src="/image/ClassLoader工作机制14.jpg" alt></p>
 <p>在初始化这个类时，给静态属性 m 赋值时出现了异常导致抛出错误 ExceptionInInitializerError。</p>
 <h3 id="NoSuchMethodError"><a href="#NoSuchMethodError" class="headerlink" title="NoSuchMethodError"></a>NoSuchMethodError</h3><p><code>NoSuchMethodError</code>代表这个类型确实存在，但是一个不正确的版本被加载了。为了解决这个问题我们可以使用 <code>‘verbose:class’</code> 来判断该JVM加载的到底是哪个版本。</p>
 <h3 id="LinkageError"><a href="#LinkageError" class="headerlink" title="LinkageError"></a>LinkageError</h3><p>有时候事情会变得更糟，和 <code>ClassCastException</code> 本质一样，加载自不同位置的相同类在同一段逻辑<code>（比如：方法）</code>中交互时，会出现 <code>LinkageError</code> 。</p>
@@ -522,14 +522,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付"/>
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝"/>
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
         <p>支付宝</p>
       </div>
     
@@ -643,9 +643,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/image/face.png"
-                alt="skyRay" />
+              <img class="site-author-image" itemprop="image" src="/image/face.png" alt="skyRay">
             
               <p class="site-author-name" itemprop="name">skyRay</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -715,6 +713,10 @@
                     <a href="http://blog.csdn.net/zffenger" title="冯兆峯" target="_blank">冯兆峯</a>
                   </li>
                 
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greatdk.com/" title="王登科-DK博客" target="_blank">王登科-DK博客</a>
+                  </li>
+                
               </ul>
             </div>
           
@@ -734,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x6B63;&#x6587;" class="headerlink" title="&#x6B63;&#x6587;"></a>&#x6B63;&#x6587;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader-作用："><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#ClassLoader-&#x4F5C;&#x7528;&#xFF1A;" class="headerlink" title="ClassLoader &#x4F5C;&#x7528;&#xFF1A;"></a>ClassLoader &#x4F5C;&#x7528;&#xFF1A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader-类结构分析"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#ClassLoader-&#x7C7B;&#x7ED3;&#x6784;&#x5206;&#x6790;" class="headerlink" title="ClassLoader &#x7C7B;&#x7ED3;&#x6784;&#x5206;&#x6790;"></a>ClassLoader &#x7C7B;&#x7ED3;&#x6784;&#x5206;&#x6790;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader-的等级加载机制"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#ClassLoader-&#x7684;&#x7B49;&#x7EA7;&#x52A0;&#x8F7D;&#x673A;&#x5236;" class="headerlink" title="ClassLoader &#x7684;&#x7B49;&#x7EA7;&#x52A0;&#x8F7D;&#x673A;&#x5236;"></a>ClassLoader &#x7684;&#x7B49;&#x7EA7;&#x52A0;&#x8F7D;&#x673A;&#x5236;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java默认提供的三个ClassLoader"><span class="nav-number">2.3.1.</span> <span class="nav-text"><a href="#Java&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x4E09;&#x4E2A;ClassLoader" class="headerlink" title="Java&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x4E09;&#x4E2A;ClassLoader"></a>Java&#x9ED8;&#x8BA4;&#x63D0;&#x4F9B;&#x7684;&#x4E09;&#x4E2A;ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassLoader加载类的原理"><span class="nav-number">2.3.2.</span> <span class="nav-text"><a href="#ClassLoader&#x52A0;&#x8F7D;&#x7C7B;&#x7684;&#x539F;&#x7406;" class="headerlink" title="ClassLoader&#x52A0;&#x8F7D;&#x7C7B;&#x7684;&#x539F;&#x7406;"></a>ClassLoader&#x52A0;&#x8F7D;&#x7C7B;&#x7684;&#x539F;&#x7406;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理介绍"><span class="nav-number">2.3.2.1.</span> <span class="nav-text"><a href="#&#x539F;&#x7406;&#x4ECB;&#x7ECD;" class="headerlink" title="&#x539F;&#x7406;&#x4ECB;&#x7ECD;"></a>&#x539F;&#x7406;&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用双亲委托这种模型呢？"><span class="nav-number">2.3.2.2.</span> <span class="nav-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;&#x53CC;&#x4EB2;&#x59D4;&#x6258;&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x5462;&#xFF1F;" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;&#x53CC;&#x4EB2;&#x59D4;&#x6258;&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x5462;&#xFF1F;"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x4F7F;&#x7528;&#x53CC;&#x4EB2;&#x59D4;&#x6258;&#x8FD9;&#x79CD;&#x6A21;&#x578B;&#x5462;&#xFF1F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#但是JVM在搜索类的时候，又是如何判定两个class是相同的呢？"><span class="nav-number">2.3.2.3.</span> <span class="nav-text"><a href="#&#x4F46;&#x662F;JVM&#x5728;&#x641C;&#x7D22;&#x7C7B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x5224;&#x5B9A;&#x4E24;&#x4E2A;class&#x662F;&#x76F8;&#x540C;&#x7684;&#x5462;&#xFF1F;" class="headerlink" title="&#x4F46;&#x662F;JVM&#x5728;&#x641C;&#x7D22;&#x7C7B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x5224;&#x5B9A;&#x4E24;&#x4E2A;class&#x662F;&#x76F8;&#x540C;&#x7684;&#x5462;&#xFF1F;"></a>&#x4F46;&#x662F;JVM&#x5728;&#x641C;&#x7D22;&#x7C7B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53C8;&#x662F;&#x5982;&#x4F55;&#x5224;&#x5B9A;&#x4E24;&#x4E2A;class&#x662F;&#x76F8;&#x540C;&#x7684;&#x5462;&#xFF1F;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassLoader的体系架构"><span class="nav-number">2.3.3.</span> <span class="nav-text"><a href="#ClassLoader&#x7684;&#x4F53;&#x7CFB;&#x67B6;&#x6784;" class="headerlink" title="ClassLoader&#x7684;&#x4F53;&#x7CFB;&#x67B6;&#x6784;"></a>ClassLoader&#x7684;&#x4F53;&#x7CFB;&#x67B6;&#x6784;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载器的树状组织结构"><span class="nav-number">2.3.4.</span> <span class="nav-text"><a href="#&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x6811;&#x72B6;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;" class="headerlink" title="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x6811;&#x72B6;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;"></a>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x6811;&#x72B6;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM加载class文件的两种方法"><span class="nav-number">2.3.5.</span> <span class="nav-text"><a href="#JVM&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x7684;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;" class="headerlink" title="JVM&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x7684;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;"></a>JVM&#x52A0;&#x8F7D;class&#x6587;&#x4EF6;&#x7684;&#x4E24;&#x79CD;&#x65B9;&#x6CD5;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载的动态性体现"><span class="nav-number">2.3.6.</span> <span class="nav-text"><a href="#&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x52A8;&#x6001;&#x6027;&#x4F53;&#x73B0;" class="headerlink" title="&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x52A8;&#x6001;&#x6027;&#x4F53;&#x73B0;"></a>&#x7C7B;&#x52A0;&#x8F7D;&#x7684;&#x52A8;&#x6001;&#x6027;&#x4F53;&#x73B0;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何加载-class-文件"><span class="nav-number">2.4.</span> <span class="nav-text"><a href="#&#x5982;&#x4F55;&#x52A0;&#x8F7D;-class-&#x6587;&#x4EF6;" class="headerlink" title="&#x5982;&#x4F55;&#x52A0;&#x8F7D; class &#x6587;&#x4EF6;"></a>&#x5982;&#x4F55;&#x52A0;&#x8F7D; class &#x6587;&#x4EF6;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#验证与分析"><span class="nav-number">2.4.1.</span> <span class="nav-text"><a href="#&#x9A8C;&#x8BC1;&#x4E0E;&#x5206;&#x6790;" class="headerlink" title="&#x9A8C;&#x8BC1;&#x4E0E;&#x5206;&#x6790;"></a>&#x9A8C;&#x8BC1;&#x4E0E;&#x5206;&#x6790;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见加载类错误分析"><span class="nav-number">2.5.</span> <span class="nav-text"><a href="#&#x5E38;&#x89C1;&#x52A0;&#x8F7D;&#x7C7B;&#x9519;&#x8BEF;&#x5206;&#x6790;" class="headerlink" title="&#x5E38;&#x89C1;&#x52A0;&#x8F7D;&#x7C7B;&#x9519;&#x8BEF;&#x5206;&#x6790;"></a>&#x5E38;&#x89C1;&#x52A0;&#x8F7D;&#x7C7B;&#x9519;&#x8BEF;&#x5206;&#x6790;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassNotFoundExecption"><span class="nav-number">2.5.1.</span> <span class="nav-text"><a href="#ClassNotFoundExecption" class="headerlink" title="ClassNotFoundExecption"></a>ClassNotFoundExecption</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoClassDefFoundError"><span class="nav-number">2.5.2.</span> <span class="nav-text"><a href="#NoClassDefFoundError" class="headerlink" title="NoClassDefFoundError"></a>NoClassDefFoundError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UnsatisfiedLinkError"><span class="nav-number">2.5.3.</span> <span class="nav-text"><a href="#UnsatisfiedLinkError" class="headerlink" title="UnsatisfiedLinkError"></a>UnsatisfiedLinkError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassCastException"><span class="nav-number">2.5.4.</span> <span class="nav-text"><a href="#ClassCastException" class="headerlink" title="ClassCastException"></a>ClassCastException</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExceptionInInitializerError"><span class="nav-number">2.5.5.</span> <span class="nav-text"><a href="#ExceptionInInitializerError" class="headerlink" title="ExceptionInInitializerError"></a>ExceptionInInitializerError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSuchMethodError"><span class="nav-number">2.5.6.</span> <span class="nav-text"><a href="#NoSuchMethodError" class="headerlink" title="NoSuchMethodError"></a>NoSuchMethodError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkageError"><span class="nav-number">2.5.7.</span> <span class="nav-text"><a href="#LinkageError" class="headerlink" title="LinkageError"></a>LinkageError</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的-ClassLoader-分析"><span class="nav-number">2.6.</span> <span class="nav-text"><a href="#&#x5E38;&#x7528;&#x7684;-ClassLoader-&#x5206;&#x6790;" class="headerlink" title="&#x5E38;&#x7528;&#x7684; ClassLoader &#x5206;&#x6790;"></a>&#x5E38;&#x7528;&#x7684; ClassLoader &#x5206;&#x6790;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现自己的-ClassLoader"><span class="nav-number">2.7.</span> <span class="nav-text"><a href="#&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;-ClassLoader" class="headerlink" title="&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684; ClassLoader"></a>&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684; ClassLoader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统类加载器"><span class="nav-number">2.7.1.</span> <span class="nav-text"><a href="#&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;" class="headerlink" title="&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;"></a>&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络类加载器"><span class="nav-number">2.7.2.</span> <span class="nav-text"><a href="#&#x7F51;&#x7EDC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;" class="headerlink" title="&#x7F51;&#x7EDC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;"></a>&#x7F51;&#x7EDC;&#x7C7B;&#x52A0;&#x8F7D;&#x5668;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载器与Web容器"><span class="nav-number">2.8.</span> <span class="nav-text"><a href="#&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E0E;Web&#x5BB9;&#x5668;" class="headerlink" title="&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E0E;Web&#x5BB9;&#x5668;"></a>&#x7C7B;&#x52A0;&#x8F7D;&#x5668;&#x4E0E;Web&#x5BB9;&#x5668;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结"><span class="nav-number">2.9.</span> <span class="nav-text"><a href="#&#x7ED3;" class="headerlink" title="&#x7ED3;"></a>&#x7ED3;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">2.9.0.1.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader-作用："><span class="nav-number">2.1.</span> <span class="nav-text">ClassLoader 作用：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader-类结构分析"><span class="nav-number">2.2.</span> <span class="nav-text">ClassLoader 类结构分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ClassLoader-的等级加载机制"><span class="nav-number">2.3.</span> <span class="nav-text">ClassLoader 的等级加载机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java默认提供的三个ClassLoader"><span class="nav-number">2.3.1.</span> <span class="nav-text">Java默认提供的三个ClassLoader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassLoader加载类的原理"><span class="nav-number">2.3.2.</span> <span class="nav-text">ClassLoader加载类的原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理介绍"><span class="nav-number">2.3.2.1.</span> <span class="nav-text">原理介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要使用双亲委托这种模型呢？"><span class="nav-number">2.3.2.2.</span> <span class="nav-text">为什么要使用双亲委托这种模型呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#但是JVM在搜索类的时候，又是如何判定两个class是相同的呢？"><span class="nav-number">2.3.2.3.</span> <span class="nav-text">但是JVM在搜索类的时候，又是如何判定两个class是相同的呢？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassLoader的体系架构"><span class="nav-number">2.3.3.</span> <span class="nav-text">ClassLoader的体系架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载器的树状组织结构"><span class="nav-number">2.3.4.</span> <span class="nav-text">类加载器的树状组织结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM加载class文件的两种方法"><span class="nav-number">2.3.5.</span> <span class="nav-text">JVM加载class文件的两种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类加载的动态性体现"><span class="nav-number">2.3.6.</span> <span class="nav-text">类加载的动态性体现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何加载-class-文件"><span class="nav-number">2.4.</span> <span class="nav-text">如何加载 class 文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#验证与分析"><span class="nav-number">2.4.1.</span> <span class="nav-text">验证与分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见加载类错误分析"><span class="nav-number">2.5.</span> <span class="nav-text">常见加载类错误分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassNotFoundExecption"><span class="nav-number">2.5.1.</span> <span class="nav-text">ClassNotFoundExecption</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoClassDefFoundError"><span class="nav-number">2.5.2.</span> <span class="nav-text">NoClassDefFoundError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UnsatisfiedLinkError"><span class="nav-number">2.5.3.</span> <span class="nav-text">UnsatisfiedLinkError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ClassCastException"><span class="nav-number">2.5.4.</span> <span class="nav-text">ClassCastException</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ExceptionInInitializerError"><span class="nav-number">2.5.5.</span> <span class="nav-text">ExceptionInInitializerError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSuchMethodError"><span class="nav-number">2.5.6.</span> <span class="nav-text">NoSuchMethodError</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkageError"><span class="nav-number">2.5.7.</span> <span class="nav-text">LinkageError</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的-ClassLoader-分析"><span class="nav-number">2.6.</span> <span class="nav-text">常用的 ClassLoader 分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现自己的-ClassLoader"><span class="nav-number">2.7.</span> <span class="nav-text">如何实现自己的 ClassLoader</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件系统类加载器"><span class="nav-number">2.7.1.</span> <span class="nav-text">文件系统类加载器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络类加载器"><span class="nav-number">2.7.2.</span> <span class="nav-text">网络类加载器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载器与Web容器"><span class="nav-number">2.8.</span> <span class="nav-text">类加载器与Web容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结"><span class="nav-number">2.9.</span> <span class="nav-text">结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">2.9.0.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
