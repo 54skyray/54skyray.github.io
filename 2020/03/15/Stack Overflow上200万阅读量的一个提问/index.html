@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -95,11 +95,11 @@
 <meta property="og:url" content="http://54skyray.cn/2020/03/15/Stack Overflow上200万阅读量的一个提问/index.html">
 <meta property="og:site_name" content="天雷">
 <meta property="og:description" content="前言整好就是一个工具包大满贯啊">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://54skyray.cn/image/关注两百万的StackOverflow问题标题.png">
 <meta property="og:image" content="http://54skyray.cn/image/关注两百万的StackOverflow问题01.png">
 <meta property="og:image" content="http://54skyray.cn/image/关注两百万的StackOverflow问题02.png">
-<meta property="og:updated_time" content="2020-11-23T09:30:05.630Z">
+<meta property="og:updated_time" content="2020-11-23T09:41:03.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stack Overflow上瞅到200万阅读量的一个提问：Java中怎么快速把InputStream转化为String">
 <meta name="twitter:description" content="前言整好就是一个工具包大满贯啊">
@@ -119,7 +119,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -151,7 +151,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -283,9 +283,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-15T11:23:47+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-15T11:23:47+08:00">
                 2020-03-15
               </time>
             
@@ -337,50 +337,15 @@
 <p>我的天！居然有2000+的赞！</p>
 <p>继续往下看，发现大家的不少的骚操作</p>
 <h3 id="使用-CharStreams-Guava"><a href="#使用-CharStreams-Guava" class="headerlink" title="使用 CharStreams (Guava)"></a>使用 CharStreams (Guava)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String result = CharStreams.toString(new InputStreamReader(</span><br><span class="line">     inputStream, Charsets.UTF_8));</span><br></pre></td></tr></table></figure>
-<h3 id="使用-Scanner-JDK"><a href="#使用-Scanner-JDK" class="headerlink" title="使用 Scanner (JDK)"></a>使用 Scanner (JDK)</h3><pre><code>Scanner s = new Scanner(inputStream).useDelimiter(&quot;\\A&quot;);
-String result = s.hasNext() ? s.next() : &quot;&quot;;
-</code></pre><h3 id="使用-Stream-API-Java-8"><a href="#使用-Stream-API-Java-8" class="headerlink" title="使用 Stream API (Java 8)."></a>使用 Stream API (Java 8).</h3><p>Warning: This solution converts different line breaks (like \r\n) to \n.<br>    String result = new BufferedReader(new InputStreamReader(inputStream))<br>      .lines().collect(Collectors.joining(“\n”));</p>
-<h3 id="使用-parallel-Stream-API-Java-8"><a href="#使用-parallel-Stream-API-Java-8" class="headerlink" title="使用 parallel Stream API (Java 8)."></a>使用 parallel Stream API (Java 8).</h3><p>Warning: This solution converts different line breaks (like \r\n) to \n.<br>    String result = new BufferedReader(new InputStreamReader(inputStream)).lines()<br>       .parallel().collect(Collectors.joining(“\n”));</p>
-<h3 id="使用-InputStreamReader-and-StringBuilder-JDK"><a href="#使用-InputStreamReader-and-StringBuilder-JDK" class="headerlink" title="使用 InputStreamReader and StringBuilder (JDK)"></a>使用 InputStreamReader and StringBuilder (JDK)</h3><pre><code>final int bufferSize = 1024;
-final char[] buffer = new char[bufferSize];
-final StringBuilder out = new StringBuilder();
-Reader in = new InputStreamReader(stream, StandardCharsets.UTF_8);
-int charsRead;
-while((charsRead = in.read(buffer, 0, buffer.length)) &gt; 0) {
-    out.append(buffer, 0, charsRead);
-}
-return out.toString();
-</code></pre><h3 id="使用-StringWriter-and-IOUtils-copy-Apache-Commons"><a href="#使用-StringWriter-and-IOUtils-copy-Apache-Commons" class="headerlink" title="使用 StringWriter and IOUtils.copy (Apache Commons)"></a>使用 StringWriter and IOUtils.copy (Apache Commons)</h3><pre><code>StringWriter writer = new StringWriter();
-IOUtils.copy(inputStream, writer, &quot;UTF-8&quot;);
-return writer.toString();
-</code></pre><h3 id="使用-ByteArrayOutputStream-and-inputStream-read-JDK"><a href="#使用-ByteArrayOutputStream-and-inputStream-read-JDK" class="headerlink" title="使用 ByteArrayOutputStream and inputStream.read (JDK)"></a>使用 ByteArrayOutputStream and inputStream.read (JDK)</h3><pre><code>ByteArrayOutputStream result = new ByteArrayOutputStream();
-byte[] buffer = new byte[1024];
-int length;
-while ((length = inputStream.read(buffer)) != -1) {
-    result.write(buffer, 0, length);
-}
-// StandardCharsets.UTF_8.name() &gt; JDK 7
-return result.toString(&quot;UTF-8&quot;);
-</code></pre><h3 id="使用-BufferedReader-JDK"><a href="#使用-BufferedReader-JDK" class="headerlink" title="使用 BufferedReader (JDK)."></a>使用 BufferedReader (JDK).</h3><p>Warning: This solution converts different line breaks (like \n\r) to line.separator system property (for example, in Windows to “\r\n”).</p>
-<pre><code>String newLine = System.getProperty(&quot;line.separator&quot;);
-BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-StringBuilder result = new StringBuilder();
-boolean flag = false;
-for (String line; (line = reader.readLine()) != null; ) {
-    result.append(flag? newLine: &quot;&quot;).append(line);
-    flag = true;
-}
-return result.toString();
-</code></pre><h3 id="使用-BufferedInputStream-and-ByteArrayOutputStream-JDK"><a href="#使用-BufferedInputStream-and-ByteArrayOutputStream-JDK" class="headerlink" title="使用 BufferedInputStream and ByteArrayOutputStream (JDK)"></a>使用 BufferedInputStream and ByteArrayOutputStream (JDK)</h3><pre><code>BufferedInputStream bis = new BufferedInputStream(inputStream);
-ByteArrayOutputStream buf = new ByteArrayOutputStream();
-int result = bis.read();
-while(result != -1) {
-    buf.write((byte) result);
-    result = bis.read();
-}
-// StandardCharsets.UTF_8.name() &gt; JDK 7
-return buf.toString(&quot;UTF-8&quot;);
-</code></pre><h3 id="使用-inputStream-read-and-StringBuilder-JDK"><a href="#使用-inputStream-read-and-StringBuilder-JDK" class="headerlink" title="使用 inputStream.read() and StringBuilder (JDK)."></a>使用 inputStream.read() and StringBuilder (JDK).</h3><p>Warning: This solution has problems with Unicode, for example with Russian text (works correctly only with non-Unicode text)<br>    int ch;<br>    StringBuilder sb = new StringBuilder();<br>    while((ch = inputStream.read()) != -1)<br>        sb.append((char)ch);<br>    reset();<br>    return sb.toString();</p>
+<h3 id="使用-Scanner-JDK"><a href="#使用-Scanner-JDK" class="headerlink" title="使用 Scanner (JDK)"></a>使用 Scanner (JDK)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scanner s = new Scanner(inputStream).useDelimiter(&quot;\\A&quot;);</span><br><span class="line">String result = s.hasNext() ? s.next() : &quot;&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="使用-Stream-API-Java-8"><a href="#使用-Stream-API-Java-8" class="headerlink" title="使用 Stream API (Java 8)."></a>使用 Stream API (Java 8).</h3><p>Warning: This solution converts different line breaks (like \r\n) to \n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String result = new BufferedReader(new InputStreamReader(inputStream))</span><br><span class="line">  .lines().collect(Collectors.joining(&quot;\n&quot;));</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-parallel-Stream-API-Java-8"><a href="#使用-parallel-Stream-API-Java-8" class="headerlink" title="使用 parallel Stream API (Java 8)."></a>使用 parallel Stream API (Java 8).</h3><p>Warning: This solution converts different line breaks (like \r\n) to \n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String result = new BufferedReader(new InputStreamReader(inputStream)).lines()</span><br><span class="line">   .parallel().collect(Collectors.joining(&quot;\n&quot;));</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-InputStreamReader-and-StringBuilder-JDK"><a href="#使用-InputStreamReader-and-StringBuilder-JDK" class="headerlink" title="使用 InputStreamReader and StringBuilder (JDK)"></a>使用 InputStreamReader and StringBuilder (JDK)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">final int bufferSize = 1024;</span><br><span class="line">final char[] buffer = new char[bufferSize];</span><br><span class="line">final StringBuilder out = new StringBuilder();</span><br><span class="line">Reader in = new InputStreamReader(stream, StandardCharsets.UTF_8);</span><br><span class="line">int charsRead;</span><br><span class="line">while((charsRead = in.read(buffer, 0, buffer.length)) &gt; 0) &#123;</span><br><span class="line">    out.append(buffer, 0, charsRead);</span><br><span class="line">&#125;</span><br><span class="line">return out.toString();</span><br></pre></td></tr></table></figure>
+<h3 id="使用-StringWriter-and-IOUtils-copy-Apache-Commons"><a href="#使用-StringWriter-and-IOUtils-copy-Apache-Commons" class="headerlink" title="使用 StringWriter and IOUtils.copy (Apache Commons)"></a>使用 StringWriter and IOUtils.copy (Apache Commons)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">StringWriter writer = new StringWriter();</span><br><span class="line">IOUtils.copy(inputStream, writer, &quot;UTF-8&quot;);</span><br><span class="line">return writer.toString();</span><br></pre></td></tr></table></figure>
+<h3 id="使用-ByteArrayOutputStream-and-inputStream-read-JDK"><a href="#使用-ByteArrayOutputStream-and-inputStream-read-JDK" class="headerlink" title="使用 ByteArrayOutputStream and inputStream.read (JDK)"></a>使用 ByteArrayOutputStream and inputStream.read (JDK)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ByteArrayOutputStream result = new ByteArrayOutputStream();</span><br><span class="line">byte[] buffer = new byte[1024];</span><br><span class="line">int length;</span><br><span class="line">while ((length = inputStream.read(buffer)) != -1) &#123;</span><br><span class="line">    result.write(buffer, 0, length);</span><br><span class="line">&#125;</span><br><span class="line">// StandardCharsets.UTF_8.name() &gt; JDK 7</span><br><span class="line">return result.toString(&quot;UTF-8&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="使用-BufferedReader-JDK"><a href="#使用-BufferedReader-JDK" class="headerlink" title="使用 BufferedReader (JDK)."></a>使用 BufferedReader (JDK).</h3><p>Warning: This solution converts different line breaks (like \n\r) to line.separator system property (for example, in Windows to “\r\n”).<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String newLine = System.getProperty(&quot;line.separator&quot;);</span><br><span class="line">BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));</span><br><span class="line">StringBuilder result = new StringBuilder();</span><br><span class="line">boolean flag = false;</span><br><span class="line">for (String line; (line = reader.readLine()) != null; ) &#123;</span><br><span class="line">    result.append(flag? newLine: &quot;&quot;).append(line);</span><br><span class="line">    flag = true;</span><br><span class="line">&#125;</span><br><span class="line">return result.toString();</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用-BufferedInputStream-and-ByteArrayOutputStream-JDK"><a href="#使用-BufferedInputStream-and-ByteArrayOutputStream-JDK" class="headerlink" title="使用 BufferedInputStream and ByteArrayOutputStream (JDK)"></a>使用 BufferedInputStream and ByteArrayOutputStream (JDK)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BufferedInputStream bis = new BufferedInputStream(inputStream);</span><br><span class="line">ByteArrayOutputStream buf = new ByteArrayOutputStream();</span><br><span class="line">int result = bis.read();</span><br><span class="line">while(result != -1) &#123;</span><br><span class="line">    buf.write((byte) result);</span><br><span class="line">    result = bis.read();</span><br><span class="line">&#125;</span><br><span class="line">// StandardCharsets.UTF_8.name() &gt; JDK 7</span><br><span class="line">return buf.toString(&quot;UTF-8&quot;);</span><br></pre></td></tr></table></figure>
+<h3 id="使用-inputStream-read-and-StringBuilder-JDK"><a href="#使用-inputStream-read-and-StringBuilder-JDK" class="headerlink" title="使用 inputStream.read() and StringBuilder (JDK)."></a>使用 inputStream.read() and StringBuilder (JDK).</h3><p>Warning: This solution has problems with Unicode, for example with Russian text (works correctly only with non-Unicode text)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int ch;</span><br><span class="line">StringBuilder sb = new StringBuilder();</span><br><span class="line">while((ch = inputStream.read()) != -1)</span><br><span class="line">    sb.append((char)ch);</span><br><span class="line">reset();</span><br><span class="line">return sb.toString();</span><br></pre></td></tr></table></figure></p>
 <p>甚至，还贴出了微基准测试的结果，果然狠人啊。</p>
 <p>对于小字符串(length = 175) 结果如下：<br>mode = Average Time, system = Linux, score 1,343 is the best :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">              Benchmark                         Mode  Cnt   Score   Error  Units</span><br><span class="line"> 8. ByteArrayOutputStream and read (JDK)        avgt   10   1,343 ± 0,028  us/op</span><br><span class="line"> 6. InputStreamReader and StringBuilder (JDK)   avgt   10   6,980 ± 0,404  us/op</span><br><span class="line">10. BufferedInputStream, ByteArrayOutputStream  avgt   10   7,437 ± 0,735  us/op</span><br><span class="line">11. InputStream.read() and StringBuilder (JDK)  avgt   10   8,977 ± 0,328  us/op</span><br><span class="line"> 7. StringWriter and IOUtils.copy (Apache)      avgt   10  10,613 ± 0,599  us/op</span><br><span class="line"> 1. IOUtils.toString (Apache Utils)             avgt   10  10,605 ± 0,527  us/op</span><br><span class="line"> 3. Scanner (JDK)                               avgt   10  12,083 ± 0,293  us/op</span><br><span class="line"> 2. CharStreams (guava)                         avgt   10  12,999 ± 0,514  us/op</span><br><span class="line"> 4. Stream Api (Java 8)                         avgt   10  15,811 ± 0,605  us/op</span><br><span class="line"> 9. BufferedReader (JDK)                        avgt   10  16,038 ± 0,711  us/op</span><br><span class="line"> 5. parallel Stream Api (Java 8)                avgt   10  21,544 ± 0,583  us/op</span><br></pre></td></tr></table></figure></p>
 <p>对于大字符串(length = 50100) 结果如下：<br>Performance tests for big String (length = 50100)<br>mode = Average Time, system = Linux, score 200,715 is the best</p>
@@ -402,21 +367,21 @@ return buf.toString(&quot;UTF-8&quot;);
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>谢谢你请我吃糖果</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
+    <span>Donate</span>
   </button>
   <div id="QR" style="display: none;">
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
-        <p>微信支付</p>
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay WeChat Pay">
+        <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
-        <p>支付宝</p>
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay Alipay">
+        <p>Alipay</p>
       </div>
     
 
@@ -509,10 +474,10 @@ return buf.toString(&quot;UTF-8&quot;);
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
+            Overview
           </li>
         </ul>
       
@@ -535,7 +500,7 @@ return buf.toString(&quot;UTF-8&quot;);
                 <a href="/archives">
               
                   <span class="site-state-item-count">21</span>
-                  <span class="site-state-item-name">日志</span>
+                  <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
@@ -548,7 +513,7 @@ return buf.toString(&quot;UTF-8&quot;);
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">38</span>
-                  <span class="site-state-item-name">标签</span>
+                  <span class="site-state-item-name">tags</span>
                 </a>
               </div>
             
