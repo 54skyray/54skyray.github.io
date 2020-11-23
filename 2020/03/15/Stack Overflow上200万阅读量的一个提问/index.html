@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a921c668.js","daovoice")
+  daovoice('init', {
+      app_id: "a921c668"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="stack overflow,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言整好就是一个工具包大满贯啊">
+<meta name="keywords" content="stack overflow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Stack Overflow上瞅到200万阅读量的一个提问：Java中怎么快速把InputStream转化为String">
+<meta property="og:url" content="http://54skyray.cn/2020/03/15/Stack Overflow上200万阅读量的一个提问/index.html">
+<meta property="og:site_name" content="天雷">
+<meta property="og:description" content="前言整好就是一个工具包大满贯啊">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://54skyray.cn/image/关注两百万的StackOverflow问题标题.png">
+<meta property="og:image" content="http://54skyray.cn/image/关注两百万的StackOverflow问题01.png">
+<meta property="og:image" content="http://54skyray.cn/image/关注两百万的StackOverflow问题02.png">
+<meta property="og:updated_time" content="2020-11-23T09:30:05.630Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Stack Overflow上瞅到200万阅读量的一个提问：Java中怎么快速把InputStream转化为String">
+<meta name="twitter:description" content="前言整好就是一个工具包大满贯啊">
+<meta name="twitter:image" content="http://54skyray.cn/image/关注两百万的StackOverflow问题标题.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://54skyray.cn/2020/03/15/Stack Overflow上200万阅读量的一个提问/">
+
+
+
+
+
+  <title>Stack Overflow上瞅到200万阅读量的一个提问：Java中怎么快速把InputStream转化为String | 天雷</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天雷</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一步一个脚印,成长举足之间</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://54skyray.cn/2020/03/15/Stack Overflow上200万阅读量的一个提问/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyRay">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/image/face.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天雷">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Stack Overflow上瞅到200万阅读量的一个提问：Java中怎么快速把InputStream转化为String</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-15T11:23:47+08:00">
+                2020-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/image/关注两百万的StackOverflow问题标题.png" class="full-image"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>整好就是一个工具包大满贯啊<br><a id="more"></a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="就是它"><a href="#就是它" class="headerlink" title="就是它"></a>就是它</h2><p>其实我只是偶尔上Stack Overflow，直到看了这个200万次阅读量的提问：</p>
+<blockquote>
+<p>How do I read / convert an InputStream into a String in Java?</p>
+</blockquote>
+<p><img src="/image/关注两百万的StackOverflow问题01.png" alt></p>
+<p>我惊呆了！！！</p>
+<p>怎么会有这么多人围观。</p>
+<p>我第一反应的解决办法是使用<code>Apache commons</code>包的工具类<code>IOUtils</code>，果不其然，第一条回答就是这个。</p>
+<p><img src="/image/关注两百万的StackOverflow问题02.png" alt></p>
+<p>我的天！居然有2000+的赞！</p>
+<p>继续往下看，发现大家的不少的骚操作</p>
+<h3 id="使用-CharStreams-Guava"><a href="#使用-CharStreams-Guava" class="headerlink" title="使用 CharStreams (Guava)"></a>使用 CharStreams (Guava)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String result = CharStreams.toString(new InputStreamReader(</span><br><span class="line">     inputStream, Charsets.UTF_8));</span><br></pre></td></tr></table></figure>
+<h3 id="使用-Scanner-JDK"><a href="#使用-Scanner-JDK" class="headerlink" title="使用 Scanner (JDK)"></a>使用 Scanner (JDK)</h3><pre><code>Scanner s = new Scanner(inputStream).useDelimiter(&quot;\\A&quot;);
+String result = s.hasNext() ? s.next() : &quot;&quot;;
+</code></pre><h3 id="使用-Stream-API-Java-8"><a href="#使用-Stream-API-Java-8" class="headerlink" title="使用 Stream API (Java 8)."></a>使用 Stream API (Java 8).</h3><p>Warning: This solution converts different line breaks (like \r\n) to \n.<br>    String result = new BufferedReader(new InputStreamReader(inputStream))<br>      .lines().collect(Collectors.joining(“\n”));</p>
+<h3 id="使用-parallel-Stream-API-Java-8"><a href="#使用-parallel-Stream-API-Java-8" class="headerlink" title="使用 parallel Stream API (Java 8)."></a>使用 parallel Stream API (Java 8).</h3><p>Warning: This solution converts different line breaks (like \r\n) to \n.<br>    String result = new BufferedReader(new InputStreamReader(inputStream)).lines()<br>       .parallel().collect(Collectors.joining(“\n”));</p>
+<h3 id="使用-InputStreamReader-and-StringBuilder-JDK"><a href="#使用-InputStreamReader-and-StringBuilder-JDK" class="headerlink" title="使用 InputStreamReader and StringBuilder (JDK)"></a>使用 InputStreamReader and StringBuilder (JDK)</h3><pre><code>final int bufferSize = 1024;
+final char[] buffer = new char[bufferSize];
+final StringBuilder out = new StringBuilder();
+Reader in = new InputStreamReader(stream, StandardCharsets.UTF_8);
+int charsRead;
+while((charsRead = in.read(buffer, 0, buffer.length)) &gt; 0) {
+    out.append(buffer, 0, charsRead);
+}
+return out.toString();
+</code></pre><h3 id="使用-StringWriter-and-IOUtils-copy-Apache-Commons"><a href="#使用-StringWriter-and-IOUtils-copy-Apache-Commons" class="headerlink" title="使用 StringWriter and IOUtils.copy (Apache Commons)"></a>使用 StringWriter and IOUtils.copy (Apache Commons)</h3><pre><code>StringWriter writer = new StringWriter();
+IOUtils.copy(inputStream, writer, &quot;UTF-8&quot;);
+return writer.toString();
+</code></pre><h3 id="使用-ByteArrayOutputStream-and-inputStream-read-JDK"><a href="#使用-ByteArrayOutputStream-and-inputStream-read-JDK" class="headerlink" title="使用 ByteArrayOutputStream and inputStream.read (JDK)"></a>使用 ByteArrayOutputStream and inputStream.read (JDK)</h3><pre><code>ByteArrayOutputStream result = new ByteArrayOutputStream();
+byte[] buffer = new byte[1024];
+int length;
+while ((length = inputStream.read(buffer)) != -1) {
+    result.write(buffer, 0, length);
+}
+// StandardCharsets.UTF_8.name() &gt; JDK 7
+return result.toString(&quot;UTF-8&quot;);
+</code></pre><h3 id="使用-BufferedReader-JDK"><a href="#使用-BufferedReader-JDK" class="headerlink" title="使用 BufferedReader (JDK)."></a>使用 BufferedReader (JDK).</h3><p>Warning: This solution converts different line breaks (like \n\r) to line.separator system property (for example, in Windows to “\r\n”).</p>
+<pre><code>String newLine = System.getProperty(&quot;line.separator&quot;);
+BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+StringBuilder result = new StringBuilder();
+boolean flag = false;
+for (String line; (line = reader.readLine()) != null; ) {
+    result.append(flag? newLine: &quot;&quot;).append(line);
+    flag = true;
+}
+return result.toString();
+</code></pre><h3 id="使用-BufferedInputStream-and-ByteArrayOutputStream-JDK"><a href="#使用-BufferedInputStream-and-ByteArrayOutputStream-JDK" class="headerlink" title="使用 BufferedInputStream and ByteArrayOutputStream (JDK)"></a>使用 BufferedInputStream and ByteArrayOutputStream (JDK)</h3><pre><code>BufferedInputStream bis = new BufferedInputStream(inputStream);
+ByteArrayOutputStream buf = new ByteArrayOutputStream();
+int result = bis.read();
+while(result != -1) {
+    buf.write((byte) result);
+    result = bis.read();
+}
+// StandardCharsets.UTF_8.name() &gt; JDK 7
+return buf.toString(&quot;UTF-8&quot;);
+</code></pre><h3 id="使用-inputStream-read-and-StringBuilder-JDK"><a href="#使用-inputStream-read-and-StringBuilder-JDK" class="headerlink" title="使用 inputStream.read() and StringBuilder (JDK)."></a>使用 inputStream.read() and StringBuilder (JDK).</h3><p>Warning: This solution has problems with Unicode, for example with Russian text (works correctly only with non-Unicode text)<br>    int ch;<br>    StringBuilder sb = new StringBuilder();<br>    while((ch = inputStream.read()) != -1)<br>        sb.append((char)ch);<br>    reset();<br>    return sb.toString();</p>
+<p>甚至，还贴出了微基准测试的结果，果然狠人啊。</p>
+<p>对于小字符串(length = 175) 结果如下：<br>mode = Average Time, system = Linux, score 1,343 is the best :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">              Benchmark                         Mode  Cnt   Score   Error  Units</span><br><span class="line"> 8. ByteArrayOutputStream and read (JDK)        avgt   10   1,343 ± 0,028  us/op</span><br><span class="line"> 6. InputStreamReader and StringBuilder (JDK)   avgt   10   6,980 ± 0,404  us/op</span><br><span class="line">10. BufferedInputStream, ByteArrayOutputStream  avgt   10   7,437 ± 0,735  us/op</span><br><span class="line">11. InputStream.read() and StringBuilder (JDK)  avgt   10   8,977 ± 0,328  us/op</span><br><span class="line"> 7. StringWriter and IOUtils.copy (Apache)      avgt   10  10,613 ± 0,599  us/op</span><br><span class="line"> 1. IOUtils.toString (Apache Utils)             avgt   10  10,605 ± 0,527  us/op</span><br><span class="line"> 3. Scanner (JDK)                               avgt   10  12,083 ± 0,293  us/op</span><br><span class="line"> 2. CharStreams (guava)                         avgt   10  12,999 ± 0,514  us/op</span><br><span class="line"> 4. Stream Api (Java 8)                         avgt   10  15,811 ± 0,605  us/op</span><br><span class="line"> 9. BufferedReader (JDK)                        avgt   10  16,038 ± 0,711  us/op</span><br><span class="line"> 5. parallel Stream Api (Java 8)                avgt   10  21,544 ± 0,583  us/op</span><br></pre></td></tr></table></figure></p>
+<p>对于大字符串(length = 50100) 结果如下：<br>Performance tests for big String (length = 50100)<br>mode = Average Time, system = Linux, score 200,715 is the best</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">               Benchmark                        Mode  Cnt   Score        Error  Units</span><br><span class="line"> 8. ByteArrayOutputStream and read (JDK)        avgt   10   200,715 ±   18,103  us/op</span><br><span class="line"> 1. IOUtils.toString (Apache Utils)             avgt   10   300,019 ±    8,751  us/op</span><br><span class="line"> 6. InputStreamReader and StringBuilder (JDK)   avgt   10   347,616 ±  130,348  us/op</span><br><span class="line"> 7. StringWriter and IOUtils.copy (Apache)      avgt   10   352,791 ±  105,337  us/op</span><br><span class="line"> 2. CharStreams (guava)                         avgt   10   420,137 ±   59,877  us/op</span><br><span class="line"> 9. BufferedReader (JDK)                        avgt   10   632,028 ±   17,002  us/op</span><br><span class="line"> 5. parallel Stream Api (Java 8)                avgt   10   662,999 ±   46,199  us/op</span><br><span class="line"> 4. Stream Api (Java 8)                         avgt   10   701,269 ±   82,296  us/op</span><br><span class="line">10. BufferedInputStream, ByteArrayOutputStream  avgt   10   740,837 ±    5,613  us/op</span><br><span class="line"> 3. Scanner (JDK)                               avgt   10   751,417 ±   62,026  us/op</span><br><span class="line">11. InputStream.read() and StringBuilder (JDK)  avgt   10  2919,350 ± 1101,942  us/o</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如获宝藏，看来需要时不时的逛逛Stack Overflow了。</p>
+<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>转载自:<a href="https://www.jianshu.com/p/2595445bc7e7" target="_blank" rel="noopener">占小狼</a></p>
+<p>以上。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/stack-overflow/" rel="tag"># stack overflow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/12/零拷贝/" rel="next" title="所谓零拷贝">
+                <i class="fa fa-chevron-left"></i> 所谓零拷贝
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+    
+  
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/image/face.png" alt="skyRay">
+            
+              <p class="site-author-name" itemprop="name">skyRay</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog/" title="阮一峰" target="_blank">阮一峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://coolshell.cn/" title="陈皓" target="_blank">陈皓</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cnblogs.com/webary/" title="闻波" target="_blank">闻波</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/zffenger" title="冯兆峯" target="_blank">冯兆峯</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greatdk.com/" title="王登科-DK博客" target="_blank">王登科-DK博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#就是它"><span class="nav-number">2.1.</span> <span class="nav-text">就是它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-CharStreams-Guava"><span class="nav-number">2.1.1.</span> <span class="nav-text">使用 CharStreams (Guava)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Scanner-JDK"><span class="nav-number">2.1.2.</span> <span class="nav-text">使用 Scanner (JDK)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Stream-API-Java-8"><span class="nav-number">2.1.3.</span> <span class="nav-text">使用 Stream API (Java 8).</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-parallel-Stream-API-Java-8"><span class="nav-number">2.1.4.</span> <span class="nav-text">使用 parallel Stream API (Java 8).</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-InputStreamReader-and-StringBuilder-JDK"><span class="nav-number">2.1.5.</span> <span class="nav-text">使用 InputStreamReader and StringBuilder (JDK)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-StringWriter-and-IOUtils-copy-Apache-Commons"><span class="nav-number">2.1.6.</span> <span class="nav-text">使用 StringWriter and IOUtils.copy (Apache Commons)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-ByteArrayOutputStream-and-inputStream-read-JDK"><span class="nav-number">2.1.7.</span> <span class="nav-text">使用 ByteArrayOutputStream and inputStream.read (JDK)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-BufferedReader-JDK"><span class="nav-number">2.1.8.</span> <span class="nav-text">使用 BufferedReader (JDK).</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-BufferedInputStream-and-ByteArrayOutputStream-JDK"><span class="nav-number">2.1.9.</span> <span class="nav-text">使用 BufferedInputStream and ByteArrayOutputStream (JDK)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-inputStream-read-and-StringBuilder-JDK"><span class="nav-number">2.1.10.</span> <span class="nav-text">使用 inputStream.read() and StringBuilder (JDK).</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.2.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text">结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyRay</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'f1af9152983d31e73a82',
+          clientSecret: 'c3f0e79df1b83a1a87d3ec4301ae8a55a6529553',
+          repo: 'blog.gitalk',
+          owner: '54skyray',
+          admin: ['54skyray'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

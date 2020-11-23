@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="docker,mysql,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -88,20 +88,13 @@
 
 
 
-<meta name="description" content="前言网上看到的一个文章，虽然对docker相对比较熟悉。但是没有做过类似的实践，记录一次本地尝试.">
-<meta name="keywords" content="docker,mysql">
-<meta property="og:type" content="article">
-<meta property="og:title" content="docker的一次数据库迁移">
-<meta property="og:url" content="http://54skyray.cn/2018/08/10/docker的一次数据库迁移标题/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="天雷">
+<meta property="og:url" content="http://54skyray.cn/page/5/index.html">
 <meta property="og:site_name" content="天雷">
-<meta property="og:description" content="前言网上看到的一个文章，虽然对docker相对比较熟悉。但是没有做过类似的实践，记录一次本地尝试.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://54skyray.cn/image/docker的一次数据库迁移标题.jpg">
-<meta property="og:updated_time" content="2019-12-06T08:02:45.370Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker的一次数据库迁移">
-<meta name="twitter:description" content="前言网上看到的一个文章，虽然对docker相对比较熟悉。但是没有做过类似的实践，记录一次本地尝试.">
-<meta name="twitter:image" content="http://54skyray.cn/image/docker的一次数据库迁移标题.jpg">
+<meta name="twitter:title" content="天雷">
 
 
 
@@ -131,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://54skyray.cn/2018/08/10/docker的一次数据库迁移标题/">
+  <link rel="canonical" href="http://54skyray.cn/page/5/">
 
 
 
 
 
-  <title>docker的一次数据库迁移 | 天雷</title>
+  <title>天雷</title>
   
 
 
@@ -156,7 +149,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,9 +233,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -254,7 +248,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://54skyray.cn/2018/08/10/docker的一次数据库迁移标题/">
+    <link itemprop="mainEntityOfPage" href="http://54skyray.cn/2015/12/11/Hello/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="skyRay">
@@ -271,7 +265,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">docker的一次数据库迁移</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/11/Hello/" itemprop="url">Hello</a></h1>
         
 
         <div class="post-meta">
@@ -283,8 +279,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T18:22:23+08:00">
-                2018-08-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-11T16:18:27+08:00">
+                2015-12-11
               </time>
             
 
@@ -321,26 +317,12 @@
       
 
       
-        <p><img src="/image/docker的一次数据库迁移标题.jpg" class="full-image"></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>网上看到的一个文章，虽然对docker相对比较熟悉。但是没有做过类似的实践，记录一次本地尝试.<br><a id="more"></a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>之前使用的 MySql 跟 MongoDb 都是基于 Docker 部署的，所以迁移起来还算比较方便，主要思路就是把数据库容器的数据卷单独做成一个数据镜像，然后把这个镜像提交到另一台主机上面的私有仓库，最后用这个镜像生成一个数据容器挂载到应用容器上就好了。</p>
-<h2 id="备份数据卷"><a href="#备份数据卷" class="headerlink" title="备份数据卷"></a>备份数据卷</h2><pre><code>docker run --rm --volumes-from data-container-backup --name tmp-backup -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /folderToBackup
+        
+          
+            <h3 id="今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。"><a href="#今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。" class="headerlink" title="今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。"></a>今天开通这个博客，遗憾的是之前都没有开通博客去学习的同时，将成果共享。用心更新博客，与各位因特网大佬共同成长。。。。</h3><p><img src="http://desk.fd.zol-img.com.cn/t_s960x600c5/g5/M00/03/04/ChMkJ1oJW4iIIAZJAAfcOXA1PHcAAiH8gHsUiYAB9xR139.jpg" alt="曙光"></p>
 
-#Example: Backup mysql database
-docker run --rm --volumes-from blog-mysql --name tmp-backup -v $(pwd):/backup ubuntu tar cvf /backup/backup.tar /var/lib/mysql
-</code></pre><p><code>--rm</code> 用来创建一个“用完即销”的容器，<code>--volumes-from</code> 用来把一个已有容器上挂载的卷挂载到新创建的容器上</p>
-<h2 id="创建数据容器"><a href="#创建数据容器" class="headerlink" title="创建数据容器"></a>创建数据容器</h2><pre><code>docker run -d -v $(pwd):/backup --name data-backup alpine /bin/sh -c &quot;cd / &amp;&amp; tar xvf /backup/backup.tar&quot;
-</code></pre><h2 id="推送数据容器到私有仓库"><a href="#推送数据容器到私有仓库" class="headerlink" title="推送数据容器到私有仓库"></a>推送数据容器到私有仓库</h2><pre><code>docker commit data-backup registry-host:port/data-backup:$VERSION
-
-docker push registry-host:port/data-backup:$VERSION
-</code></pre><h2 id="在另一台主机下载数据容器"><a href="#在另一台主机下载数据容器" class="headerlink" title="在另一台主机下载数据容器"></a>在另一台主机下载数据容器</h2><pre><code>docker run -v /folderToBackup --entrypoint &quot;bin/sh&quot; --name data-container registry-host:port/data-backup:${VERSION}
-</code></pre><h2 id="将数据容器里面的数据卷挂载到应用容器上"><a href="#将数据容器里面的数据卷挂载到应用容器上" class="headerlink" title="将数据容器里面的数据卷挂载到应用容器上"></a>将数据容器里面的数据卷挂载到应用容器上</h2><pre><code>docker run --volumes-from=data-container registry-host:port/data-backup:${VERSION}
-
-# Example
-docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container registry-host:port/data-backup:${VERSION}
-</code></pre><p>就这样 5 步操作，就可以很方便的备份、迁移数据库了。所以买主机也一定要买支持 Docker 的 KVM 虚拟机啊。</p>
-<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>以上</p>
-
+          
+        
       
     </div>
     
@@ -350,72 +332,19 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
     
 
     
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>谢谢你请我吃糖果</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay 微信支付">
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay 支付宝">
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
 
     
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
-            <a href="/tags/mysql/" rel="tag"># mysql</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/07/08/SSH超时排查，原来是这个问题/" rel="next" title="SSH超时排查,原来是这个问题">
-                <i class="fa fa-chevron-left"></i> SSH超时排查,原来是这个问题
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -425,11 +354,14 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
 
 
           </div>
@@ -437,11 +369,6 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
 
 
           
-
-  
-    <div id="gitalk-container"></div>
-    
-  
         </div>
         
           
@@ -461,17 +388,8 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -488,7 +406,7 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -501,7 +419,7 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -559,22 +477,6 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#备份数据卷"><span class="nav-number">2.1.</span> <span class="nav-text">备份数据卷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建数据容器"><span class="nav-number">2.2.</span> <span class="nav-text">创建数据容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送数据容器到私有仓库"><span class="nav-number">2.3.</span> <span class="nav-text">推送数据容器到私有仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在另一台主机下载数据容器"><span class="nav-number">2.4.</span> <span class="nav-text">在另一台主机下载数据容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将数据容器里面的数据卷挂载到应用容器上"><span class="nav-number">2.5.</span> <span class="nav-text">将数据容器里面的数据卷挂载到应用容器上</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text">结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -588,7 +490,7 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -715,10 +617,6 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -759,22 +657,6 @@ docker run --name new-mysql -d -p 3306:3306 --volumes-from=data-container regist
 
 
 
-
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="/js/src/md5.min.js"></script>
-   <script type="text/javascript">
-        var gitalk = new Gitalk({
-          clientID: 'f1af9152983d31e73a82',
-          clientSecret: 'c3f0e79df1b83a1a87d3ec4301ae8a55a6529553',
-          repo: 'blog.gitalk',
-          owner: '54skyray',
-          admin: ['54skyray'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')           
-       </script>
 
 
   
