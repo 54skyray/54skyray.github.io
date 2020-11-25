@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/a921c668.js","daovoice")
+  daovoice('init', {
+      app_id: "a921c668"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="FullGc,堆栈,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言mark">
+<meta name="keywords" content="FullGc,堆栈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一次非常规FULLGC记录">
+<meta property="og:url" content="http://54skyray.cn/2020/05/19/诡异的FULL_GC/index.html">
+<meta property="og:site_name" content="天雷">
+<meta property="og:description" content="前言mark">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://54skyray.cn/image/诡异的FULL_GC标题.jpg">
+<meta property="og:image" content="http://54skyray.cn/image/诡异的FULL_GC01.png">
+<meta property="og:image" content="http://54skyray.cn/image/诡异的FULL_GC02.png">
+<meta property="og:updated_time" content="2020-11-25T03:04:38.352Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一次非常规FULLGC记录">
+<meta name="twitter:description" content="前言mark">
+<meta name="twitter:image" content="http://54skyray.cn/image/诡异的FULL_GC标题.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://54skyray.cn/2020/05/19/诡异的FULL_GC/">
+
+
+
+
+
+  <title>一次非常规FULLGC记录 | 天雷</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">天雷</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">一步一个脚印,成长举足之间</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://54skyray.cn/2020/05/19/诡异的FULL_GC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyRay">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/image/face.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="天雷">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一次非常规FULLGC记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-19T09:36:58+08:00">
+                2020-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/image/诡异的FULL_GC标题.jpg" class="full-image"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>mark<br><a id="more"></a></p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>公司的一台线上服务器突然宕机。<br>立马关掉<code>slb</code></p>
+<h2 id="开始排查"><a href="#开始排查" class="headerlink" title="开始排查"></a>开始排查</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2019-09-17T20:33:57.889+0800: 4753520.554: [Full GC (Metadata GC Threshold) 4753520.554: [CMS[YG occupancy: 723220 K (1887488 K)]4753520.988: [weak refs process        ing, 0.0042134 secs]4753520.992: [class unloading, 0.0987343 secs]4753521.091: [scrub symbol table, 0.0237609 secs]4753521.115: [scrub string table, 0.0025983 s        ecs]: 145423K-&gt;141376K(3354624K), 0.6260023 secs] 868644K-&gt;864597K(5242112K), [Metaspace: 128179K-&gt;128179K(1234944K)], 0.6264315 secs] [Times: user=1.24 sys=0.0        0, real=0.63 secs]</span><br><span class="line">4159962 Heap after GC invocations=8029 (full 50):</span><br><span class="line">4159963  par new generation   total 1887488K, used 723220K [0x0000000673400000, 0x00000006f3400000, 0x00000006f3400000)</span><br><span class="line">4159964   eden space 1677824K,  42% used [0x0000000673400000, 0x000000069ed59090, 0x00000006d9a80000)</span><br><span class="line">4159965   from space 209664K,   4% used [0x00000006d9a80000, 0x00000006da36c210, 0x00000006e6740000)</span><br><span class="line">4159966   to   space 209664K,   0% used [0x00000006e6740000, 0x00000006e6740000, 0x00000006f3400000)</span><br><span class="line">4159967  concurrent mark-sweep generation total 3354624K, used 141376K [0x00000006f3400000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">4159968  Metaspace       used 128145K, capacity 136860K, committed 262144K, reserved 1234944K</span><br><span class="line">4159969   class space    used 14443K, capacity 16168K, committed 77312K, reserved 1048576K</span><br><span class="line">4159970 &#125;</span><br><span class="line">4159971 &#123;Heap before GC invocations=8029 (full 50):</span><br><span class="line">4159972  par new generation   total 1887488K, used 723220K [0x0000000673400000, 0x00000006f3400000, 0x00000006f3400000)</span><br><span class="line">4159973   eden space 1677824K,  42% used [0x0000000673400000, 0x000000069ed59090, 0x00000006d9a80000)</span><br><span class="line">4159974   from space 209664K,   4% used [0x00000006d9a80000, 0x00000006da36c210, 0x00000006e6740000)</span><br><span class="line">4159975   to   space 209664K,   0% used [0x00000006e6740000, 0x00000006e6740000, 0x00000006f3400000)</span><br><span class="line">4159976  concurrent mark-sweep generation total 3354624K, used 141376K [0x00000006f3400000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">4159977  Metaspace       used 128145K, capacity 136860K, committed 262144K, reserved 1234944K</span><br><span class="line">4159978   class space    used 14443K, capacity 16168K, committed 77312K, reserved 1048576K</span><br></pre></td></tr></table></figure>
+<p>可以看到几个关键字<code>Full GC</code>、<code>Metadata</code>、 <code>GC Threshold</code><br>随后看了一下TOMCAT的JVM参数配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CATALINA_OPTS=&quot;$CATALINA_OPTS -server -Djava.awt.headless=true -Xms5324m -Xmx5324m -Xss512k -XX:PermSize=350m -XX:MaxPermSize=350m -XX:MetaspaceSize=256m -XX:MaxMet    aspaceSize=256m -XX:NewSize=2048m -XX:MaxNewSize=2048m -XX:SurvivorRatio=8 -XX:MaxTenuringThreshold=9 -XX:+UseConcMarkSweepGC -XX:+UseCMSInitiatingOccupancyOnly -XX    :+CMSScavengeBeforeRemark -XX:+ScavengeBeforeFullGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSParallelRemarkEnabled -XX:CMSFullGCsBeforeCompaction=9 -XX:CMSInitiat    ingOccupancyFraction=80 -XX:+CMSClassUnloadingEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:-ReduceInitialCardMarks -XX:+CMSPermGenSweepingEnabled -XX:CMSInitiatingPerm    OccupancyFraction=80 -XX:+ExplicitGCInvokesConcurrent -Djava.nio.channels.spi.SelectorProvider=[sun.nio.ch](http://sun.nio.ch/).EPollSelectorProvider -Djava.util.logging.manager=org.apac    he.juli.ClassLoaderLogManager -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationConcurrentTime -XX:+PrintGCApplicationStoppedTime -XX:+PrintHeapAtGC     -Xloggc:/data/applogs/heap_trace.txt -XX:+IgnoreUnrecognizedVMOptions -XX:-HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/data/applogs/HeapDumpOnOutOfMemoryError&quot;</span><br></pre></td></tr></table></figure></p>
+<p>看到配置之后，有点懵逼，好像超出了我的认知范围</p>
+<p><img src="/image/诡异的FULL_GC01.png" alt="诡异的FULL_GC01"></p>
+<p>看cat监控,Metaspace基本在50%左右就FGC,GC日志也显示用了大概一半，没有达到阈值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[0x00000006f3400000, 0x00000007c0000000, 0x00000007c0000000)</span><br><span class="line">4159977  Metaspace       used 128145K, capacity 136860K, committed 262144K, reserved 1234944K</span><br></pre></td></tr></table></figure></p>
+<p>又反复看了上面的GC片段，发现这个committed达到了阈值</p>
+<p>我们需要知道一点：当目前的committed内存+当前需要分配的内存达到Metaspace阈值，就会发生Metadata GC Threshold的FGC。</p>
+<p>看到这里，我们也能大概猜出了，这次FGC是合理的。</p>
+<p>但是，为什么used指标只有125M，却还要申请其它内存？</p>
+<p>看来只有一个原因可以解释了：内存碎片。</p>
+<p>之前只听过老年代因为CMS的标记清理会产生内存碎片导致FGC，为什么Metaspace也会有这样的问题？</p>
+<p>对有问题的机器dump了下，用mat打开之后，发现了一个新大陆，包含了大量的类加载器。</p>
+<p>难道这个碎片问题是大量类加载器引起的？</p>
+<h2 id="本地验证"><a href="#本地验证" class="headerlink" title="本地验证"></a>本地验证</h2><p>有了这个疑问，那就简单了，看看能不能在本地复现。<br>1、先定义一个自定义的类加载器，破坏双亲委派<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class MyClassLoader extends ClassLoader &#123;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException &#123;</span><br><span class="line">            try&#123;</span><br><span class="line">                String filePath = &quot;/Users/zhanjun/Desktop/&quot; + name.replace(&apos;.&apos;, File.separatorChar) + &quot;.class&quot;;</span><br><span class="line">                //指定读取磁盘上的某个文件夹下的.class文件：</span><br><span class="line">                File file = new File(filePath);</span><br><span class="line">                FileInputStream fis = new FileInputStream(file);</span><br><span class="line">                byte[] bytes = new byte[fis.available()];</span><br><span class="line">                fis.read(bytes);</span><br><span class="line">                //调用defineClass方法，将字节数组转换成Class对象</span><br><span class="line">                Class&lt;?&gt; clazz = this.defineClass(name, bytes, 0, bytes.length);</span><br><span class="line">                fis.close();</span><br><span class="line">                return clazz;</span><br><span class="line">            &#125;catch (FileNotFoundException e)&#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; finally &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            return super.findClass(name);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、然后在while循环中，不断的 load 已经编译好的class文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws Exception &#123;</span><br><span class="line">        while (true) &#123;</span><br><span class="line">            Class clazz0 = new MyClassLoader().loadClass(&quot;com.sankuai.discover.memory.OOM&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>3、最后，配置一下jvm启动参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Xmx2688M -Xms2688M -Xmn960M -XX:MetaspaceSize=50M -XX:MaxMetaspaceSize=100M -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintHeapAtGC -XX:+UseConcMarkSweepGC</span><br></pre></td></tr></table></figure></p>
+<p>启动之后，不一会儿在控制台果然出现了日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;Heap before GC invocations=0 (full 0):</span><br><span class="line"> par new generation   total 884736K, used 330302K [0x0000000752400000, 0x000000078e400000, 0x000000078e400000)</span><br><span class="line">  eden space 786432K,  42% used [0x0000000752400000, 0x000000076668fae0, 0x0000000782400000)</span><br><span class="line">  from space 98304K,   0% used [0x0000000782400000, 0x0000000782400000, 0x0000000788400000)</span><br><span class="line">  to   space 98304K,   0% used [0x0000000788400000, 0x0000000788400000, 0x000000078e400000)</span><br><span class="line"> concurrent mark-sweep generation total 1769472K, used 0K [0x000000078e400000, 0x00000007fa400000, 0x00000007fa400000)</span><br><span class="line"> Metaspace       used 22636K, capacity 102360K, committed 102400K, reserved 1118208K</span><br><span class="line">  class space    used 8829K, capacity 33008K, committed 33008K, reserved 1048576K</span><br><span class="line">2019-09-21T16:09:28.562-0800: [Full GC (Metadata GC Threshold) 2019-09-21T16:09:28.562-0800: [CMS: 0K-&gt;5029K(1769472K), 0.0987115 secs] 330302K-&gt;5029K(2654208K), [Metaspace: 22636K-&gt;22636K(1118208K)], 0.1340367 secs] [Times: user=0.11 sys=0.03, real=0.13 secs] </span><br><span class="line">Heap after GC invocations=1 (full 1):</span><br><span class="line"> par new generation   total 884736K, used 0K [0x0000000752400000, 0x000000078e400000, 0x000000078e400000)</span><br><span class="line">  eden space 786432K,   0% used [0x0000000752400000, 0x0000000752400000, 0x0000000782400000)</span><br><span class="line">  from space 98304K,   0% used [0x0000000782400000, 0x0000000782400000, 0x0000000788400000)</span><br><span class="line">  to   space 98304K,   0% used [0x0000000788400000, 0x0000000788400000, 0x000000078e400000)</span><br><span class="line"> concurrent mark-sweep generation total 1769472K, used 5029K [0x000000078e400000, 0x00000007fa400000, 0x00000007fa400000)</span><br><span class="line"> Metaspace       used 2885K, capacity 4500K, committed 43008K, reserved 1058816K</span><br><span class="line">  class space    used 291K, capacity 388K, committed 33008K, reserved 1048576K</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从日志可以看出来，发生FGC之前，used大概22M，committed已经达到100M，这时再加载class的时候，需要申请内存，就不够了，只能通过FGC对Metaspace的内存进行整理压缩。</p>
+<p>到现在，我们已经验证了过多的类加载器确实可以引起FGC。</p>
+<h2 id="内存碎片是怎么产生的？"><a href="#内存碎片是怎么产生的？" class="headerlink" title="内存碎片是怎么产生的？"></a>内存碎片是怎么产生的？</h2><blockquote>
+<p>其实，JVM内部为了实现高效分配，在类加载器第一次加载类的时候，会在Metaspace分配一个独立的内存块，随后该类加载加载的类信息都保存在该内存块。但如果这个类加载器只加载了一个类或者少数类，那这块内存就被浪费了，如果类加载器又特别多，那内存碎片就产生了。</p>
+</blockquote>
+<p><img src="/image/诡异的FULL_GC02.png" alt="诡异的FULL_GC0"></p>
+<h1 id="结"><a href="#结" class="headerlink" title="结"></a>结</h1><p>转载请注明出处:<a href="http://www.54skyray.cn" target="_blank" rel="noopener">天雷</a></p>
+<p>以上</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/image/wechar.png" alt="skyRay WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/image/alipay.png" alt="skyRay Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FullGc/" rel="tag"># FullGc</a>
+          
+            <a href="/tags/堆栈/" rel="tag"># 堆栈</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/15/Stack Overflow上200万阅读量的一个提问/" rel="next" title="Stack Overflow上瞅到200万阅读量的一个提问：Java中怎么快速把InputStream转化为String">
+                <i class="fa fa-chevron-left"></i> Stack Overflow上瞅到200万阅读量的一个提问：Java中怎么快速把InputStream转化为String
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div id="gitalk-container"></div>
+    
+  
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/image/face.png" alt="skyRay">
+            
+              <p class="site-author-name" itemprop="name">skyRay</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.liaoxuefeng.com/" title="廖雪峰" target="_blank">廖雪峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.ruanyifeng.com/blog/" title="阮一峰" target="_blank">阮一峰</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://coolshell.cn/" title="陈皓" target="_blank">陈皓</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.cnblogs.com/webary/" title="闻波" target="_blank">闻波</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/zffenger" title="冯兆峯" target="_blank">冯兆峯</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://greatdk.com/" title="王登科-DK博客" target="_blank">王登科-DK博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#开始排查"><span class="nav-number">2.1.</span> <span class="nav-text">开始排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地验证"><span class="nav-number">2.2.</span> <span class="nav-text">本地验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存碎片是怎么产生的？"><span class="nav-number">2.3.</span> <span class="nav-text">内存碎片是怎么产生的？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结"><span class="nav-number">3.</span> <span class="nav-text">结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyRay</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="/js/src/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'f1af9152983d31e73a82',
+          clientSecret: 'c3f0e79df1b83a1a87d3ec4301ae8a55a6529553',
+          repo: 'blog.gitalk',
+          owner: '54skyray',
+          admin: ['54skyray'],
+          id: md5(location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+
+</html>
+<!--崩溃欺骗-->
+<script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

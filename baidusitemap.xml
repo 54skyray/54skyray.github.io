@@ -4,6 +4,44 @@
 
     
   <url>
+    <loc>http://54skyray.cn/2020/05/19/%E8%AF%A1%E5%BC%82%E7%9A%84FULL_GC/</loc>
+    <lastmod>2020-11-25T03:04:38.352Z</lastmod>
+    <data>
+        <display>
+        <title>一次非常规FULLGC记录</title>
+        <pubTime>2020-05-19T01:36:58.000Z</pubTime>
+        
+        <tag>FullGc</tag>
+         
+        <tag>堆栈</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://54skyray.cn/2016/03/19/Java%E4%BD%BF%E7%94%A8HTTPClient%E6%A8%A1%E6%8B%9FHttp%E8%AF%B7%E6%B1%82/</loc>
+    <lastmod>2020-11-25T03:04:23.693Z</lastmod>
+    <data>
+        <display>
+        <title>Java使用HTTPClient模拟Http请求</title>
+        <pubTime>2016-03-19T01:36:58.000Z</pubTime>
+        
+        <tag>HTTPClient</tag>
+         
+        <tag>Http请求</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://54skyray.cn/2020/03/15/Stack%20Overflow%E4%B8%8A200%E4%B8%87%E9%98%85%E8%AF%BB%E9%87%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E6%8F%90%E9%97%AE/</loc>
     <lastmod>2020-11-23T09:41:03.274Z</lastmod>
     <data>
@@ -149,25 +187,6 @@
         <tag>链表</tag>
          
         <tag>数据结构</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://54skyray.cn/2016/03/19/Java%E4%BD%BF%E7%94%A8HTTPClient%E6%A8%A1%E6%8B%9FHttp%E8%AF%B7%E6%B1%82/</loc>
-    <lastmod>2019-04-12T08:18:57.058Z</lastmod>
-    <data>
-        <display>
-        <title>Java使用HTTPClient模拟Http请求</title>
-        <pubTime>2016-03-19T01:36:58.000Z</pubTime>
-        
-        <tag>HTTPClient</tag>
-         
-        <tag>Http请求</tag>
          
          
            
