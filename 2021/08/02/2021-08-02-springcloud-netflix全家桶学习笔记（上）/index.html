@@ -88,25 +88,25 @@
 
 
 
-<meta name="description" content="前言netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix 本文仅包含Eureka、Ribbon">
+<meta name="description" content="前言netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix、zuul 本文仅包含Eureka、Ribbon">
 <meta name="keywords" content="架构,springcloud,eureka,ribbon">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springcloud netflix全家桶学习笔记（上）">
 <meta property="og:url" content="http://54skyray.cn/2021/08/02/2021-08-02-springcloud-netflix全家桶学习笔记（上）/index.html">
 <meta property="og:site_name" content="天雷">
-<meta property="og:description" content="前言netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix 本文仅包含Eureka、Ribbon">
+<meta property="og:description" content="前言netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix、zuul 本文仅包含Eureka、Ribbon">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="d:/skyray/Pictures/markdown图片/springcloud%20netflix全家桶学习笔记_标题.jpg">
-<meta property="og:image" content="d:/gitClone/blog/hexoLocal/source/image/springcloud%20netflix全家桶学习笔记_1.jpg">
-<meta property="og:image" content="d:/gitClone/blog/hexoLocal/source/image/springcloud%20netflix全家桶学习笔记_2.jpg">
+<meta property="og:image" content="http://54skyray.cn/image/springcloud%20netflix全家桶学习笔记_标题.jpg">
+<meta property="og:image" content="http://54skyray.cn/image/springcloud%20netflix全家桶学习笔记_1.jpg">
+<meta property="og:image" content="http://54skyray.cn/image/springcloud%20netflix全家桶学习笔记_2.jpg">
 <meta property="og:image" content="d:/skyray/Pictures/markdown图片/image-20211008103955937.png">
-<meta property="og:image" content="d:/gitClone/blog/hexoLocal/source/image/springcloud%20netflix全家桶学习笔记_3.jpg">
-<meta property="og:image" content="d:/gitClone/blog/hexoLocal/source/image/springcloud%20netflix全家桶学习笔记_4.jpg">
-<meta property="og:updated_time" content="2021-10-19T03:22:49.769Z">
+<meta property="og:image" content="http://54skyray.cn/image/springcloud%20netflix全家桶学习笔记_3.jpg">
+<meta property="og:image" content="http://54skyray.cn/image/springcloud%20netflix全家桶学习笔记_4.jpg">
+<meta property="og:updated_time" content="2021-10-19T05:56:07.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springcloud netflix全家桶学习笔记（上）">
-<meta name="twitter:description" content="前言netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix 本文仅包含Eureka、Ribbon">
-<meta name="twitter:image" content="d:/skyray/Pictures/markdown图片/springcloud%20netflix全家桶学习笔记_标题.jpg">
+<meta name="twitter:description" content="前言netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix、zuul 本文仅包含Eureka、Ribbon">
+<meta name="twitter:image" content="http://54skyray.cn/image/springcloud%20netflix全家桶学习笔记_标题.jpg">
 
 
 
@@ -326,8 +326,8 @@
       
 
       
-        <p><img src="D:\skyray\Pictures\markdown图片\springcloud netflix全家桶学习笔记_标题.jpg" alt="springcloud netflix全家桶学习笔记_标题"></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix</p>
+        <p><img src="/image/springcloud netflix全家桶学习笔记_标题.jpg" class="full-image"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>netflix开源框架学习包含：Eureka、Ribbon、Feign、Hystrix、zuul</p>
 <p>本文仅包含Eureka、Ribbon</p>
 <a id="more"></a>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="微服务与微服务架构"><a href="#微服务与微服务架构" class="headerlink" title="微服务与微服务架构"></a>微服务与微服务架构</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><p>强调服务的大小，关注的是具体解决一个问题/提供落地对应服务的一个服务应用，狭义就是一个Modules</p>
@@ -510,12 +510,12 @@
 </li>
 <li>通过api获取所有服务提供者。以及指定服务提供者的服务</li>
 </ol>
-<p><img src="D:\gitClone\blog\hexoLocal\source\image\springcloud netflix全家桶学习笔记_1.jpg" alt="image-20210930115625443"></p>
+<p><img src="/image/springcloud netflix全家桶学习笔记_1.jpg" alt="image-20210930115625443"></p>
 <h3 id="Eureka集群搭建"><a href="#Eureka集群搭建" class="headerlink" title="Eureka集群搭建"></a>Eureka集群搭建</h3><ul>
 <li>搭建三个一样的项目</li>
 <li>引入依赖</li>
 <li>修改配置文件，互相依赖<ul>
-<li><img src="D:\gitClone\blog\hexoLocal\source\image\springcloud netflix全家桶学习笔记_2.jpg" alt="image-20211008104038773"></li>
+<li><img src="/image/springcloud netflix全家桶学习笔记_2.jpg" alt="image-20211008104038773"></li>
 </ul>
 </li>
 <li>修改hosts<ul>
@@ -527,7 +527,7 @@
 <blockquote>
 <p>客户端引用方式</p>
 </blockquote>
-<p><img src="D:\gitClone\blog\hexoLocal\source\image\springcloud netflix全家桶学习笔记_3.jpg" alt="image-20211008092831785"></p>
+<p><img src="/image/springcloud netflix全家桶学习笔记_3.jpg" alt="image-20211008092831785"></p>
 <hr>
 <h2 id="ribbon"><a href="#ribbon" class="headerlink" title="ribbon"></a>ribbon</h2><p>ribbon是Spring Cloud Ribbon基于Netflix Ribbon实现的客户端负载均衡工具。</p>
 <p>提供客户端的软件负载均衡算法，将Netflix的中间服务连接在一起，提供一系列完整配置项如：连接超时、重试等。Ribbon基于某种规则（简单轮训、随机连接等）去连接各种服务。</p>
@@ -554,7 +554,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RibbonClient</span>(name = <span class="string">"EUREKA-PROVIDER-DEPT"</span>,configuration = RayRule.class)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>规则类<code>RayRule.class</code>不能与启动类在同一个包级别下,原因如下</p>
-<p><img src="D:\gitClone\blog\hexoLocal\source\image\springcloud netflix全家桶学习笔记_4.jpg" alt="image-20211009155646752"></p>
+<p><img src="/image/springcloud netflix全家桶学习笔记_4.jpg" alt="image-20211009155646752"></p>
 <blockquote>
 <p><code>FooConfiguration</code>必须是<code>@Configuration</code>，但请注意，主应用程序上下文不属于<code>@ComponentScan</code>，否则将由<code>@RibbonClients</code>共享。如果您使用<code>@ComponentScan</code>（或<code>@SpringBootApplication</code>），则需要采取措施避免包含（例如将其放在一个单独的，不重叠的包中，或者指定要在<code>@ComponentScan</code>）。</p>
 <p>[^来自springcloud官方文档]: <a href="https://www.springcloud.cc/spring-cloud-netflix.html" target="_blank" rel="noopener">https://www.springcloud.cc/spring-cloud-netflix.html</a></p>
