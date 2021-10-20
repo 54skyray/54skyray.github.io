@@ -4,31 +4,8 @@
 
     
   <url>
-    <loc>http://54skyray.cn/2021/09/21/2021-08-02-springcloud-netflix%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/</loc>
-    <lastmod>2021-10-20T07:21:59.819Z</lastmod>
-    <data>
-        <display>
-        <title>springcloud netflix全家桶学习笔记（上）</title>
-        <pubTime>2021-09-21T14:21:12.000Z</pubTime>
-        
-        <tag>架构</tag>
-         
-        <tag>springcloud</tag>
-         
-        <tag>eureka</tag>
-         
-        <tag>ribbon</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://54skyray.cn/2021/10/01/2021-09-11-springcloud-netflix%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8B%EF%BC%89/</loc>
-    <lastmod>2021-10-20T07:01:39.363Z</lastmod>
+    <lastmod>2021-10-20T08:17:31.660Z</lastmod>
     <data>
         <display>
         <title>springcloud netflix全家桶学习笔记（下）</title>
@@ -47,6 +24,29 @@
         <tag>Zuul</tag>
          
         <tag>Spring Cloud Config</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://54skyray.cn/2021/09/21/2021-08-02-springcloud-netflix%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/</loc>
+    <lastmod>2021-10-20T07:21:59.819Z</lastmod>
+    <data>
+        <display>
+        <title>springcloud netflix全家桶学习笔记（上）</title>
+        <pubTime>2021-09-21T14:21:12.000Z</pubTime>
+        
+        <tag>架构</tag>
+         
+        <tag>springcloud</tag>
+         
+        <tag>eureka</tag>
+         
+        <tag>ribbon</tag>
          
          
            
